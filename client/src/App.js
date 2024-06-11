@@ -6,8 +6,8 @@ function App() {
   const [oficinas, setOficinas] = useState([]);
 
   useEffect(() => {
-    axios.get('/apiAFO')
-    .then(res=>{setOficinas(res.data.oficina)})
+    axios.get('/oficina?limit=1&offset=0')
+    .then(res=>{setOficinas(res.data.Oficinas[0].calle); console.log(res.data);})
   }, []);
 
   return (
