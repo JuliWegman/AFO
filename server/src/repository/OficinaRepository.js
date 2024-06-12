@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 import {BDconfig} from '../configs/BD.js'
-// import 'dotenv/config'
+import 'dotenv/config'
 
 export default class OficinaRepository{
     constructor(){
