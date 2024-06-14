@@ -7,12 +7,14 @@ function App() {
 
   useEffect(() => {
     axios.get('/oficina?limit=1&offset=0')
-    .then(res=>{setOficinas(res.data.Oficinas[0].calle); console.log(res.data);})
+    .then(res=>{setOficinas(res.data.Oficinas[0].calle); })
   }, []);
 
   return (
     <div>
+      <header/>
       <h2>{oficinas}</h2>
+      <footer/>
     </div>
   )
 }

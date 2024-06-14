@@ -8,9 +8,9 @@ export default class OficinaRepository{
     }
 
     async getOficinas(limit,offset){
-
-        const {data}=await this.BD.from('oficina').select().range(offset || 0,(offset+limit-1) || 0).order('id_oficina',{ascending:true})  
-        console.log(data, "AAAAAAAA");
+        const {data,status}=await this.BD.from('oficina').select().range(offset || 0,(offset+limit-1) || 0).order('id_oficina',{ascending:true})  
+        console.log(status);
         return data;
+
     }
 }
