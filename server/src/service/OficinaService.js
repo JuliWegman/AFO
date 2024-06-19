@@ -14,9 +14,15 @@ export class OficinaService{
         const paginacion = PaginacionConfig.buildPaginationDto(parsedLimit, parsedOffset, cantidad, `/oficina`)
 
         const Oficinas=await repo.getOficinas(parsedLimit,parsedOffset);
-        const collection={Oficinas,paginacion};
-        return collection;
+        if(Oficinas!=null){
+            const collection={Oficinas,paginacion};
+            return collection;
+        }else{
+            return "error";
+        }
+
     }
+        
 
     async getOficinaById(id){
         return await repo.getOficinaById(id)

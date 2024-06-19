@@ -3,17 +3,17 @@ import axios from 'axios'
 
 
 function App() {
-  const [oficinas, setOficinas] = useState([""]);
+  const [oficina, setOficina] = useState({});
 
   useEffect(() => {
-    axios.get('/oficina?limit=1&offset=0')
-    .then(res=>{setOficinas(res.data.Oficinas[0]);})
+    axios.get('/oficina/1')
+    .then(res=>{setOficina(res.data)})
   }, []);
 
   return (
     <div>
       <header/>
-      <h2>{oficinas.calle}</h2>
+      <h2>{oficina.calle}</h2>
       <footer/>
     </div>
   )
