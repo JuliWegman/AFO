@@ -8,9 +8,22 @@ export default class OficinaRepository{
     }
 
     async getOficinas(limit,offset){
-        const {data,status}=await this.BD.from('oficina').select().range(offset || 0,(offset+limit-1) || 0).order('id_oficina',{ascending:true})  
-        console.log(status);
+        const {data}=await this.BD.from('oficina').select().range(offset || 0,(offset+limit-1) || 0).order('id_oficina',{ascending:true});
         return data;
 
+    }
+
+    async getOficinaById(id){
+        const {data}=await this.BD.from('oficina').select().eq('id_oficina',id).maybeSingle()
+        return data;
+    }
+
+    async countOficinas(){
+        try{
+        const {count}=await this.BD.from('oficina').select('*',{count:'exact', head: true})
+        return count;
+        }catch(error){
+        console.log(error);
+        }
     }
 }

@@ -19,4 +19,20 @@ router.get('/',async (req,res)=>{
     }
 })
 
+router.get('/:id',async (req,res)=>{
+    const id=req.params.id
+
+    try {   
+        const oficina=await officeService.getOficinaById(id)
+        if (oficina!=null) {
+        return res.status(200).send(oficina)
+        }else{
+        return res.status(401).send("NO EXISTE UNA OFICINA CON ESA ID")
+        }
+        
+    } catch (error) {
+        return res.send(error)
+    }
+})
+
 export default router;

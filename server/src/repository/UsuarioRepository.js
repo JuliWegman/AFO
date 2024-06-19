@@ -7,10 +7,18 @@ export default class UsuarioRepository{
         this.BD=createClient(BDconfig.url,BDconfig.key)
     }
 
-    async getUsuarios(limit,offset){
+    async getUsuarios(){
 
-        const {data}=await this.BD.from('usuario').select().range(offset || 0,(offset+limit-1) || 0).order('id_usuario',{ascending:true})  
-        console.log(data, "AAAAAAAA");
+        const {data}=await this.BD.from('usuario').select();  
         return data;
+    }
+
+    async countUsuarios(){
+        try{
+        const {count}=await this.BD.from('usuario').select('*',{count:'exact', head: true})
+        return count;
+        }catch(error){
+        console.log(error);
+        }
     }
 }
