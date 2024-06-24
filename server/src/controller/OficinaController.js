@@ -27,7 +27,7 @@ router.get('/:id',async (req,res)=>{
         if (oficina!=null) {
         return res.status(200).send(oficina)
         }else{
-        return res.status(401).send("NO EXISTE UNA OFICINA CON ESA ID")
+        return res.status(401).send("NO EXISTE UNA OFICINA CON ESA IDD")
         }
         
     } catch (error) {
