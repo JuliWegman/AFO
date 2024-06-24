@@ -8,9 +8,9 @@ export default class OficinaRepository{
     }
 
     async getOficinas(limit,offset){
-        const {data}=await this.BD.from('oficina').select().range(offset || 0,(offset+limit-1) || 0).order('id_oficina',{ascending:true});
-        return data;
-
+        const {error,data}=await this.BD.from('oficina').select().range(offset || 0,(offset+limit-1) || 0).order('id_oficina',{ascending:true});
+        return data ? data : error
+       
     }
 
     async getOficinaById(id){
@@ -19,11 +19,8 @@ export default class OficinaRepository{
     }
 
     async countOficinas(){
-        try{
-        const {count}=await this.BD.from('oficina').select('*',{count:'exact', head: true})
-        return count;
-        }catch(error){
-        console.log(error);
-        }
+        const {error,count}=await this.BD.from('oficina').select('*',{count:'exact', head: true})
+        return count ? count : error;
+        
     }
 }

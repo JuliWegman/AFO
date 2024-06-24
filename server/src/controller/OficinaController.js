@@ -35,4 +35,24 @@ router.get('/:id',async (req,res)=>{
     }
 })
 
+router.get('/:id/alquileres',async(req,res)=>{
+    const id=req.params.id;
+
+    const alquileres=await officeService.getAlquileresByOficina(id)
+    return res.status(200).json(alquileres)
+
+
+});
+
+router.get('/:id/fotos',async (req, res)=>{
+    const id= req.params.id;
+    const {data,error}=await officeService.getFotosByOficina(id)
+    console.log(data);
+    if (data[0]==null){
+            return res.status(401).json("Esa id_oficina no existe o no tiene fotos");
+    }else{
+            return res.status(200).json(data);
+    }
+
+})
 export default router;
