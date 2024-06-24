@@ -8,13 +8,13 @@ export default class OficinaRepository{
     }
 
     async getOficinas(limit,offset){
-        const {error,data}=await this.BD.from('oficina').select().range(offset || 0,(offset+limit-1) || 0).order('id_oficina',{ascending:true});
+        const {error,data}=await this.BD.from('oficina').select('id_oficina,tamaño,sillas,baños,ambientes,armarios,calle,altura,computadoras,personas,localidad:id_localidad(nombre),barrio:id_barrio(nombre),usuario:id_usuario(nombre,apellido,mail),precio,duracion:id_duracion(tiempo)').range(offset || 0,(offset+limit-1) || 0).order('id_oficina',{ascending:true});
         return data ? data : error
        
     }
 
     async getOficinaById(id){
-        const {data}=await this.BD.from('oficina').select().eq('id_oficina',id).maybeSingle()
+        const {data}=await this.BD.from('oficina').select('id_oficina,tamaño,sillas,baños,ambientes,armarios,calle,altura,computadoras,personas,localidad:id_localidad(nombre),barrio:id_barrio(nombre),usuario:id_usuario(nombre,apellido,mail),precio,duracion:id_duracion(tiempo)').eq('id_oficina',id).maybeSingle()
         return data;
     }
 
