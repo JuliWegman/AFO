@@ -1,18 +1,15 @@
 import React from 'react';
 import '../css/desplegable.css';
 
-const Desplegable = ({ texto }) => {
+const Desplegable = () => {
   return (
-    <div className="Container">
-      <button className="Button">
-        {texto}
-      </button>
-      <ul className="menu">
-        <li>Home</li>
-        <li>Mis Mensajes</li>
-        <li>Opción 3</li>
-      </ul>
-    </div>
+    <nav className="desplegable-menu">
+      Home
+      Mis Alquileres
+      Mis Mensajes
+      Mi Perfil
+      Cerrar Sesión
+    </nav>
   );
 };
 

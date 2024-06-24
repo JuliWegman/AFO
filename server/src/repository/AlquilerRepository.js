@@ -8,9 +8,9 @@ export default class AlquilerRepository{
     }  
 
     async getAlquileresByOficina(id){
-        const {data,error}=await this.BD.from('alquiler').select().eq('id_oficina',id)
+        const res=await this.BD.from('alquiler').select().eq('id_oficina',id)
        
-        return data ? data : error;
+        return res;
     }
 
 }

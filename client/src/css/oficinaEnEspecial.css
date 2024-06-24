@@ -14,13 +14,41 @@ body{
 }
 .Cont-I{
     position: absolute;
-    left: 0;
+    display: flex;
+    flex-direction: column;
+    left: 5%;
+    height: 5%;
     width: 50%;
-    height: 100%;
+    height: 80%;
+    margin-top: 3%;
+    margin-right: 10%;
 }
 .Cont-D{
     position: absolute;
-    left: 50%;
+    display: flex;
+    flex-direction: column;
+    left: 60%;
     width: 50%;
-    height: 100%;
+    height: 80%;
+    margin-top: 3%;
+}
+img{
+    width: 42rem;
+    height: 35rem;
+}
+button{
+    color: white;
+    width: 8rem;
+    height: 2rem;
+    border-radius: 5rem;
+}
+.boton-R{
+    background-color: #EC303D;
+    border-color: #EC303D;
+    border-width: 0;
+}
+.boton-N{
+    background-color: #F87C18;
+    border-color: #F87C18;
+    border-width: 0;
 }

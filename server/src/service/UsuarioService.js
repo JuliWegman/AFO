@@ -10,4 +10,8 @@ export class UsuarioService{
         return usuarios;
     }
 
+    async getUsuarioById(id){
+        return await repo.getUsuarioById(id)
+    }
+
 }

@@ -13,12 +13,9 @@ export default class UsuarioRepository{
         return data;
     }
 
-    async countUsuarios(){
-        try{
-        const {count}=await this.BD.from('usuario').select('*',{count:'exact', head: true})
-        return count;
-        }catch(error){
-        console.log(error);
-        }
+    async getUsuarioById(id){
+        const res=await this.BD.from('usuario').select().eq('id_usuario',id).maybeSingle()
+        return res;
+        
     }
 }
