@@ -21,9 +21,9 @@ function OficinaEnEspecial() {
       <Header/>
       <div className='Container'>
           <div className='Cont-I'>
-              <h2>{oficina.calle} {oficina.altura}, {oficina.barrio.nombre} </h2>
+              <h2>{oficina.calle} {oficina.altura}</h2>
               <img src={fotoOficina[0].contenido} alt=""/>
-              <h3>{oficina.descripcion}</h3>
+              <p>{oficina.descripcion}</p>
           </div>
           <div className='Cont-D'>
               <button className='boton-R'>Alquilar</button>

@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Desplegable from './desplegable';
 import '../css/header.css';
 import axios from 'axios';
 
 const Header = () => {
-  const [mostrarMenu, setMostrarMenu] = useState(false);
   const [usuario, setFotoUser] = useState({});
 
   useEffect(() => {
@@ -22,11 +20,12 @@ const Header = () => {
         <div className="slogan">
           <p>Tu Lugar De Trabajo</p>
         </div>
-        <div className="menu" onClick={() => setMostrarMenu(!mostrarMenu)}>
-          <img src= {usuario.foto} alt='user'/>
-          <b><h3>☰</h3></b>
+        <div className="menu">
+          <div className='Rect'>
+            <b><h3>☰</h3></b>
+            <p>USER</p>
+          </div>
         </div>
-        {mostrarMenu && <Desplegable />}
       </div>
     </header>
   );
