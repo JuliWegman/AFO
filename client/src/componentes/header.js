@@ -3,10 +3,10 @@ import '../css/header.css';
 import axios from 'axios';
 
 const Header = () => {
-  const [usuario, setFotoUser] = useState({});
+  const [fotoUsuario, setFotoUser] = useState({});
 
   useEffect(() => {
-    axios.get('/usuario/1')
+    axios.get('/usuario/2')
     .then(res=>{setFotoUser(res.data)})
   }, []);
 
@@ -23,7 +23,7 @@ const Header = () => {
         <div className="menu">
           <div className='Rect'>
             <b><h3>☰</h3></b>
-            <p>USER</p>
+            <img src={fotoUsuario.foto}/>
           </div>
         </div>
       </div>

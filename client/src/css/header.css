@@ -17,10 +17,16 @@
     flex-direction: row;
 }
 .Logo{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
     margin-left: 2%;
 }
 .slogan{
-    justify-content: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .Rect{
     display: flex;
@@ -34,4 +40,16 @@
     border-radius: 20px 20px 20px 20px;
     margin-top: 5%;
     margin-bottom: 5%;
+}
+.Rect img{
+    margin-top: 2%;
+    height: 90%;
+    width: 50%;
+    border-radius: 40px 40px 40px 40px;
+}
+.Rect h3{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
 }
