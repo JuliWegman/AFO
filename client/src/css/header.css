@@ -22,6 +22,7 @@
     text-align: center;
     justify-content: center;
     margin-left: 2%;
+    width: 5%;
 }
 .slogan{
     display: flex;

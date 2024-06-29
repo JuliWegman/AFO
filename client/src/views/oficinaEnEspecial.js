@@ -8,6 +8,9 @@ function OficinaEnEspecial() {
   const [oficina, setOficina] = useState({});
   const [fotoOficina, setFotoOficina] = useState([""]);
   const [duracion, setDuracion] = useState({});
+  const [fotoUser, setFotoUser] = useState({});
+  const [user, setUser] = useState({});
+  const [localidad, setLocalidad] = useState({});
 
 
   useEffect(() => {
@@ -15,9 +18,16 @@ function OficinaEnEspecial() {
     .then(res=>{setOficina(res.data);})
     axios.get('/oficina/4/fotos')
     .then(res=>{setFotoOficina(res.data);})
-    axios.get('/duracion/1')
+    axios.get('/oficina/4/duracion')
     .then(res=>{setDuracion(res.data);}) 
+    axios.get('/usuario/1')
+    .then(res=>{setFotoUser(res.data);})
+    axios.get('/usuario/1')
+    .then(res=>{setUser(res.data);})
+    axios.get('/localidad/1')
+    .then(res=>{setLocalidad(res.data);})
   }, []);
+  console.log(localidad.nombre)
 
 
   return (
@@ -31,13 +41,15 @@ function OficinaEnEspecial() {
           </div>
           <div className='Cont-D'>
             <div className='Fotos'>
-              <div className='foto'></div>
+              <div className='foto'>
+                
+              </div>
               <div className='foto'></div>
               <div className='fotoDifu'><h2>+3</h2></div>
             </div>
             <div className='Card'>
               <div className='alquilar'>
-                <b><h2><b>${oficina.precio} ARS</b> Por Díá{duracion.tiempo}</h2></b>
+                <b><h2><b>${oficina.precio} ARS</b> Por Díá </h2></b>
                 <button className='boton-R'>Alquilar</button>
               </div>
               <div className='datos'>
@@ -48,7 +60,18 @@ function OficinaEnEspecial() {
                 <h4>{oficina.armarios} Armarios</h4>
                 <h4>Ver Mas🡣</h4>
               </div>
-              
+            </div>
+            <div className='Card2'>
+              <div className='contactar'>
+                <div className='datosUser'>
+                  <img src={fotoUser.foto}/>
+                  <div className='texto'>
+                    <h3>{user.nombre} {user.apellido}</h3>
+                    <h4>{localidad.nombre}</h4>
+                  </div>
+                </div>
+                  <button className='boton-N'>Contactar</button>
+              </div>
             </div>
           </div>
       </div>

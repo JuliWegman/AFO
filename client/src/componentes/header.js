@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/header.css';
+import Logo from '../componentes/logo.js';
+import imgLogo  from '../logo/LogoAfo.png';
 import axios from 'axios';
 
 const Header = () => {
@@ -15,7 +17,7 @@ const Header = () => {
     <header>
       <div className="ContainerH">
         <div className="Logo">
-          <img src="../public/afo.png" alt="logo"/>
+          <Logo destino="#Index" img={imgLogo} />
         </div>
         <div className="slogan">
           <p>Tu Lugar De Trabajo</p>
