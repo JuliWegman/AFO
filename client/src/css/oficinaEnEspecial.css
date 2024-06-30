@@ -5,6 +5,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .Container{
     display: flex;
@@ -31,6 +32,21 @@ body{
     width: 40%;
     height: 80%;
     margin-top: 3%;
+}
+.circulo{
+    position: absolute;
+    right: 7%;
+    top: 45%;
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: #fafafa;
+    width: 7%;
+    height: 7%;
+    border-radius: 40px 40px 40px 40px;
+    border: black 1px solid;
 }
 img{
     width: 90%;
@@ -70,27 +86,24 @@ button{
     width: 100%;
     height: 20%;
 }
-.foto{
-    width: 30%;
+.Fotos img{
+    width: 100%;
     height: 105%;
     border-radius: 20px 20px 20px 20px;
-    background-color: gray;
 }
-.fotoDifu{
-    width: 30%;
-    height: 105%;
-    border-radius: 20px 20px 20px 20px;
-    background-color: gray;
+.fotoDifu h2{
+    position: absolute;
+    left: 84.5%;
+    top: 10%;
+}
+.fotoDifu img{
     opacity: 0.4;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
 }
 .Card{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    text-align: center;
     width: 100%;
     height: 40%;
     border-radius: 20px 20px 20px 20px;
@@ -125,9 +138,10 @@ button{
     border: black 2px solid;
 }
 .Card2 img{
-    width: 20%;
+    margin-right: 5%;
+    width: 18%;
     height: 250%;
-    border-radius: 40px 40px 40px 40px;
+    border-radius: 50px 50px 50px 50px;
 }
 .datosUser{
     width: 80%;
@@ -143,4 +157,10 @@ button{
     text-align: center;
     height: 20%;
     width: 100%;
+}
+.mas{
+    opacity: 0.5;
+}
+.datos{
+    margin-left: 2%;
 }

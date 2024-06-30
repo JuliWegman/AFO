@@ -24,7 +24,7 @@ const Header = () => {
         </div>
         <div className="menu">
           <div className='Rect'>
-            <b><h3>☰</h3></b>
+            <b><h1>☰</h1></b>
             <img src={fotoUsuario.foto}/>
           </div>
         </div>

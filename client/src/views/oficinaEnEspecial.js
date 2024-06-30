@@ -3,6 +3,8 @@ import axios from 'axios'
 import Header from '../componentes/header.js';
 import Footer from '../componentes/footer.js';
 import '../css/oficinaEnEspecial.css'
+import ubicacionImg from '../logo/ubicacion.png';
+import Ubicacion from '../componentes/ubicacion.js';
 
 function OficinaEnEspecial() {
   const [oficina, setOficina] = useState({});
@@ -36,29 +38,43 @@ function OficinaEnEspecial() {
       <div className='Container'>
           <div className='Cont-I'>
               <h2>{oficina.calle} {oficina.altura}</h2>
-              <img src={fotoOficina[0].contenido} alt="oficina"/>
+              <div className='fotoOfi'>
+                <img src={fotoOficina[0].contenido} alt="oficina"/>
+                <div className='circulo'>
+                  <h2>🡢</h2>
+                </div>
+              </div>
               <h3>{oficina.descripcion}</h3>
           </div>
           <div className='Cont-D'>
             <div className='Fotos'>
               <div className='foto'>
-                
+                <img src={fotoOficina[0].contenido}/>
               </div>
-              <div className='foto'></div>
-              <div className='fotoDifu'><h2>+3</h2></div>
+              <div className='foto'>
+                <img src={fotoOficina[0].contenido}/>
+              </div>
+                <div className='fotoDifu'>
+                  <img src={fotoOficina[0].contenido}/>
+                  <h2>+3</h2>
+                </div>
+       
             </div>
             <div className='Card'>
               <div className='alquilar'>
-                <b><h2><b>${oficina.precio} ARS</b> Por Díá </h2></b>
+                <b><h2><b>${oficina.precio} ARS</b> Por Día </h2></b>
                 <button className='boton-R'>Alquilar</button>
               </div>
               <div className='datos'>
-                <h4>{oficina.tamaño}m²</h4> 
-                <h4>{oficina.sillas} Sillas</h4>
-                <h4>{oficina.baños} Baños</h4> 
-                <h4>{oficina.ambientes} Ambientes</h4>
-                <h4>{oficina.armarios} Armarios</h4>
-                <h4>Ver Mas🡣</h4>
+                  <h4>{oficina.tamaño}m²</h4> 
+                  <h4>{oficina.ambientes} Ambientes</h4>
+                  <h4>{oficina.escritorio} Escritorio</h4>
+                <div className='mas'>
+                  <h4>Ver Mas🡣</h4>
+                </div>
+              </div>
+              <div className='ubicacion'>
+                <Ubicacion img = {ubicacionImg}/>
               </div>
             </div>
             <div className='Card2'>
