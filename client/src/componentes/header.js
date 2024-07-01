@@ -10,7 +10,7 @@ const Header = ({user}) => {
   useEffect(() => {
     axios.get('/usuario/'+user)
     .then(res=>{setFotoUser(res.data)})
-  }, []);
+  }, [user]);
 
 
   return (
@@ -24,7 +24,7 @@ const Header = ({user}) => {
         </div>
         <div className="menu">
           <div className='Rect'>
-          <img src={fotoUsuario.foto}/>
+          <img src={fotoUsuario.foto} alt="Foto"/>
             <b><h1>☰</h1></b>
           </div>
         </div>

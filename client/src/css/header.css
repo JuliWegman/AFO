@@ -11,9 +11,9 @@
 }
 .menu{
     cursor: default;
-    width: 120%;
     display: flex;
     width: 8%;
+    height: 5rem;
     margin-right: 2%;
     flex-direction: row;
 }
@@ -23,7 +23,9 @@
     text-align: center;
     justify-content: center;
     margin-left: 2%;
-    width: 5%;
+}
+.Logo img{
+    height: 4rem;
 }
 .slogan{
     cursor: default;
@@ -37,7 +39,7 @@
     text-align: center;
     justify-content: space-around;
     width: 100%;
-    height: 75%;
+    height: 4rem;
     background-color: #fafafa;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     border-radius: 20px 20px 20px 20px;
@@ -58,15 +60,6 @@
     justify-content: center;
 }
 @media(max-width: 1200px){
-    .Logo{
-        width: 10%;
-    }
-    .Rect{
-        margin-right: 150%;
-        justify-content: space-between;
-        width: 100%;
-        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
-    }
     .Rect img{
         width: 100%;
     }

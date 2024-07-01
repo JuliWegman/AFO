@@ -23,6 +23,7 @@ router.get('/:id',async (req,res)=>{
     const id=req.params.id
         const {data,error}=await officeService.getOficinaById(id)
         if (error!=null) {
+            console.log(error);
 
         return res.status(400).send(error)
         }else if(data==null){

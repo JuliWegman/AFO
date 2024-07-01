@@ -1,5 +1,5 @@
 .ContainerF{
-    margin-top: 880px;
+    margin-top: 43%;
     left: 0;
     background-color: #f5f5f5;
     width: 100%;
@@ -13,8 +13,14 @@
 .contF{
     margin-left: 2%;
 }
+
 @media (max-width:1200px){
     .ContainerF{
-        margin-top: 250%;
+        margin-top: 200%;
+    }
+}
+@media (max-width:900px){
+    .ContainerF{
+        margin-top: 230%;
     }
 }
