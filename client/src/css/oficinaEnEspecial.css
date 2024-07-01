@@ -1,11 +1,12 @@
 body{
     background-color: #fafafa;
 }
+
 .TODO{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .Container{
     display: flex;
@@ -28,6 +29,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    text-align: justify;
     right: 5%;
     width: 40%;
     height: 80%;
@@ -43,7 +45,7 @@ body{
     justify-content: center;
     text-align: center;
     background-color: #fafafa;
-    width: 7%;
+    width: 6%;
     height: 7%;
     border-radius: 40px 40px 40px 40px;
     border: black 1px solid;
@@ -164,3 +166,98 @@ button{
 .datos{
     margin-left: 2%;
 }
+.Area{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+.datos img{
+    margin-top: 30%;
+    width: 70%;
+}
+.Ambientes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+.Escritorio{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+.texto h4{
+    opacity: 0.5;
+}
+@media (max-width: 1200px) {
+    .Container {
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  
+    .Cont-I {
+        display: flex;
+        flex-direction: column;
+        width: 90%; 
+        height: auto; 
+        margin-bottom: 25%;
+    }
+  
+    .Cont-D {
+        display: flex;
+        flex-direction: column;
+        width: 90%; 
+        margin-top: 110%; 
+        height: auto; 
+    }
+  
+    .circulo {
+        right: 5%;
+        top: 40%;
+        width: 10%;
+        height: 10%;
+    }
+  
+    .Fotos {
+        flex-direction: row;
+        align-items: center;
+    }
+  
+    .Card, .Card2 {
+        width: 100%;
+        margin: 5% 0;
+        height: 10%;
+    }
+  
+    .Card2 img {
+        width: 30%;
+    }
+  
+    .datos {
+        flex-direction: row;
+        align-items: center;
+    }
+  
+    .Area, .Ambientes, .Escritorio {
+        flex-direction: row;
+        align-items: center;
+    }
+  
+    .alquilar, .contactar {
+        flex-direction: row;
+        align-items: center;
+    }
+  
+    button {
+        width: 35%;
+        height: auto;
+        font-size: 120%;
+    }
+    .boton-R{
+        margin-right: 1%;
+    }
+  }
+  

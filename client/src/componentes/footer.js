@@ -6,12 +6,14 @@ import imgLogo from '../logo/LogoAfo.png';
 const Footer = () => {
   return (
     <footer>
+      <div className='contTodo'>
         <div className= "ContainerF">
-            <div className='contF'>
-              <Logo destino="#Index" img={imgLogo} />
-              <p>Copyright © 2024 AFO</p>
-            </div>
-        </div>
+              <div className='contF'>
+                <Logo destino="#Index" img={imgLogo} />
+                <p>Copyright © 2024 AFO</p>
+              </div>
+          </div>
+      </div>
     </footer>
   );
 };

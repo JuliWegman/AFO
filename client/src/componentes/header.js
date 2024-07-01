@@ -4,11 +4,11 @@ import Logo from '../componentes/logo.js';
 import imgLogo  from '../logo/LogoAfo.png';
 import axios from 'axios';
 
-const Header = () => {
+const Header = ({user}) => {
   const [fotoUsuario, setFotoUser] = useState({});
 
   useEffect(() => {
-    axios.get('/usuario/2')
+    axios.get('/usuario/'+user)
     .then(res=>{setFotoUser(res.data)})
   }, []);
 
@@ -24,8 +24,8 @@ const Header = () => {
         </div>
         <div className="menu">
           <div className='Rect'>
+          <img src={fotoUsuario.foto}/>
             <b><h1>☰</h1></b>
-            <img src={fotoUsuario.foto}/>
           </div>
         </div>
       </div>
