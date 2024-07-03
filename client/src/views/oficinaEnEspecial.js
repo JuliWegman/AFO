@@ -3,6 +3,7 @@ import axios from 'axios'
 import Header from '../componentes/header.js';
 import Footer from '../componentes/footer.js';
 import Logo from '../componentes/logo.js';
+import popUp from '../componentes/popUp.js';
 import '../css/oficinaEnEspecial.css'
 import ubicacionImg from '../logo/ubicacion.png';
 import Ubicacion from '../componentes/ubicacion.js';
@@ -10,20 +11,20 @@ import area from '../logo/area.png';
 import sillas from '../logo/silla.png';
 import ambientes from '../logo/ambientes.png';
 
-function PostMensjae(){
-const id_enviador=1;
-const id_receptor=1;
-const contenido="AAAAAAAAAAA"
 
-axios.post('/mensaje',{
-  
+ function PostMensjae(){ 
+  const id_enviador=1; 
+  const id_receptor=1;
+  const contenido="AAAAAAAAAAA";
+  console.log("SUBIDO");
+  axios.post('/mensaje',{
     "id_enviador":id_enviador,
     "id_receptor":id_receptor,
     "contenido":contenido,
     "mail":"Pablito123@gmail.com",
     "telefono":"12345678"
   })
-}
+  } 
 
 function OficinaEnEspecial() {
   const [oficina, setOficina] = useState({});
@@ -32,8 +33,9 @@ function OficinaEnEspecial() {
   const [user, setUser] = useState({});
   const [localidad, setLocalidad] = useState({});
   const [barrio, setBarrio] = useState({});
+  const [popUpMensaje,setPopUpMensaje]=useState(false)
 
- const IDoficina=4
+ const IDoficina=2
  const IDvendedor=4
  const IDusuario=2
 
@@ -57,6 +59,9 @@ function OficinaEnEspecial() {
 
 
   return (
+    <>
+    <popUp open={popUpMensaje} close={()=>setPopUpMensaje}/>
+    
     <div className='TODO'>
       <Header user={IDusuario}/>
       <div className='Container'>
@@ -74,7 +79,7 @@ function OficinaEnEspecial() {
           </div>
           <div className='Cont-D'>
 
-          {fotoOficina.length>1 && 
+          {fotoOficina.length>1 &&
               <div className='Fotos'>
                 <div className='foto'>
                   <img src={fotoOficina[1].contenido} alt="foto oficina"/>
@@ -83,14 +88,14 @@ function OficinaEnEspecial() {
                   <div className='foto'>
                     <img src={fotoOficina[2].contenido} alt="foto oficina"/>
                   </div>}
-                        {fotoOficina.length-3>0 &&     
+                        {fotoOficina.length-3>0 &&
                           <div className='fotoDifu'>
                             <img src={fotoOficina[3].contenido} alt="foto oficina"/>
                             <h2>+{fotoOficina.length-3}</h2>
-                          </div> 
-                          
+                          </div>
+
                         }
-                
+
                 </div>
           }
             <div className='Card'>
@@ -111,7 +116,7 @@ function OficinaEnEspecial() {
                   <Logo img = {sillas}/>
                   <h4>{oficina.sillas} Sillas</h4>
                 </div>
-                  
+
                 <div className='mas'>
                   <h4>Ver Mas🡣</h4>
                 </div>
@@ -129,7 +134,7 @@ function OficinaEnEspecial() {
                     <h4>{localidad.nombre}</h4>
                   </div>
                 </div>
-                  <button className='boton-N'>Contactar</button>
+                  <button className='boton-N' onClick={()=>setPopUpMensaje(true)}>Contactar</button>
               </div>
             </div>
           </div>
@@ -137,8 +142,9 @@ function OficinaEnEspecial() {
       <div className='footer'>
         <Footer/>
       </div>
-      
+
     </div>
+    </>
   )
 }
 export default OficinaEnEspecial
