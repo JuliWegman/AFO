@@ -4,6 +4,7 @@ import Header from '../componentes/header.js';
 import Footer from '../componentes/footer.js';
 import Logo from '../componentes/logo.js';
 import Modal from '../componentes/Modal.js';
+import Fotos  from '../componentes/Fotos.js';
 import '../css/oficinaEnEspecial.css'
 import ubicacionImg from '../logo/ubicacion.png';
 import Ubicacion from '../componentes/ubicacion.js';
@@ -16,15 +17,13 @@ const IDvendedor=4;
 const IDusuario=2;
 
  function PostMensjae(contenido,mail,telefono){
-  console.log("SUBIDO");
   axios.post('/mensaje',{
     "id_enviador":IDusuario,
     "id_receptor":IDvendedor,
     "contenido":contenido,
     "mail":mail,
     "telefono":telefono
-  })
-  }
+  })}
 
 function OficinaEnEspecial() {
   const [oficina, setOficina] = useState({});
@@ -34,7 +33,7 @@ function OficinaEnEspecial() {
   const [localidad, setLocalidad] = useState({});
   const [barrio, setBarrio] = useState({});
   const [popUpMensaje,setPopUpMensaje]=useState(false)
-
+  const [splideFoto,setSplideFoto]=useState(false)
   
 
   useEffect(() => {
@@ -58,7 +57,18 @@ function OficinaEnEspecial() {
 
   return (
     <>
-    <Modal open={popUpMensaje} close={()=>{setPopUpMensaje(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}}/>
+    <Fotos open={splideFoto} fotos={fotoOficina} close={()=>{setSplideFoto(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}}/>
+    <Modal open={popUpMensaje} close={()=>{setPopUpMensaje(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}} children={
+      <div className='popUp'>
+        <div className='mensaje'>
+          <div class="input">
+            <label for="exampleFormControlTextarea1" class="form-label">Escriba su mensaje</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    }/>
     <div className='TODO'>
       <Header user={IDusuario}/>
       <div className='Container'>
@@ -67,7 +77,7 @@ function OficinaEnEspecial() {
             <h2>Oficina en {oficina.calle} {oficina.altura}, {barrio.nombre} para {oficina.personas} Personas</h2>:
             <h2>Oficina en {oficina.calle} {oficina.altura}, {barrio.nombre} para una persona</h2>}
               <div className='fotoOfi'>
-                <img src={fotoOficina[0].contenido} alt="oficina"/>
+                <img src={fotoOficina[0].contenido} alt="oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible'}}/>
                 <div className='circulo'>
                   <h2>🡢</h2>
                 </div>
@@ -95,6 +105,19 @@ function OficinaEnEspecial() {
 
                 </div>
           }
+           
+            <div className='Card2'>
+              <div className='contactar'>
+                <div className='datosUser'>
+                  <img src={user.foto} alt="foto user"/>
+                  <div className='texto'>
+                    <h3>{user.nombre} {user.apellido}</h3>
+                    <h4>{localidad.nombre}</h4>
+                  </div>
+                </div>
+                  <button className='boton-N' onClick={()=>{setPopUpMensaje(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible'}}>Contactar</button>
+              </div>
+            </div>
             <div className='Card'>
               <div className='alquilar'>
                 <h2>${oficina.precio} ARS Por {duracion.tiempo} </h2>
@@ -120,18 +143,6 @@ function OficinaEnEspecial() {
               </div>
               <div className='ubicacion'>
                 <Ubicacion img = {ubicacionImg}/>
-              </div>
-            </div>
-            <div className='Card2'>
-              <div className='contactar'>
-                <div className='datosUser'>
-                  <img src={user.foto} alt="foto user"/>
-                  <div className='texto'>
-                    <h3>{user.nombre} {user.apellido}</h3>
-                    <h4>{localidad.nombre}</h4>
-                  </div>
-                </div>
-                  <button className='boton-N' onClick={()=>{setPopUpMensaje(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible'}}>Contactar</button>
               </div>
             </div>
           </div>

@@ -6,8 +6,8 @@ const repo=new UsuarioRepository();
 export class UsuarioService{
 
     async getUsuarrios(){
-        const usuarios=await repo.getUsuarios();
-        return usuarios;
+        const res=await repo.getUsuarios();
+        return res;
     }
 
     async getUsuarioById(id){

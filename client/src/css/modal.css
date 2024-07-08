@@ -1,0 +1,14 @@
+.popUpMensaje{
+    background-color: #fafafa;
+}
+.boton button{
+    width: 0%;
+    height: 0%;
+    margin-left: 97%;
+    background-color: #fafafa;
+    border-color: #fafafa;
+    border-width: 0;
+}
+.x{
+    color: black;
+}

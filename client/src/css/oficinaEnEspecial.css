@@ -3,6 +3,21 @@ body{
     overflow-x: hidden;
 }
 
+.splide{
+    position: absolute;
+    right: 25%;
+    top: 40%;
+    z-index: 2;
+    padding: 2%;
+    width: 50%;
+}
+.splide.img{
+    height: 30%;
+    width: 100%;
+}
+.innerSplide{
+    width: 100%;
+}
 .TODO{
     display: flex;
     flex-direction: column;
@@ -11,6 +26,7 @@ body{
 }
 .popUpMensaje{
     border-radius: 40px 40px 40px 40px;
+    box-shadow: 2px 2px 5px rgba(0.5, 0.5, 0.5, 0.5);
     background-color: white;
     position: absolute;
     width: 50%;
@@ -19,13 +35,14 @@ body{
     z-index: 2;
     padding: 2%;
 }
-.popUpMensaje.button{
-    color: black;
+.input{
+    display: flex;
+    flex-direction: column;
 }
 .capa{
     position: absolute;
     z-index: 1;
-    height: 140%;
+    height: 118%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.712);
     padding: 0;

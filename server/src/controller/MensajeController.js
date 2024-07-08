@@ -13,6 +13,7 @@ router.post('/',async(req,res)=>{
         mail:req.body.mail,
         telefono:req.body.telefono
     }
+    
     if(req.body.id_enviador==null || req.body.id_receptor==null || req.body.contenido==null || req.body.mail==null || req.body.telefono==null ){
         return res.status(401).send("FALTAN DATOS")
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import "../css/modal.css"
 
 const Modal = ({children,open,close}) => {
   console.log("aaaaaaaaaa");
@@ -6,12 +7,10 @@ const Modal = ({children,open,close}) => {
 
   return (
     <div className="popUpMensaje">
-      <div>
-        <button onClick={close}>x</button>
+      <div className='boton'>
+        <button onClick={close}><div className='x'>x</div></button>
       </div>
-    <h2>
-     hola
-    </h2>
+    {children}
     </div>
   );
 };

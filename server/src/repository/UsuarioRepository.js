@@ -9,8 +9,8 @@ export default class UsuarioRepository{
 
     async getUsuarios(){
 
-        const {data}=await this.BD.from('usuario').select();  
-        return data;
+        const res=await this.BD.from('usuario').select();  
+        return res;
     }
 
     async getUsuarioById(id){
