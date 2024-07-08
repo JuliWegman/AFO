@@ -3,7 +3,7 @@ import axios from 'axios'
 import Header from '../componentes/header.js';
 import Footer from '../componentes/footer.js';
 import Logo from '../componentes/logo.js';
-import popUp from '../componentes/popUp.js';
+import Modal from '../componentes/Modal.js';
 import '../css/oficinaEnEspecial.css'
 import ubicacionImg from '../logo/ubicacion.png';
 import Ubicacion from '../componentes/ubicacion.js';
@@ -11,20 +11,20 @@ import area from '../logo/area.png';
 import sillas from '../logo/silla.png';
 import ambientes from '../logo/ambientes.png';
 
+const IDoficina=2;
+const IDvendedor=4;
+const IDusuario=2;
 
- function PostMensjae(){ 
-  const id_enviador=1; 
-  const id_receptor=1;
-  const contenido="AAAAAAAAAAA";
+ function PostMensjae(contenido,mail,telefono){
   console.log("SUBIDO");
   axios.post('/mensaje',{
-    "id_enviador":id_enviador,
-    "id_receptor":id_receptor,
+    "id_enviador":IDusuario,
+    "id_receptor":IDvendedor,
     "contenido":contenido,
-    "mail":"Pablito123@gmail.com",
-    "telefono":"12345678"
+    "mail":mail,
+    "telefono":telefono
   })
-  } 
+  }
 
 function OficinaEnEspecial() {
   const [oficina, setOficina] = useState({});
@@ -35,9 +35,7 @@ function OficinaEnEspecial() {
   const [barrio, setBarrio] = useState({});
   const [popUpMensaje,setPopUpMensaje]=useState(false)
 
- const IDoficina=2
- const IDvendedor=4
- const IDusuario=2
+  
 
   useEffect(() => {
     axios.get('/oficina/'+IDoficina)
@@ -60,8 +58,7 @@ function OficinaEnEspecial() {
 
   return (
     <>
-    <popUp open={popUpMensaje} close={()=>setPopUpMensaje}/>
-    
+    <Modal open={popUpMensaje} close={()=>{setPopUpMensaje(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}}/>
     <div className='TODO'>
       <Header user={IDusuario}/>
       <div className='Container'>
@@ -134,7 +131,7 @@ function OficinaEnEspecial() {
                     <h4>{localidad.nombre}</h4>
                   </div>
                 </div>
-                  <button className='boton-N' onClick={()=>setPopUpMensaje(true)}>Contactar</button>
+                  <button className='boton-N' onClick={()=>{setPopUpMensaje(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible'}}>Contactar</button>
               </div>
             </div>
           </div>

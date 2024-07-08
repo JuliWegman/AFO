@@ -1,19 +1,19 @@
 import React from 'react';
 
-const popUp = ({children,open,close}) => {
-
+const Modal = ({children,open,close}) => {
+  console.log("aaaaaaaaaa");
   if (!open) return null
 
   return (
-    <div>
+    <div className="popUpMensaje">
       <div>
         <button onClick={close}>x</button>
       </div>
-    <h2 className="popUpMensaje">
+    <h2>
      hola
     </h2>
     </div>
   );
 };
 
-export default popUp;
+export default Modal;
