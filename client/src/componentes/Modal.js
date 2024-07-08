@@ -2,7 +2,6 @@ import React from 'react';
 import "../css/modal.css"
 
 const Modal = ({children,open,close}) => {
-  console.log("aaaaaaaaaa");
   if (!open) return null
 
   return (

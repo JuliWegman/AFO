@@ -35,9 +35,26 @@ body{
     z-index: 2;
     padding: 2%;
 }
-.input{
+.formularioMail{
     display: flex;
     flex-direction: column;
+}
+.Inputmensaje{
+    margin: 2%;
+    width: 91%;
+}
+.inputDatos{
+    width: 43%;
+    margin: 2%;
+}
+.boton-V button{
+    background-color: #259f48;
+    border-color: #259f48;
+    border-width: 0;
+}
+.boton-V button:hover{
+    background-color: #008f4c;
+    border-color: #008f4c;
 }
 .capa{
     position: absolute;

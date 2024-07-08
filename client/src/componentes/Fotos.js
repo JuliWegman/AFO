@@ -14,7 +14,6 @@ function Fotos({open,fotos,close}) {
                 <SplideSlide>
                 <img src={f.contenido} alt="Foto 1"/>
                 </SplideSlide>
-                {console.log(f);}
             })}
         </Splide>
     </div>

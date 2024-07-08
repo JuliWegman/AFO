@@ -14,9 +14,11 @@ import ambientes from '../logo/ambientes.png';
 
 const IDoficina=2;
 const IDvendedor=4;
-const IDusuario=2;
+const IDusuario=3;
 
- function PostMensjae(contenido,mail,telefono){
+
+
+ function PostMensaje(contenido,mail,telefono){
   axios.post('/mensaje',{
     "id_enviador":IDusuario,
     "id_receptor":IDvendedor,
@@ -29,11 +31,12 @@ function OficinaEnEspecial() {
   const [oficina, setOficina] = useState({});
   const [fotoOficina, setFotoOficina] = useState([""]);
   const [duracion, setDuracion] = useState({});
-  const [user, setUser] = useState({});
+  const [vendedor, setVendedor] = useState({});
   const [localidad, setLocalidad] = useState({});
   const [barrio, setBarrio] = useState({});
   const [popUpMensaje,setPopUpMensaje]=useState(false)
   const [splideFoto,setSplideFoto]=useState(false)
+  const [usuario, setUsuario] = useState({});
   
 
   useEffect(() => {
@@ -48,11 +51,10 @@ function OficinaEnEspecial() {
     .then(res=>{setFotoOficina(res.data);})
 
     axios.get('/usuario/' + IDvendedor)
-    .then(res=>{setUser(res.data);})
+    .then(res=>{setVendedor(res.data);})
 
 
   }, []);
-  console.log(localidad.nombre)
 
 
   return (
@@ -61,16 +63,29 @@ function OficinaEnEspecial() {
     <Modal open={popUpMensaje} close={()=>{setPopUpMensaje(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}} children={
       <div className='popUp'>
         <div className='mensaje'>
-          <div class="input">
-            <label for="exampleFormControlTextarea1" class="form-label">Escriba su mensaje</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <form className="formularioMail">
+            <label className="form-label">Escriba su mensaje</label>
+            <div>
+            <input id="inputMail" className='inputDatos' type='email' defaultValue={usuario.mail}/>
+            <input id="inputTelefono" className='inputDatos' type='tel' defaultValue={usuario.telefono}/>
+            </div>
+            <input id="inputPopUpMensaje" className='Inputmensaje' type='text'/>
+            <div className='boton-V'>
+            <button onClick={()=>{
+                PostMensaje(document.getElementById("inputPopUpMensaje").value,document.getElementById("inputMail").value,document.getElementById("inputTelefono").value);
+                setPopUpMensaje(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'
+                
+            }}>Enviar</button>
           </div>
+          </form>
+          
         </div>
         <div></div>
       </div>
     }/>
+    <div className='capa' id='capa1' onClick={()=>{setPopUpMensaje(false);setSplideFoto(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}}></div>
     <div className='TODO'>
-      <Header user={IDusuario}/>
+      <Header IDuser={IDusuario} setUsuario={setUsuario} usuario={usuario}/>
       <div className='Container'>
           <div className='Cont-I'>
             {oficina.personas>1?
@@ -109,9 +124,9 @@ function OficinaEnEspecial() {
             <div className='Card2'>
               <div className='contactar'>
                 <div className='datosUser'>
-                  <img src={user.foto} alt="foto user"/>
+                  <img src={vendedor.foto} alt="foto vendedor"/>
                   <div className='texto'>
-                    <h3>{user.nombre} {user.apellido}</h3>
+                    <h3>{vendedor.nombre} {vendedor.apellido}</h3>
                     <h4>{localidad.nombre}</h4>
                   </div>
                 </div>
