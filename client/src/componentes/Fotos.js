@@ -1,23 +1,22 @@
-import React from 'react'
-import {motion} from 'framer-motion'
-import "../css/Fotos.css"
+import {useEffect, useState } from "react" 
+import React from "react"
+import '../css/fotos.css'
 
-function Fotos({open,fotos,close}) {
+function Fotos({open,fotos}) {
+    const [numFoto, setNumFoto] = useState(0);
+    const [fotoActual,setFotoActual]=useState()
+    useEffect(() => {
+        setFotoActual(fotos[numFoto].contenido)
+    }, [numFoto,fotos]);
 
     if (!open) return null
-
+    console.log(fotos[0].contenido);
     return (
-    
-        <motion.div classname="slider-container">
-            <motion.div classname="slider" drag="x" dragConstraints={{right:0,left:0}}>                  
-                {fotos.map(foto=>(
-                    <motion.div classname="fotoSlider">
-                        <img src={foto.contenido} alt=""/>
-                        
-                    </motion.div>
-                ))}
-            </motion.div>
-        </motion.div>
+               
+    <div className="popUpFotos" >
+        <img src={fotoActual} alt="" onClick={()=>{setNumFoto(numFoto+1)}}/>
+    </div>
+               
 
     )
 }

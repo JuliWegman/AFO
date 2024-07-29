@@ -61,17 +61,17 @@ function OficinaEnEspecial() {
     <>
     <div className='capa' id='capa1' onClick={()=>{setPopUpMensaje(false);setSplideFoto(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}}></div>
 
-    <Fotos open={splideFoto} fotos={fotoOficina} close={()=>{setSplideFoto(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}}/>
+    <Fotos open={splideFoto} fotos={fotoOficina}/>
     <Modal open={popUpMensaje} close={()=>{setPopUpMensaje(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}} children={
       <div className='popUp'>
         <div className='mensaje'>
           <form className="formularioMail">
             <label className="form-label">Escriba su mensaje</label>
-            <div>
-            <input id="inputMail" className='inputDatos' type='email' defaultValue={usuario.mail}/>
-            <input id="inputTelefono" className='inputDatos' type='tel' defaultValue={usuario.telefono}/>
+            <div className='contForm'>
+            <input id="inputMail" className='inputDatos' type='email' defaultValue={usuario.mail} required/>
+            <input id="inputTelefono" className='inputDatos' type='tel' defaultValue={usuario.telefono} required/>
+            <textarea id='inputPopUpMensaje' name="myTextarea" placeholder="Ingrese su mensaje" cols="20" rows="10" minlength="10" maxlength="500" required></textarea>
             </div>
-            <input id="inputPopUpMensaje" className='Inputmensaje' type='text'/>
             <div className='boton-V'>
             <button onClick={()=>{
                 PostMensaje(document.getElementById("inputPopUpMensaje").value,document.getElementById("inputMail").value,document.getElementById("inputTelefono").value);
@@ -85,6 +85,7 @@ function OficinaEnEspecial() {
         <div></div>
       </div>
     }/>
+
     <div className='TODO'>
       <Header IDuser={IDusuario} setUsuario={setUsuario} usuario={usuario}/>
       <div className='Container'>
