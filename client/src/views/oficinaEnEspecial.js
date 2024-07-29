@@ -13,7 +13,7 @@ import sillas from '../logo/silla.png';
 import ambientes from '../logo/ambientes.png';
 
 const IDoficina=2;
-const IDvendedor=4;
+const IDvendedor=1;
 const IDusuario=3;
 
 
@@ -61,7 +61,7 @@ function OficinaEnEspecial() {
     <>
     <div className='capa' id='capa1' onClick={()=>{setPopUpMensaje(false);setSplideFoto(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}}></div>
 
-    <Fotos open={splideFoto} fotos={fotoOficina}/>
+    <Fotos open={splideFoto} fotos={fotoOficina} />
     <Modal open={popUpMensaje} close={()=>{setPopUpMensaje(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}} children={
       <div className='popUp'>
         <div className='mensaje'>
@@ -94,7 +94,7 @@ function OficinaEnEspecial() {
             <h2>Oficina en {oficina.calle} {oficina.altura}, {barrio.nombre} para {oficina.personas} Personas</h2>:
             <h2>Oficina en {oficina.calle} {oficina.altura}, {barrio.nombre} para una persona</h2>}
               <div className='fotoOfi'>
-                <img src={fotoOficina[0].contenido} alt="oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible'}}/>
+                <img src={fotoOficina[0].contenido} alt="oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible' }}/>
                 <div className='circulo'>
                   <h2>🡢</h2>
                 </div>
@@ -106,15 +106,15 @@ function OficinaEnEspecial() {
           {fotoOficina.length>1 &&
               <div className='Fotos'>
                 <div className='foto'>
-                  <img src={fotoOficina[1].contenido} alt="foto oficina"/>
+                  <img src={fotoOficina[1].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible'}} />
                 </div>
                 {fotoOficina.length>2 &&
                   <div className='foto'>
-                    <img src={fotoOficina[2].contenido} alt="foto oficina"/>
+                    <img src={fotoOficina[2].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible'}}/>
                   </div>}
                         {fotoOficina.length-3>0 &&
                           <div className='fotoDifu'>
-                            <img src={fotoOficina[3].contenido} alt="foto oficina"/>
+                            <img src={fotoOficina[3].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible'}}/>
                             <h2>+{fotoOficina.length-3}</h2>
                           </div>
 

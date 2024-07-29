@@ -7,8 +7,12 @@ function Fotos({open,fotos}) {
     const [fotoActual,setFotoActual]=useState()
 
     useEffect(() => {
+        if (!open) {
+            setNumFoto(0)
+        }
         setFotoActual(fotos[numFoto].contenido)
-    }, [numFoto,fotos]);
+    }, [numFoto,fotos,open]);
+
 
     if (!open) return null
     return (
