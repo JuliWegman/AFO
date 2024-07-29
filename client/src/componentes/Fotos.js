@@ -1,23 +1,25 @@
 import {useEffect, useState } from "react" 
 import React from "react"
-import '../css/fotos.css'
+import '../css/Fotos.css'
 
 function Fotos({open,fotos}) {
     const [numFoto, setNumFoto] = useState(0);
     const [fotoActual,setFotoActual]=useState()
+
     useEffect(() => {
         setFotoActual(fotos[numFoto].contenido)
     }, [numFoto,fotos]);
 
     if (!open) return null
-    console.log(fotos[0].contenido);
     return (
                
     <div className="popUpFotos" >
-        <img src={fotoActual} alt="" onClick={()=>{setNumFoto(numFoto+1)}}/>
+        {numFoto>0 &&
+        <button onClick={()=>{setNumFoto(numFoto-1)}}>atras</button>}
+        <img src={fotoActual} alt="" />
+        {numFoto<fotos.length-1 && 
+        <button onClick={()=>{setNumFoto(numFoto+1)}}>adelante</button>}
     </div>
-               
-
     )
 }
 

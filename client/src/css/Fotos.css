@@ -1,0 +1,21 @@
+
+ .popUpFotos img{
+    height: 100%;
+    width:100%;
+    pointer-events: none;
+    overflow: hidden;
+
+}
+
+ .popUpFotos{
+    display: flex;
+    margin:0 auto;
+    overflow: hidden;
+    position: absolute;
+    height: 60%;
+    width: 30%; 
+    right: 35%;
+    margin-top: 8%;
+    z-index: 2;
+    padding: 2%;
+}
