@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import '../css/header.css';
 import Logo from '../componentes/logo.js';
 import imgLogo  from '../logo/LogoAfo.png';
@@ -9,7 +9,7 @@ const Header = ({IDuser, setUsuario,usuario}) => {
   useEffect(() => {
     axios.get('/usuario/'+IDuser)
     .then(res=>{setUsuario(res.data)})
-  }, [IDuser]);
+  }, [IDuser,setUsuario]);
 
 
   return (

@@ -59,6 +59,8 @@ function OficinaEnEspecial() {
 
   return (
     <>
+    <div className='capa' id='capa1' onClick={()=>{setPopUpMensaje(false);setSplideFoto(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}}></div>
+
     <Fotos open={splideFoto} fotos={fotoOficina} close={()=>{setSplideFoto(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}}/>
     <Modal open={popUpMensaje} close={()=>{setPopUpMensaje(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}} children={
       <div className='popUp'>
@@ -83,7 +85,6 @@ function OficinaEnEspecial() {
         <div></div>
       </div>
     }/>
-    <div className='capa' id='capa1' onClick={()=>{setPopUpMensaje(false);setSplideFoto(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}}></div>
     <div className='TODO'>
       <Header IDuser={IDusuario} setUsuario={setUsuario} usuario={usuario}/>
       <div className='Container'>

@@ -1,22 +1,24 @@
 import React from 'react'
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-
+import {motion} from 'framer-motion'
+import "../css/Fotos.css"
 
 function Fotos({open,fotos,close}) {
 
     if (!open) return null
 
     return (
-    <div className="splide">
-        <button onClick={close}>X</button>
-        <Splide className="innerSplide">
-            {fotos.forEach(f => {
-                <SplideSlide>
-                <img src={f.contenido} alt="Foto 1"/>
-                </SplideSlide>
-            })}
-        </Splide>
-    </div>
+    
+        <motion.div classname="slider-container">
+            <motion.div classname="slider" drag="x" dragConstraints={{right:0,left:0}}>                  
+                {fotos.map(foto=>(
+                    <motion.div classname="fotoSlider">
+                        <img src={foto.contenido} alt=""/>
+                        
+                    </motion.div>
+                ))}
+            </motion.div>
+        </motion.div>
+
     )
 }
 
