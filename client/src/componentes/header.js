@@ -1,18 +1,37 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import '../css/header.css';
 import Logo from '../componentes/logo.js';
 import imgLogo  from '../logo/LogoAfo.png';
 import axios from 'axios';
+import Menu from './menu.js'
+
+import { createClient } from '@supabase/supabase-js'
+
+const BDconfig={
+  key:process.env.KEY_SUPABASE ||"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJieWp0a2N0ZXN0ZGRmenJreHVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc0MTYxNzMsImV4cCI6MjAzMjk5MjE3M30.7tVPa4prqRVWLhuISTg97e1eulZv09UqD-p5Pca4nx8"
+  ,url:process.env.URL_SUPABASE ||"https://bbyjtkctestddfzrkxug.supabase.co"
+}
+const BD=createClient(BDconfig.url,BDconfig.key)
 
 const Header = ({IDuser, setUsuario,usuario}) => {
 
   useEffect(() => {
-    axios.get('/usuario/'+IDuser)
-    .then(res=>{setUsuario(res.data)})
+
+    async function fetchData(){
+      const res3=await BD.from('usuario').select().eq('id_usuario',IDuser).maybeSingle()
+      setUsuario(res3.data)
+    }
+    // axios.get('/usuario/'+IDuser)
+    // .then(res=>{setUsuario(res.data)})
+    fetchData();
   }, [IDuser,setUsuario]);
 
+  const [hamburguesa,setHamburguesa]=useState(false)
 
   return (
+    <>
+        <div className='capa' id='capa2' onClick={()=>{setHamburguesa(false);const cap=document.getElementById("capa2"); cap.style.visibility='hidden'}}></div>
+
     <header>
       <div className="ContainerH">
         <div className="Logo">
@@ -23,12 +42,15 @@ const Header = ({IDuser, setUsuario,usuario}) => {
         </div>
         <div className="menu">
           <div className='Rect'>
-          <img src={usuario.foto} alt="Foto"/>
-            <b><h1>☰</h1></b>
+            <img src={usuario.foto} alt="Foto"/>
+            <b><h1 onClick={()=>{setHamburguesa(true);const cap=document.getElementById("capa2"); cap.style.visibility='visible'}}>☰</h1></b>
           </div>
         </div>
       </div>
     </header>
+    <Menu open={hamburguesa} />
+    
+    </>
   );
 };
 

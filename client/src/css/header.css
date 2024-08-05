@@ -16,6 +16,7 @@
     height: 5rem;
     margin-right: 2%;
     flex-direction: row;
+    
 }
 .Logo{
     display: flex;
@@ -59,6 +60,31 @@
     text-align: center;
     justify-content: center;
 }
+.hamburguesa{
+    z-index: 2;
+    position: absolute;
+    background-color: #fafafa;
+    right: 0;
+    height: 100%;
+    width: 18%;
+    animation: move-left 5s linear 0s;
+}
+@keyframes move {
+    to{
+        transform: translateX(250px);
+    }
+}
+.menu-opciones{
+    cursor: pointer;
+}
+.menu-opciones p{
+    margin-top: 15%;
+    margin-left: 5%;
+    
+}
+
+
+
 @media(max-width: 1200px){
     .Rect img{
         width: 100%;

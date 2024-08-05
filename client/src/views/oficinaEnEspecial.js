@@ -11,10 +11,17 @@ import Ubicacion from '../componentes/ubicacion.js';
 import area from '../logo/area.png';
 import sillas from '../logo/silla.png';
 import ambientes from '../logo/ambientes.png';
+import { createClient } from '@supabase/supabase-js'
+
+ const BDconfig={
+  key:process.env.KEY_SUPABASE ||"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJieWp0a2N0ZXN0ZGRmenJreHVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc0MTYxNzMsImV4cCI6MjAzMjk5MjE3M30.7tVPa4prqRVWLhuISTg97e1eulZv09UqD-p5Pca4nx8"
+  ,url:process.env.URL_SUPABASE ||"https://bbyjtkctestddfzrkxug.supabase.co"
+}
 
 const IDoficina=2;
 const IDvendedor=1;
 const IDusuario=3;
+const BD=createClient(BDconfig.url,BDconfig.key)
 
 
 
@@ -40,20 +47,35 @@ function OficinaEnEspecial() {
   
 
   useEffect(() => {
-    axios.get('/oficina/'+IDoficina)
-    .then(res=>{setOficina(res.data);
-      setLocalidad(res.data.localidad);
-      setBarrio(res.data.barrio);
-      setDuracion(res.data.duracion);
-    })
 
-    axios.get('/oficina/'+IDoficina+'/fotos')
-    .then(res=>{setFotoOficina(res.data);})
+    async function fetchData(){
+      const res1=await BD.from('oficina').select('id_oficina,tamaño,sillas,baños,ambientes,armarios,calle,altura,computadoras,personas,localidad:id_localidad(nombre),barrio:id_barrio(nombre),usuario:id_usuario(nombre,apellido,mail),precio,duracion:id_duracion(tiempo),descripcion').eq('id_oficina',IDoficina).maybeSingle()
+      setLocalidad(res1.data.localidad);
+      setBarrio(res1.data.barrio);
+      setDuracion(res1.data.duracion);
+      setOficina(res1.data)
 
-    axios.get('/usuario/' + IDvendedor)
-    .then(res=>{setVendedor(res.data);})
+      const res2=await BD.from('foto').select().eq('id_oficina',IDoficina)
+      setFotoOficina(res2.data)
+      
+      const res3=await BD.from('usuario').select().eq('id_usuario',IDvendedor).maybeSingle()
+      setVendedor(res3.data)
+    }
+    // axios.get('/oficina/'+IDoficina)
+    // .then(res=>{setOficina(res.data);
+    //   setLocalidad(res.data.localidad);
+    //   setBarrio(res.data.barrio);
+    //   setDuracion(res.data.duracion);
+    // })
+    
 
+    // axios.get('/oficina/'+IDoficina+'/fotos')
+    // .then(res=>{setFotoOficina(res.data);})
 
+    // axios.get('/usuario/' + IDvendedor)
+    // .then(res=>{setVendedor(res.data);})soy huevo
+
+    fetchData();
   }, []);
 
 
