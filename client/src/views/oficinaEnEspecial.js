@@ -25,14 +25,23 @@ const BD=createClient(BDconfig.url,BDconfig.key)
 
 
 
- function PostMensaje(contenido,mail,telefono){
-  axios.post('/mensaje',{
-    "id_enviador":IDusuario,
-    "id_receptor":IDvendedor,
-    "contenido":contenido,
-    "mail":mail,
-    "telefono":telefono
-  })}
+ async function PostMensaje(contenido,mail,telefono){
+  // axios.post('/mensaje',{
+  //   "id_enviador":IDusuario,
+  //   "id_receptor":IDvendedor,
+  //   "contenido":contenido,
+  //   "mail":mail,
+  //   "telefono":telefono
+  // })
+  const mensaje={
+     "id_enviador":IDusuario,
+     "id_receptor":IDvendedor,
+     "contenido":contenido,
+     "mail":mail,
+     "telefono":telefono
+     }
+  await BD.from('mensaje').insert(mensaje)
+}
 
 function OficinaEnEspecial() {
   const [oficina, setOficina] = useState({});
@@ -109,7 +118,7 @@ function OficinaEnEspecial() {
     }/>
 
     <div className='TODO'>
-      <Header IDuser={IDusuario} setUsuario={setUsuario} usuario={usuario}/>
+      <Header IDuser={IDusuario} setUsuario={setUsuario} usuario={usuario} open={()=>{setPopUpMensaje(false);setSplideFoto(false);}}/>
       <div className='Container'>
           <div className='Cont-I'>
             {oficina.personas>1?
@@ -124,8 +133,7 @@ function OficinaEnEspecial() {
               <h3>{oficina.descripcion}</h3>
           </div>
           <div className='Cont-D'>
-
-          {fotoOficina.length>1 &&
+            {fotoOficina.length>1 &&
               <div className='Fotos'>
                 <div className='foto'>
                   <img src={fotoOficina[1].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible'}} />
@@ -143,7 +151,7 @@ function OficinaEnEspecial() {
                         }
 
                 </div>
-          }
+            }
            
             <div className='Card2'>
               <div className='contactar'>

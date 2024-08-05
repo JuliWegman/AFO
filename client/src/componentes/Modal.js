@@ -6,9 +6,6 @@ const Modal = ({children,open,close}) => {
 
   return (
     <div className="popUpMensaje">
-      <div className='boton'>
-        <button onClick={close}><div className='x'>x</div></button>
-      </div>
     {children}
     </div>
   );

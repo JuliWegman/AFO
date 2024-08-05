@@ -11,6 +11,7 @@ body{
     justify-content: space-between;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 .popUp{
     border-radius: 20px 20px 20px 20px;
     box-shadow: 2px 2px 5px rgba(0.5, 0.5, 0.5, 0.5);
@@ -69,11 +70,15 @@ textarea{
 .capa{
     position: absolute;
     z-index: 1;
+    left: 0;
+    right: 0;
+    top: 9.7%;
     height: 129%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.712);
     padding: 0;
     visibility: hidden;
+
 }
 .Container{
     display: flex;

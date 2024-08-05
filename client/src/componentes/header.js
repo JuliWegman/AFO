@@ -13,7 +13,7 @@ const BDconfig={
 }
 const BD=createClient(BDconfig.url,BDconfig.key)
 
-const Header = ({IDuser, setUsuario,usuario}) => {
+const Header = ({IDuser, setUsuario,usuario,open}) => {
 
   useEffect(() => {
 
@@ -43,7 +43,7 @@ const Header = ({IDuser, setUsuario,usuario}) => {
         <div className="menu">
           <div className='Rect'>
             <img src={usuario.foto} alt="Foto"/>
-            <b><h1 onClick={()=>{setHamburguesa(true);const cap=document.getElementById("capa2"); cap.style.visibility='visible'}}>☰</h1></b>
+            <b><h1 onClick={()=>{open(); setHamburguesa(true);const cap=document.getElementById("capa2"); cap.style.visibility='visible'; const cap1=document.getElementById("capa1"); cap1.style.visibility='hidden'}}>☰</h1></b>
           </div>
         </div>
       </div>
