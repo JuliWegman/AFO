@@ -1,56 +1,56 @@
-.desplegable-menu{
+.desplegable-menu {
     height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.nav-logo{
+
+.nav-logo {
     font-weight: bold;
     font-size: 20px;
     margin: 15px;
-    
-}
-.nav-items a{
-    margin: 15px;
-    position: relative;
-    text-decoration: none;
-
 }
 
-.nav-items{
-    position: absolute;
+.nav-items {
+    position: fixed;
     top: 60px;
-    right: 0;
+    right: -100%;
     display: flex;
     flex-direction: column;
     width: 50%;
-    height: 5%;
-    transform: translateX(-100%);
-    transition: 0.3s ease all;
-}
-.nav-items.open{
-    transform: translateX(0);
-}
-.nav-toggle{
-    display: flex;
-    flex-direction: column;
-    margin: 15px;
-}
-.nav-toggle span{ 
-    width:30px;
-    height: 4px;
-    margin-bottom: 5px;
-    border-radius: 2px;
-    transform-origin: 5px 0px;
-    transition: all 0.2s linear;
+    height: calc(100% - 60px);
+    background-color: white;
+    transition: right 0.5s ease;
 }
 
-.nav-toggle.open >span{
-    transform: rotate(45deg) translate(0px 0px);
+.nav-items.open {
+    right: 0;
 }
-.nav-toggle.open >span:nth-child(2){
-    transform: rotate(45deg) translate(0px 0px);
+
+.nav-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin: 15px;
 }
-.nav-toggle.open >span:nth-child(3){
-    transform: rotate(-45deg) translate(-5px 1px);
+
+.nav-toggle span {
+    width: 30px;
+    height: 4px;
+    margin-bottom: 5px;
+    background-color: #000;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
 }

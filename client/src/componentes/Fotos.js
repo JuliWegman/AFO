@@ -19,10 +19,10 @@ function Fotos({open,fotos}) {
     <div className="contFoto">
         <div className="popUpFotos" >
             {numFoto>0 &&
-            <button onClick={()=>{setNumFoto(numFoto-1)}}>🡠</button>}
+            <button className="flechaI" onClick={()=>{setNumFoto(numFoto-1)}}>🡠</button>}
             <img src={fotoActual} alt="" />
             {numFoto<fotos.length-1 && 
-            <button onClick={()=>{setNumFoto(numFoto+1)}}>🡢</button>}
+            <button className="flechaD" onClick={()=>{setNumFoto(numFoto+1)}}>🡢</button>}
         </div>
     </div>
     )

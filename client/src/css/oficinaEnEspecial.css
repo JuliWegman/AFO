@@ -73,7 +73,7 @@ textarea{
     left: 0;
     right: 0;
     top: 8.7%;
-    height: 129%;
+    height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.712);
     padding: 0;
@@ -124,6 +124,7 @@ textarea{
     border: black 1px solid;
 }
 .fotoOfi{
+    margin-top: 5%;
     width: 90%;
     height: 80%;
 }
@@ -177,8 +178,8 @@ button{
 }
 .fotoDifu h2{
     position: absolute;
-    left: 82%;
-    top: 8%;
+    left: 83%;
+    top: 12%;
 }
 .fotoDifu img{
     opacity: 0.4;
@@ -360,7 +361,9 @@ button{
         margin-right: 1%;
     }
   }
-
+.capa{
+    
+}
 
 
   

@@ -23,15 +23,20 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    background: rgba(0, 0, 0, 0.2);
-    width: 4%;
-    height: 7%;
+    background: rgba(0, 0, 0, 0);
+    width: 3.5%;
+    height: 6.5%;
     margin-top: 25%;
-    border-radius: 40px 40px 40px 40px;
-    border: #fafafa 1px solid;
-
+    border-width: 0;
+    font-size: 3rem;
 }
 .popUpFotos img{
     width: 100%;
     height: 100%;
+}
+.flechaI{
+    margin-right: 2%;
+}
+.flechaD{
+    margin-left: 2%;
 }

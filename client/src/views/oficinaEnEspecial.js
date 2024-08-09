@@ -104,11 +104,11 @@ function OficinaEnEspecial() {
             <textarea id='inputPopUpMensaje' name="myTextarea" placeholder="Ingrese su mensaje" cols="20" rows="10" minlength="10" maxlength="500" required></textarea>
             </div>
             <div className='boton-V'>
-            <button onClick={()=>{
+            <a href='#header'><button  onClick={()=>{
                 PostMensaje(document.getElementById("inputPopUpMensaje").value,document.getElementById("inputMail").value,document.getElementById("inputTelefono").value);
                 setPopUpMensaje(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'
                 
-            }}>Enviar</button>
+            }}>Enviar</button></a>
           </div>
           </form>
           
@@ -125,7 +125,7 @@ function OficinaEnEspecial() {
             <h2>Oficina en {oficina.calle} {oficina.altura}, {barrio.nombre} para {oficina.personas} Personas</h2>:
             <h2>Oficina en {oficina.calle} {oficina.altura}, {barrio.nombre} para una persona</h2>}
               <div className='fotoOfi'>
-                <img src={fotoOficina[0].contenido} alt="oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden" }}/>
+              <a href='#header'><img src={fotoOficina[0].contenido} alt="oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden" }}/></a>
                 <div className='circulo'>
                   <h2>🡢</h2>
                 </div>
@@ -136,15 +136,15 @@ function OficinaEnEspecial() {
             {fotoOficina.length>1 &&
               <div className='Fotos'>
                 <div className='foto'>
-                  <img src={fotoOficina[1].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}} />
+                <a href='#header'><img src={fotoOficina[1].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}} /></a>
                 </div>
                 {fotoOficina.length>2 &&
                   <div className='foto'>
-                    <img src={fotoOficina[2].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}}/>
+                    <a href='#header'><img src={fotoOficina[2].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}}/></a>
                   </div>}
                         {fotoOficina.length-3>0 &&
                           <div className='fotoDifu'>
-                            <img src={fotoOficina[3].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}}/>
+                            <a href='#header'><img src={fotoOficina[3].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}}/></a>
                             <h2>+{fotoOficina.length-3}</h2>
                           </div>
 
@@ -162,7 +162,7 @@ function OficinaEnEspecial() {
                     <h4>{localidad.nombre}</h4>
                   </div>
                 </div>
-                  <button className='boton-N' onClick={()=>{setPopUpMensaje(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}}>Contactar</button>
+                <button className='boton-N' onClick={()=>{setPopUpMensaje(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}}><a href='#header'>Contactar</a></button>
               </div>
             </div>
             <div className='Card'>

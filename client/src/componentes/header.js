@@ -32,7 +32,7 @@ const Header = ({IDuser, setUsuario,usuario,open}) => {
     <>
         <div className='capa' id='capa2' onClick={()=>{setHamburguesa(false);const cap=document.getElementById("capa2"); cap.style.visibility='hidden';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="auto"}}></div>
 
-    <header>
+    <header id="header">
       <div className="ContainerH">
         <div className="Logo">
           <Logo destino="#Index" img={imgLogo} />
