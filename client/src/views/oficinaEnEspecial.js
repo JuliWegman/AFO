@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import Header from '../componentes/header.js';
 import Footer from '../componentes/footer.js';
 import Logo from '../componentes/logo.js';
@@ -90,7 +90,7 @@ function OficinaEnEspecial() {
 
   return (
     <>
-    <div className='capa' id='capa1' onClick={()=>{setPopUpMensaje(false);setSplideFoto(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}}></div>
+    <div className='capa' id='capa1' onClick={()=>{setPopUpMensaje(false);setSplideFoto(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="auto"}}></div>
 
     <Fotos open={splideFoto} fotos={fotoOficina} />
     <Modal open={popUpMensaje} close={()=>{setPopUpMensaje(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'}} children={
@@ -117,7 +117,7 @@ function OficinaEnEspecial() {
       </div>
     }/>
 
-    <div className='TODO'>
+    <div className='TODO' id='oficinaEnEspecial'>
       <Header IDuser={IDusuario} setUsuario={setUsuario} usuario={usuario} open={()=>{setPopUpMensaje(false);setSplideFoto(false);}}/>
       <div className='Container'>
           <div className='Cont-I'>
@@ -125,7 +125,7 @@ function OficinaEnEspecial() {
             <h2>Oficina en {oficina.calle} {oficina.altura}, {barrio.nombre} para {oficina.personas} Personas</h2>:
             <h2>Oficina en {oficina.calle} {oficina.altura}, {barrio.nombre} para una persona</h2>}
               <div className='fotoOfi'>
-                <img src={fotoOficina[0].contenido} alt="oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible' }}/>
+                <img src={fotoOficina[0].contenido} alt="oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden" }}/>
                 <div className='circulo'>
                   <h2>🡢</h2>
                 </div>
@@ -136,15 +136,15 @@ function OficinaEnEspecial() {
             {fotoOficina.length>1 &&
               <div className='Fotos'>
                 <div className='foto'>
-                  <img src={fotoOficina[1].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible'}} />
+                  <img src={fotoOficina[1].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}} />
                 </div>
                 {fotoOficina.length>2 &&
                   <div className='foto'>
-                    <img src={fotoOficina[2].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible'}}/>
+                    <img src={fotoOficina[2].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}}/>
                   </div>}
                         {fotoOficina.length-3>0 &&
                           <div className='fotoDifu'>
-                            <img src={fotoOficina[3].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible'}}/>
+                            <img src={fotoOficina[3].contenido} alt="foto oficina" onClick={()=>{setSplideFoto(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}}/>
                             <h2>+{fotoOficina.length-3}</h2>
                           </div>
 
@@ -162,7 +162,7 @@ function OficinaEnEspecial() {
                     <h4>{localidad.nombre}</h4>
                   </div>
                 </div>
-                  <button className='boton-N' onClick={()=>{setPopUpMensaje(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible'}}>Contactar</button>
+                  <button className='boton-N' onClick={()=>{setPopUpMensaje(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}}>Contactar</button>
               </div>
             </div>
             <div className='Card'>

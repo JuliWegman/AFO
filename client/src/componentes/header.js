@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react';
 import '../css/header.css';
 import Logo from '../componentes/logo.js';
 import imgLogo  from '../logo/LogoAfo.png';
-import axios from 'axios';
+// import axios from 'axios';
 import Menu from './menu.js'
 
 import { createClient } from '@supabase/supabase-js'
@@ -30,7 +30,7 @@ const Header = ({IDuser, setUsuario,usuario,open}) => {
 
   return (
     <>
-        <div className='capa' id='capa2' onClick={()=>{setHamburguesa(false);const cap=document.getElementById("capa2"); cap.style.visibility='hidden'}}></div>
+        <div className='capa' id='capa2' onClick={()=>{setHamburguesa(false);const cap=document.getElementById("capa2"); cap.style.visibility='hidden';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="auto"}}></div>
 
     <header>
       <div className="ContainerH">
@@ -43,7 +43,7 @@ const Header = ({IDuser, setUsuario,usuario,open}) => {
         <div className="menu">
           <div className='Rect'>
             <img src={usuario.foto} alt="Foto"/>
-            <b><h1 onClick={()=>{open(); setHamburguesa(true);const cap=document.getElementById("capa2"); cap.style.visibility='visible'; const cap1=document.getElementById("capa1"); cap1.style.visibility='hidden'}}>☰</h1></b>
+            <b><h1 onClick={()=>{open(); setHamburguesa(true);const cap=document.getElementById("capa2"); cap.style.visibility='visible'; const cap1=document.getElementById("capa1"); cap1.style.visibility='hidden';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}}>☰</h1></b>
           </div>
         </div>
       </div>

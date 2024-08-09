@@ -4,9 +4,9 @@ import OficinaEnEspecial from './views/oficinaEnEspecial.js';
 
 function App() {
   return (
-    <>
-      <OficinaEnEspecial/>  
-      </>
+    <div id="todo">
+      <OficinaEnEspecial />  
+      </div>
     )
 }
 export default App

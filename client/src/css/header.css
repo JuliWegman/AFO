@@ -85,7 +85,9 @@
     height: 119.7%;
     width: 18%;
     animation: move-left 5s linear 0s;
+    
 }
+
 @keyframes move {
     to{
         transform: translateX(250px);
