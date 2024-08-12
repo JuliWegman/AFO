@@ -10,22 +10,17 @@ import Ubicacion                  from '../componentes/ubicacion.js';
 import area                       from '../logo/area.png';
 import sillas                     from '../logo/silla.png';
 import ambientes                  from '../logo/ambientes.png';
-import { createClient }           from '@supabase/supabase-js'
 import '../css/oficinaEnEspecial.css'
 
-const BDconfig={
-  key:process.env.KEY_SUPABASE ||"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJieWp0a2N0ZXN0ZGRmenJreHVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc0MTYxNzMsImV4cCI6MjAzMjk5MjE3M30.7tVPa4prqRVWLhuISTg97e1eulZv09UqD-p5Pca4nx8"
-  ,url:process.env.URL_SUPABASE ||"https://bbyjtkctestddfzrkxug.supabase.co"
-}
+
 
 const IDoficina=2;
 const IDvendedor=1;
 const IDusuario=3;
-const BD=createClient(BDconfig.url,BDconfig.key)
 
 
 
- async function PostMensaje(contenido,mail,telefono){
+ async function PostMensaje(BD,contenido,mail,telefono){
   // axios.post('/mensaje',{
   //   "id_enviador":IDusuario,
   //   "id_receptor":IDvendedor,
@@ -43,7 +38,7 @@ const BD=createClient(BDconfig.url,BDconfig.key)
   await BD.from('mensaje').insert(mensaje)
 }
 
-function OficinaEnEspecial() {
+function OficinaEnEspecial({BD}) {
   const [oficina, setOficina] = useState({});
   const [fotoOficina, setFotoOficina] = useState([""]);
   const [duracion, setDuracion] = useState({});
@@ -105,7 +100,7 @@ function OficinaEnEspecial() {
             </div>
             <div className='boton-V'>
             <a href='#header'><button  onClick={()=>{
-                PostMensaje(document.getElementById("inputPopUpMensaje").value,document.getElementById("inputMail").value,document.getElementById("inputTelefono").value);
+                PostMensaje(BD,document.getElementById("inputPopUpMensaje").value,document.getElementById("inputMail").value,document.getElementById("inputTelefono").value);
                 setPopUpMensaje(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'
                 
             }}>Enviar</button></a>

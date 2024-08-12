@@ -1,0 +1,28 @@
+.TODO{
+    background-color: #fafafa;
+}
+.busqueda{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+}
+.busqueda input{
+    width: 30%;
+    height: 3rem;
+    border-radius: 40px 40px 40px 40px;
+    font-size: 100%;
+    border: rgb(187, 187, 187) 1px solid ;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.ciruclo{
+    position: absolute;
+    top: 20;
+    margin-left: 27.5%;
+    right: 2;
+    width: 2.8rem;
+    height: 2.8rem;
+    background-color: #f87c18;
+    border-radius: 40px 40px 40px 40px;
+}
