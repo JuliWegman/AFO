@@ -38,16 +38,13 @@ const IDusuario=3;
   await BD.from('mensaje').insert(mensaje)
 }
 
-function OficinaEnEspecial({BD}) {
+function OficinaEnEspecial({BD,splideFoto,setSplideFoto,popUpMensaje,setPopUpMensaje,usuario,setUsuario}) {
   const [oficina, setOficina] = useState({});
   const [fotoOficina, setFotoOficina] = useState([""]);
   const [duracion, setDuracion] = useState({});
   const [vendedor, setVendedor] = useState({});
   const [localidad, setLocalidad] = useState({});
   const [barrio, setBarrio] = useState({});
-  const [popUpMensaje,setPopUpMensaje]=useState(false)
-  const [splideFoto,setSplideFoto]=useState(false)
-  const [usuario, setUsuario] = useState({});
   
 
   useEffect(() => {
@@ -112,8 +109,7 @@ function OficinaEnEspecial({BD}) {
       </div>
     }/>
 
-    <div className='TODO' id='oficinaEnEspecial'>
-      <Header IDuser={IDusuario} setUsuario={setUsuario} usuario={usuario} open={()=>{setPopUpMensaje(false);setSplideFoto(false);}}/>
+    <div>
       <div className='Container'>
           <div className='Cont-I'>
             {oficina.personas>1?
@@ -189,9 +185,7 @@ function OficinaEnEspecial({BD}) {
             </div>
           </div>
       </div>
-      <div className='footer'>
-        <Footer/>
-      </div>
+      
 
     </div>
     </>

@@ -1,19 +1,18 @@
 import React ,{useEffect, useState} from "react";
-import Header                       from "../componentes/header.js"
 import "../css/home.css"
 import Footer from "../componentes/footer.js";
 import lupa from "../logo/lupa.jpg"
 import Logo from "../componentes/logo.js";
+import Header from '../componentes/header.js';
 
 const IDusuario=3;
 
 
 
 
-const Home = ({BD}) => {
+const Home = ({BD,splideFoto,setSplideFoto,popUpMensaje,setPopUpMensaje,usuario,setUsuario}) => {
     const [oficinas,setOficinas]=useState([""])
     const [fotoOficinas,setFotoOficina]=useState([""])
-    const [usuario,setUsuario]=useState({})
 
         useEffect(()=>{
             async function fetchData(){
@@ -27,14 +26,22 @@ const Home = ({BD}) => {
                 });
             }
           fetchData();
-        },[usuario,fotoOficinas])
+        },[usuario,fotoOficinas,BD])
     return(
         
-        <div className="TODO" id="home">
-            <Header IDuser={IDusuario} setUsuario={setUsuario} usuario={usuario} open={()=>{}}/>     
+        <div >
+
+        <div className="buscador">
         <div className="busqueda">
             <input type="text" name="busqueda" placeholder ="  Busca según sus preferencias"></input>
             <div className="ciruclo"></div>
+        </div>
+        <div className="filtros">
+            <select name ="Fecha">fecha
+                <option value="Fecha"></option>
+            </select>
+        </div>
+
         </div>
 
 
