@@ -43,7 +43,7 @@ const Header = ({IDuser, setUsuario,usuario,open}) => {
         <div className="menu">
           <div className='Rect'>
             <img src={usuario.foto} alt="Foto"/>
-            <b><h1 onClick={()=>{open(); setHamburguesa(true);const cap=document.getElementById("capa2"); cap.style.visibility='visible'; const cap1=document.getElementById("capa1"); cap1.style.visibility='hidden';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}}>☰</h1></b>
+            <b><h1 onClick={()=>{open(); setHamburguesa(true);const cap=document.getElementById("capa2"); cap.style.visibility='visible'; const cap1=document.getElementById("capa1"); if(cap1!=null){ cap1.style.visibility='hidden'};const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}}>☰</h1></b>
           </div>
         </div>
       </div>

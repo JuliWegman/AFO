@@ -1,19 +1,19 @@
 import React,{useState,useEffect} from 'react'
-// import axios from 'axios'
-import Header from '../componentes/header.js';
-import Footer from '../componentes/footer.js';
-import Logo from '../componentes/logo.js';
-import Modal from '../componentes/Modal.js';
-import Fotos  from '../componentes/Fotos.js';
+// import axios                   from 'axios'
+import Header                     from '../componentes/header.js';
+import Footer                     from '../componentes/footer.js';
+import Logo                       from '../componentes/logo.js';
+import Modal                      from '../componentes/Modal.js';
+import Fotos                      from '../componentes/Fotos.js';
+import ubicacionImg               from '../logo/ubicacion.png';
+import Ubicacion                  from '../componentes/ubicacion.js';
+import area                       from '../logo/area.png';
+import sillas                     from '../logo/silla.png';
+import ambientes                  from '../logo/ambientes.png';
+import { createClient }           from '@supabase/supabase-js'
 import '../css/oficinaEnEspecial.css'
-import ubicacionImg from '../logo/ubicacion.png';
-import Ubicacion from '../componentes/ubicacion.js';
-import area from '../logo/area.png';
-import sillas from '../logo/silla.png';
-import ambientes from '../logo/ambientes.png';
-import { createClient } from '@supabase/supabase-js'
 
- const BDconfig={
+const BDconfig={
   key:process.env.KEY_SUPABASE ||"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJieWp0a2N0ZXN0ZGRmenJreHVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc0MTYxNzMsImV4cCI6MjAzMjk5MjE3M30.7tVPa4prqRVWLhuISTg97e1eulZv09UqD-p5Pca4nx8"
   ,url:process.env.URL_SUPABASE ||"https://bbyjtkctestddfzrkxug.supabase.co"
 }
