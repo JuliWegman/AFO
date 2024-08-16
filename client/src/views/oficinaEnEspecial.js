@@ -1,7 +1,5 @@
 import React,{useState,useEffect} from 'react'
 // import axios                   from 'axios'
-import Header                     from '../componentes/header.js';
-import Footer                     from '../componentes/footer.js';
 import Logo                       from '../componentes/logo.js';
 import Modal                      from '../componentes/Modal.js';
 import Fotos                      from '../componentes/Fotos.js';

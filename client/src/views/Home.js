@@ -1,16 +1,13 @@
 import React ,{useEffect, useState} from "react";
 import "../css/home.css"
-import Footer from "../componentes/footer.js";
 import lupa from "../logo/lupa.jpg"
 import Logo from "../componentes/logo.js";
-import Header from '../componentes/header.js';
-
-const IDusuario=3;
 
 
 
 
-const Home = ({BD,splideFoto,setSplideFoto,popUpMensaje,setPopUpMensaje,usuario,setUsuario}) => {
+
+const Home = ({BD,usuario,setUsuario}) => {
     const [oficinas,setOficinas]=useState([""])
     const [fotoOficinas,setFotoOficina]=useState([""])
 
@@ -34,20 +31,38 @@ const Home = ({BD,splideFoto,setSplideFoto,popUpMensaje,setPopUpMensaje,usuario,
         <div className="buscador">
         <div className="busqueda">
             <input type="text" name="busqueda" placeholder ="  Busca según sus preferencias"></input>
-            <div className="ciruclo"></div>
+            <div className="ciruclo"><Logo img = {lupa}/></div>
+
         </div>
-        <div className="filtros">
-            <select name ="Fecha">fecha
-                <option value="Fecha"></option>
-            </select>
+        <div className="opciones">
+            <div className="custom-select">
+                <div className="select-selected">Fecha</div>
+                    <div className="select-items select-hide">
+                </div>
+                <div className="select-selected">Ubicacion</div>
+                    <div className="select-items select-hide">
+                        
+                </div>
+                <div className="select-selected">Precio</div>
+                    <div className="select-items select-hide">
+                        
+                </div>
+                <div className="select-selected">Ambientes</div>
+                    <div className="select-items select-hide">
+                        
+                </div>
+                <div className="select-selected">Mas Filtros</div>
+                    <div className="select-items select-hide">
+                        
+                </div>
+            </div>
         </div>
+    
+
 
         </div>
 
-
-            <div className="footer">
-                <Footer/>
-            </div>            
+           
         </div>
     )
 }
