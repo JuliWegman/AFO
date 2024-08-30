@@ -5,8 +5,7 @@ import Header from './componentes/header.js';
 import Footer from './componentes/footer.js';
 import './css/oficinaEnEspecial.css'
 import {
-  createBrowserRouter,
-  RouterProvider,
+  BrowserRouter as Router, Route, Routes  
 } from "react-router-dom";
 
 import { createClient } from '@supabase/supabase-js';
@@ -18,35 +17,30 @@ const base=createClient(BDconfig.url,BDconfig.key)
 
 const IDusuario=3;
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <div>Hello world!</div>,
-  },
-]);
-
 function App() {
   const [usuario,setUsuario]=useState({})
   const [popUpMensaje,setPopUpMensaje]=useState(false)
   const [splideFoto,setSplideFoto]=useState(false)
+  const [hamburguesa,setHamburguesa]=useState(false)
+  return (  
+      <Router>
+        <div className='TODO' id="todo">
+          <div className="TODO" id="home">
+            <Header hamburguesa={hamburguesa} setHamburguesa={setHamburguesa} IDuser={IDusuario} setUsuario={setUsuario} usuario={usuario} open={()=>{setPopUpMensaje(false);setSplideFoto(false);}}/>    
+            
+            <Routes>
+              <Route path='/' element={<Home setHamburguesa={()=>{setHamburguesa(false);const cap=document.getElementById("capa2"); cap.style.visibility='hidden';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="auto"}} BD={base} splideFoto={splideFoto} setSplideFoto={setSplideFoto} popUpMensaje={popUpMensaje} setPopUpMensaje={setPopUpMensaje} usuario={usuario} setUsuario={setUsuario}/>}></Route>
+              <Route path='/oficina' element={<OficinaEnEspecial setHamburguesa={()=>{setHamburguesa(false);const cap=document.getElementById("capa2"); cap.style.visibility='hidden';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="auto"}} BD={base} splideFoto={splideFoto} setSplideFoto={setSplideFoto} popUpMensaje={popUpMensaje} setPopUpMensaje={setPopUpMensaje} usuario={usuario} setUsuario={setUsuario}/>}></Route>
 
-  return (
-    
-      <div className='TODO' id="todo">
-      <div className="TODO" id="home">
-        <Header IDuser={IDusuario} setUsuario={setUsuario} usuario={usuario} open={()=>{setPopUpMensaje(false);setSplideFoto(false);}}/>     
-        <OficinaEnEspecial BD={base} splideFoto={splideFoto} setSplideFoto={setSplideFoto} popUpMensaje={popUpMensaje} setPopUpMensaje={setPopUpMensaje} usuario={usuario} setUsuario={setUsuario}/>  
-        <div className='footer'>
-        <Footer/>
-      </div>
-      
-      </div>
-      </div>
+            </Routes>
+            
+            <div className='footer'>
+            <Footer/>
+            </div>
+          
+          </div>
+        </div>
+      </Router>
     )
 }
 export default App
-
-
-<Navbar/>
-<Profile/>
-</Footer>

@@ -6,6 +6,7 @@ import imgLogo  from '../logo/LogoAfo.png';
 import Menu from './menu.js'
 
 import { createClient } from '@supabase/supabase-js'
+import { Link } from 'react-router-dom';
 
 const BDconfig={
   key:process.env.KEY_SUPABASE ||"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJieWp0a2N0ZXN0ZGRmenJreHVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc0MTYxNzMsImV4cCI6MjAzMjk5MjE3M30.7tVPa4prqRVWLhuISTg97e1eulZv09UqD-p5Pca4nx8"
@@ -13,7 +14,7 @@ const BDconfig={
 }
 const BD=createClient(BDconfig.url,BDconfig.key)
 
-const Header = ({IDuser, setUsuario,usuario,open}) => {
+const Header = ({hamburguesa,setHamburguesa,IDuser, setUsuario,usuario,open}) => {
 
   useEffect(() => {
 
@@ -24,9 +25,10 @@ const Header = ({IDuser, setUsuario,usuario,open}) => {
     // axios.get('/usuario/'+IDuser)
     // .then(res=>{setUsuario(res.data)})
     fetchData();
+
   }, [IDuser,setUsuario]);
 
-  const [hamburguesa,setHamburguesa]=useState(false)
+  
 
   return (
     <>
@@ -35,7 +37,7 @@ const Header = ({IDuser, setUsuario,usuario,open}) => {
     <header id="header">
       <div className="ContainerH">
         <div className="Logo">
-          <Logo destino="#Index" img={imgLogo} />
+          <Link to='/'><Logo destino="#Index" img={imgLogo} /></Link>
         </div>
         <div className="slogan">
           <p>Tu Lugar De Trabajo</p>

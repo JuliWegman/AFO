@@ -6,6 +6,7 @@ import alquiler from '../logo/alquiler.png';
 import perfil from '../logo/perfil.png';
 import mensaje from '../logo/mensaje.png';
 import cerrarSesion from '../logo/cerrarSesion.png';
+import { Link } from 'react-router-dom';
 
 const Menu = ({ texto,open }) => {
   if (!open) {
@@ -19,11 +20,11 @@ const Menu = ({ texto,open }) => {
       <div className="menu-opciones">
         <div className='opcion'>
         <Logo img = {home}/>
-        <p>Home</p>
+        <p><Link to='/'>Home</Link></p>
         </div>
         <div className='opcion'>
           <Logo img = {alquiler}/>
-          <p>Mis Alquileres</p>
+          <p><Link to='/oficina'>OFICINA (test)</Link></p>
         </div>
         <div className='opcion'>
         <Logo img = {mensaje}/>

@@ -36,7 +36,7 @@ const IDusuario=3;
   await BD.from('mensaje').insert(mensaje)
 }
 
-function OficinaEnEspecial({BD,splideFoto,setSplideFoto,popUpMensaje,setPopUpMensaje,usuario,setUsuario}) {
+function OficinaEnEspecial({setHamburguesa,BD,splideFoto,setSplideFoto,popUpMensaje,setPopUpMensaje,usuario,setUsuario}) {
   const [oficina, setOficina] = useState({});
   const [fotoOficina, setFotoOficina] = useState([""]);
   const [duracion, setDuracion] = useState({});
@@ -75,6 +75,8 @@ function OficinaEnEspecial({BD,splideFoto,setSplideFoto,popUpMensaje,setPopUpMen
     // .then(res=>{setVendedor(res.data);})soy huevo
 
     fetchData();
+    setHamburguesa(false)
+
   }, []);
 
 

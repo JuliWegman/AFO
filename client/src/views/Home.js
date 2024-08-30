@@ -7,7 +7,7 @@ import Logo from "../componentes/logo.js";
 
 
 
-const Home = ({BD,usuario,setUsuario}) => {
+const Home = ({setHamburguesa,BD,usuario,setUsuario}) => {
     const [oficinas,setOficinas]=useState([""])
     const [fotoOficinas,setFotoOficina]=useState([""])
 
@@ -23,6 +23,7 @@ const Home = ({BD,usuario,setUsuario}) => {
                 });
             }
           fetchData();
+          setHamburguesa()
         },[usuario,fotoOficinas,BD])
     return(
         
