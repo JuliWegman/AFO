@@ -60,4 +60,11 @@ router.get('/:id/fotos',async (req, res)=>{
     }
 
 })
+
+router.get('/home',async(req, res)=>{
+
+    const resOficinas=await officeService.getOficinasByFilter(filtros)
+    //SEGUIR ESTO
+})
+
 export default router;
