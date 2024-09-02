@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-// import axios                   from 'axios'
+ import axios                   from 'axios'
 import Logo                       from '../componentes/logo.js';
 import Modal                      from '../componentes/Modal.js';
 import Fotos                      from '../componentes/Fotos.js';
@@ -19,13 +19,13 @@ const IDusuario=3;
 
 
  async function PostMensaje(BD,contenido,mail,telefono){
-  // axios.post('/mensaje',{
-  //   "id_enviador":IDusuario,
-  //   "id_receptor":IDvendedor,
-  //   "contenido":contenido,
-  //   "mail":mail,
-  //   "telefono":telefono
-  // })
+   axios.post('/mensaje',{
+     "id_enviador":IDusuario,
+     "id_receptor":IDvendedor,
+     "contenido":contenido,
+     "mail":mail,
+     "telefono":telefono
+   })
   const mensaje={
      "id_enviador":IDusuario,
      "id_receptor":IDvendedor,
@@ -60,21 +60,22 @@ function OficinaEnEspecial({setHamburguesa,BD,splideFoto,setSplideFoto,popUpMens
       const res3=await BD.from('usuario').select().eq('id_usuario',IDvendedor).maybeSingle()
       setVendedor(res3.data)
     }
-    // axios.get('/oficina/'+IDoficina)
-    // .then(res=>{setOficina(res.data);
-    //   setLocalidad(res.data.localidad);
-    //   setBarrio(res.data.barrio);
-    //   setDuracion(res.data.duracion);
-    // })
+
+
+     axios.get('/oficina/'+IDoficina)
+     .then(res=>{setOficina(res.data);
+       setLocalidad(res.data.localidad);
+       setBarrio(res.data.barrio);
+       setDuracion(res.data.duracion);
+     })
     
+     axios.get('/oficina/'+IDoficina+'/fotos')
+     .then(res=>{setFotoOficina(res.data);})
 
-    // axios.get('/oficina/'+IDoficina+'/fotos')
-    // .then(res=>{setFotoOficina(res.data);})
+     axios.get('/usuario/' + IDvendedor)
+     .then(res=>{setVendedor(res.data);})
 
-    // axios.get('/usuario/' + IDvendedor)
-    // .then(res=>{setVendedor(res.data);})soy huevo
-
-    fetchData();
+    // fetchData();
     setHamburguesa(false)
 
   }, []);
