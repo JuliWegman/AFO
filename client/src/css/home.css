@@ -12,7 +12,7 @@
     width: 30%;
     height: 3rem;
     border-radius: 40px 40px 40px 40px;
-    font-size: 100%;
+    font-size: 90%;
     border: rgb(187, 187, 187) 1px solid ;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -97,15 +97,16 @@
 .fila{
     display: flex;
     margin-top: 5%;
+    margin-left: 10%;
     justify-content: space-around;
     align-items: center;
     text-align: center;
-    width: 100%;
+    width: 80%;
     height: auto;
 }
 .oficina{
     display: flex;
-    width: 16%;
+    width: 15%;
     height: 17rem;
     border: #141414 2px solid;
     border-radius: 10%;
