@@ -2,12 +2,15 @@ import React ,{useEffect, useState} from "react";
 import "../css/home.css"
 import lupa from "../logo/lupa.jpg"
 import Logo from "../componentes/logo.js";
+import Footer from "../componentes/footer.js";
+import { Link } from 'react-router-dom';
+
 
 const FotosOficinas=[{contenido:"https://i.ibb.co/0sV4Lc7/images.jpg"},{contenido:"https://i.ibb.co/882k2cN/download.jpg"},{contenido:"https://i.ibb.co/0qHxTzD/images.jpg"},{contenido:"https://www.eloficial.ec/wp-content/uploads/2020/08/portada-arq-dis.png"}]
 
 
 
-const Home = ({setHamburguesa,BD,usuario,setUsuario}) => {
+const Home = ({setIDoficina,setHamburguesa,BD,usuario,setUsuario}) => {
     const [oficinas,setOficinas]=useState([""])
     const [fotoOficinas,setFotoOficina]=useState([""])
 
@@ -22,9 +25,9 @@ const Home = ({setHamburguesa,BD,usuario,setUsuario}) => {
                 // })
             }
 
-          fetchData();
+            fetchData();
 
-          setHamburguesa()
+            setHamburguesa()
         },[])
     return(
         <div>
@@ -59,33 +62,60 @@ const Home = ({setHamburguesa,BD,usuario,setUsuario}) => {
             </div>
             <div className="container">
                     <div className="fila">
-                        <div className="oficina">
-                            <img src={FotosOficinas[0].contenido} alt="fotoOficina1"/>
+
+                        <div className="oficina" onClick={()=>{setIDoficina(oficinas[0].id_oficina)}}>
+                        <Link to='/oficina'>
+                            <img src={FotosOficinas[0].contenido} alt="fotoOficina1"/>                        
+                        </Link>
                         </div>
-                        <div className="oficina">
+
+                        <div className="oficina" onClick={()=>{setIDoficina(oficinas[1].id_oficina)}}>
+                        <Link to='/oficina'>
                         <img src={FotosOficinas[1].contenido} alt="fotoOficina1"/>
+                        </Link>
                         </div>
-                        <div className="oficina">
+
+                        <div className="oficina" onClick={()=>{setIDoficina(oficinas[2].id_oficina)}}>
+                        <Link to='/oficina'>
                         <img src={FotosOficinas[2].contenido} alt="fotoOficina1"/>
+                        </Link>
                         </div>
-                        <div className="oficina">
+
+                        <div className="oficina" onClick={()=>{setIDoficina(oficinas[3].id_oficina)}}>
+                        <Link to='/oficina'>
                         <img src={FotosOficinas[3].contenido} alt="fotoOficina1"/>
+                        </Link>
                         </div>
                     </div>
                     <div className="fila">
-                        <div className="oficina">
-                            <img src={FotosOficinas[0].contenido} alt="fotoOficina1"/>
+
+                        <div className="oficina" onClick={()=>{setIDoficina(oficinas[0].id_oficina)}}>
+                        <Link to='/oficina'>
+                            <img src={FotosOficinas[0].contenido} alt="fotoOficina1"/>                        
+                        </Link>
                         </div>
-                        <div className="oficina">
+
+                        <div className="oficina" onClick={()=>{setIDoficina(oficinas[1].id_oficina)}}>
+                        <Link to='/oficina'>
                         <img src={FotosOficinas[1].contenido} alt="fotoOficina1"/>
+                        </Link>
                         </div>
-                        <div className="oficina">
+
+                        <div className="oficina" onClick={()=>{setIDoficina(oficinas[2].id_oficina)}}>
+                        <Link to='/oficina'>
                         <img src={FotosOficinas[2].contenido} alt="fotoOficina1"/>
+                        </Link>
                         </div>
-                        <div className="oficina">
+
+                        <div className="oficina" onClick={()=>{setIDoficina(oficinas[3].id_oficina)}}>
+                        <Link to='/oficina'>
                         <img src={FotosOficinas[3].contenido} alt="fotoOficina1"/>
+                        </Link>
                         </div>
-                    </div>  
+                    </div>
+            </div>
+            <div className='footer'>
+            <Footer/>
             </div>
         </div>
     )

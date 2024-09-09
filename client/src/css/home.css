@@ -94,19 +94,23 @@
 .select-arrow-active .select-items {
     display: block;
 }
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .fila{
     display: flex;
     margin-top: 5%;
-    margin-left: 10%;
     justify-content: space-around;
     align-items: center;
     text-align: center;
     width: 80%;
-    height: auto;
+    height: 100%;
 }
 .oficina{
     display: flex;
-    width: 15%;
+    width: 16%;
     height: 17rem;
     border: #141414 2px solid;
     border-radius: 10%;

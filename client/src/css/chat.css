@@ -1,0 +1,17 @@
+body{
+    height: 100%;
+}
+.chat{
+    height: 1000px;
+    width: 200px;
+}
+.containeri{
+    width: 30%;
+    height: 100%;
+    background-color: #000 5%;
+}
+.containerd{
+    width: 200px;
+    height: 50px;
+    background-color: aqua;
+}

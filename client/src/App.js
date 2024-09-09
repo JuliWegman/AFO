@@ -1,8 +1,10 @@
 import React,{useState} from 'react'
 import OficinaEnEspecial from './views/oficinaEnEspecial.js';
 import Home from "./views/Home.js";
+import Mensajes from "./views/Mensajes.js"
 import Header from './componentes/header.js';
 import Footer from './componentes/footer.js';
+import Chat from "./componentes/chat.js";
 import './css/oficinaEnEspecial.css'
 import {
   BrowserRouter as Router, Route, Routes  
@@ -22,6 +24,7 @@ function App() {
   const [popUpMensaje,setPopUpMensaje]=useState(false)
   const [splideFoto,setSplideFoto]=useState(false)
   const [hamburguesa,setHamburguesa]=useState(false)
+  const [IDoficina,setIDoficina]=useState(1)
   return (  
       <Router>
         <div className='TODO' id="todo">
@@ -29,14 +32,32 @@ function App() {
             <Header hamburguesa={hamburguesa} setHamburguesa={setHamburguesa} IDuser={IDusuario} setUsuario={setUsuario} usuario={usuario} open={()=>{setPopUpMensaje(false);setSplideFoto(false);}}/>    
             
             <Routes>
-              <Route path='/' element={<Home setHamburguesa={()=>{setHamburguesa(false);const cap=document.getElementById("capa2"); cap.style.visibility='hidden';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="auto"}} BD={base} splideFoto={splideFoto} setSplideFoto={setSplideFoto} popUpMensaje={popUpMensaje} setPopUpMensaje={setPopUpMensaje} usuario={usuario} setUsuario={setUsuario}/>}></Route>
-              <Route path='/oficina' element={<OficinaEnEspecial setHamburguesa={()=>{setHamburguesa(false);const cap=document.getElementById("capa2"); cap.style.visibility='hidden';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="auto"}} BD={base} splideFoto={splideFoto} setSplideFoto={setSplideFoto} popUpMensaje={popUpMensaje} setPopUpMensaje={setPopUpMensaje} usuario={usuario} setUsuario={setUsuario}/>}></Route>
-
+              <Route path='/' element={
+                <Home setIDoficina={setIDoficina} setHamburguesa={()=>{
+                  setHamburguesa(false);
+                  const cap=document.getElementById("capa2"); 
+                  cap.style.visibility='hidden';
+                  const scroll=document.getElementsByTagName("body");
+                  scroll[0].style.overflowY="auto"}} 
+                  BD={base} splideFoto={splideFoto} setSplideFoto={setSplideFoto} popUpMensaje={popUpMensaje} setPopUpMensaje={setPopUpMensaje} usuario={usuario} setUsuario={setUsuario}/>}>
+              </Route>
+             
+              <Route path='/oficina' element={
+              <OficinaEnEspecial IdOficina={IDoficina} setHamburguesa={()=>{
+                  setHamburguesa(false);
+                  const cap=document.getElementById("capa2");
+                  cap.style.visibility='hidden';
+                  const scroll=document.getElementsByTagName("body");
+                  scroll[0].style.overflowY="auto"}} 
+                  BD={base} splideFoto={splideFoto} setSplideFoto={setSplideFoto} popUpMensaje={popUpMensaje} setPopUpMensaje={setPopUpMensaje} usuario={usuario} setUsuario={setUsuario}/>}>
+              </Route>
+             
+              <Route path='/mensaje' element={
+                <Mensajes/>
+              }></Route>
             </Routes>
             
-            <div className='footer'>
-            <Footer/>
-            </div>
+            
           
           </div>
         </div>

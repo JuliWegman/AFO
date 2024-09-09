@@ -1,12 +1,15 @@
 import { createClient } from '@supabase/supabase-js'
 import {BDconfig} from '../configs/BD.js'
 import 'dotenv/config'
+import pg from 'pg'
 
 export default class OficinaRepository{
-    constructor(){
-        this.BD=createClient(BDconfig.url,BDconfig.key)
-    }
-
+    
+    constructor() {
+        const { Client } = pg;
+        this.BDclient = new Client(BDconfig);
+        this.BDclient.connect();
+      }
     async getOficinas(limit,offset){
         const res=await this.BD.from('oficina').select('id_oficina,tamaño,sillas,baños,ambientes,armarios,calle,altura,computadoras,personas,localidad:id_localidad(nombre),barrio:id_barrio(nombre),usuario:id_usuario(nombre,apellido,mail),precio,duracion:id_duracion(tiempo),descripcion').range(offset || 0,(offset+limit-1) || 0).order('id_oficina',{ascending:true});
         return res

@@ -24,7 +24,7 @@ const Menu = ({ texto,open }) => {
         </div>
         <div className='opcion'>
           <Link to='/oficina'><Logo img = {alquiler}/></Link>
-          <p><Link to='/oficina'>Oficina (test)</Link></p>
+          <p><Link to='/oficina'>Mis alquileres</Link></p>
         </div>
         <div className='opcion'>
         <Link to='/mensaje'><Logo img = {mensaje}/></Link>
