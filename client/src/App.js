@@ -5,6 +5,7 @@ import Mensajes from "./views/Mensajes.js"
 import Header from './componentes/header.js';
 import Footer from './componentes/footer.js';
 import Chat from "./componentes/chat.js";
+import Perfil from "./componentes/perfil.js";
 import './css/oficinaEnEspecial.css'
 import {
   BrowserRouter as Router, Route, Routes  

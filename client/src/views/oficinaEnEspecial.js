@@ -38,34 +38,19 @@ const IDusuario=3;
 function OficinaEnEspecial({IdOficina,setHamburguesa,BD,splideFoto,setSplideFoto,popUpMensaje,setPopUpMensaje,usuario,setUsuario}) {
   const [oficina, setOficina] = useState({});
   const [fotoOficina, setFotoOficina] = useState([""]);
-  const [duracion, setDuracion] = useState({});
+  const [duracion, setDuracion] = useState("");
   const [vendedor, setVendedor] = useState({});
-  const [localidad, setLocalidad] = useState({});
+  const [localidad, setLocalidad] = useState("");
   const [barrio, setBarrio] = useState({});
   
 
   useEffect(() => {
-
-    async function fetchData(){
-      const res1=await BD.from('oficina').select('id_oficina,tamaño,sillas,baños,ambientes,armarios,calle,altura,computadoras,personas,localidad:id_localidad(nombre),barrio:id_barrio(nombre),usuario:id_usuario(nombre,apellido,mail),precio,duracion:id_duracion(tiempo),descripcion').eq('id_oficina',IdOficina).maybeSingle()
-      setLocalidad(res1.data.localidad);
-      setBarrio(res1.data.barrio);
-      setDuracion(res1.data.duracion);
-      setOficina(res1.data)
-
-      const res2=await BD.from('foto').select().eq('id_oficina',IdOficina)
-      setFotoOficina(res2.data)
-      
-      const res3=await BD.from('usuario').select().eq('id_usuario',IDvendedor).maybeSingle()
-      setVendedor(res3.data)
-    }
-
-
      axios.get('/oficina/'+IdOficina)
      .then(res=>{setOficina(res.data);
        setLocalidad(res.data.localidad);
-       setBarrio(res.data.barrio);
+       setBarrio({nombre:res.data.barrio});
        setDuracion(res.data.duracion);
+       console.log(res.data);
      })
     
      axios.get('/oficina/'+IdOficina+'/fotos')
@@ -74,7 +59,6 @@ function OficinaEnEspecial({IdOficina,setHamburguesa,BD,splideFoto,setSplideFoto
      axios.get('/usuario/' + IDvendedor)
      .then(res=>{setVendedor(res.data);})
 
-    // fetchData();
     setHamburguesa(false)
 
   }, []);
@@ -150,7 +134,7 @@ function OficinaEnEspecial({IdOficina,setHamburguesa,BD,splideFoto,setSplideFoto
                   <img src={vendedor.foto} alt="foto vendedor"/>
                   <div className='texto'>
                     <h3>{vendedor.nombre} {vendedor.apellido}</h3>
-                    <h4>{localidad.nombre}</h4>
+                    <h4>{localidad}</h4>
                   </div>
                 </div>
                 <button className='boton-N' onClick={()=>{setPopUpMensaje(true);const cap=document.getElementById("capa1"); cap.style.visibility='visible';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}}><a href='#header'>Contactar</a></button>
@@ -158,7 +142,7 @@ function OficinaEnEspecial({IdOficina,setHamburguesa,BD,splideFoto,setSplideFoto
             </div>
             <div className='Card'>
               <div className='alquilar'>
-                <h2>${oficina.precio} ARS Por {duracion.tiempo} </h2>
+                <h2>${oficina.precio} ARS Por {duracion} </h2>
                 <button className='boton-R'>Alquilar</button>
               </div>
               <div className='datos'>

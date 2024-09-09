@@ -9,12 +9,10 @@ router.get('/',async (req,res)=>{
     const limit=req.query.limit;
     const offset=req.query.offset;
 
-        const {collection,error}= await officeService.getOficinas(limit,offset)
-        if (error!=null) {
-            return res.status(400).send(error)
-        }else{
-            return res.status(200).json(collection)
-        }
+        const data= await officeService.getOficinas(limit,offset)
+        
+            return res.status(200).json(data)
+        
               
     
 })
@@ -40,7 +38,7 @@ router.get('/:id/alquileres',async(req,res)=>{
     const {data,error}=await officeService.getAlquileresByOficina(id)
     if (error!=null){
         return res.status(400).send(error)
-    }else if(data[0]==null){
+    }else if(data==null){
         return res.status(404).send("Esa id_oficina no existe o no tiene alquileres");
     }else{
         return res.status(200).json(data);
@@ -53,7 +51,7 @@ router.get('/:id/fotos',async (req, res)=>{
     const {data,error}=await officeService.getFotosByOficina(id)
     if (error!=null) {
         return res.status(400).send(error)
-    }else if (data[0]==null){
+    }else if (data==null){
         return res.status(404).send("Esa id_oficina no existe o no tiene fotos");
     }else{
         return res.status(200).json(data);

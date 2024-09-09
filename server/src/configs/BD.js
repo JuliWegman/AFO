@@ -3,14 +3,13 @@ import 'dotenv/config'
 export const BDconfig={
 
     host:process.env.BD_HOST ?? '',
-    port:process.env.BD_PORT ?? 5432,
+    port:process.env.BD_PORT ?? 6543,
+    database:process.env.DATABASE ?? '',
     user:process.env.USER ?? '',
     password:process.env.PASSWORD ?? "",
-    database:process.env.DATABASE ?? ''
 
 
-    // key:process.env.KEY_SUPABASE ||"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJieWp0a2N0ZXN0ZGRmenJreHVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc0MTYxNzMsImV4cCI6MjAzMjk5MjE3M30.7tVPa4prqRVWLhuISTg97e1eulZv09UqD-p5Pca4nx8"
-    // ,url:process.env.URL_SUPABASE ||"https://bbyjtkctestddfzrkxug.supabase.co"
+    
 }
 
 
