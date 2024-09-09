@@ -3,10 +3,8 @@ import OficinaEnEspecial from './views/oficinaEnEspecial.js';
 import Home from "./views/Home.js";
 import Mensajes from "./views/Mensajes.js"
 import Header from './componentes/header.js';
-import Footer from './componentes/footer.js';
-import Chat from "./componentes/chat.js";
 import Perfil from "./views/Perfil.js";
-import './css/oficinaEnEspecial.css'
+import './css/oficinaEnEspecial.css';
 import {
   BrowserRouter as Router, Route, Routes  
 } from "react-router-dom";
@@ -37,12 +35,15 @@ function App() {
   }
   return (  
       <Router>
+
+
         <div className='TODO' id="todo">
           <div className="TODO" id="home">
             <Header hamburguesa={hamburguesa} setHamburguesa={setHamburguesa} IDuser={IDusuario} setUsuario={setUsuario} usuario={usuario} open={()=>{setPopUpMensaje(false);setSplideFoto(false);}}/>    
-            
+
             <Routes>
               <Route path='/' element={
+                
                 <Home setIDoficina={setIDoficina} setHamburguesa={reset} 
                   BD={base} splideFoto={splideFoto} setSplideFoto={setSplideFoto} popUpMensaje={popUpMensaje} setPopUpMensaje={setPopUpMensaje} usuario={usuario} setUsuario={setUsuario}/>}>
               </Route>
@@ -59,7 +60,9 @@ function App() {
                 <Perfil setHamburguesa={reset}/>
               }></Route>
 
-
+              <Route path='/corazon' element={
+                <ion-icon name="heart" size='large'></ion-icon>
+              }></Route>
             </Routes>
             
             

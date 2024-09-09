@@ -1,7 +1,6 @@
 import React from 'react';
 import Logo from './logo';
 import '../css/header.css';
-import home from '../logo/home.png';
 import alquiler from '../logo/alquiler.png';
 import perfil from '../logo/perfil.png';
 import mensaje from '../logo/mensaje.png';
@@ -19,7 +18,7 @@ const Menu = ({ texto,open }) => {
       
       <div className="menu-opciones">
         <div className='opcion'>
-        <Link to='/'><Logo img = {home}/></Link>
+        <Link to='/'><i class="fa-solid fa-house fa-2xl	" ></i></Link>
         <p><Link to='/'>Home</Link></p>
         </div>
         <div className='opcion'>

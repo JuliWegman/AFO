@@ -25,9 +25,7 @@ export default class FotoRepository{
             console.log(error);
         }
         return {data,error}
-        await this.BD.from('foto').select().eq('id_oficina',id)
-       
-        return {data,error} ;
+
     }
 
 }

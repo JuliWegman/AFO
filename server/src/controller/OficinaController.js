@@ -9,10 +9,14 @@ router.get('/',async (req,res)=>{
     const limit=req.query.limit;
     const offset=req.query.offset;
 
-        const data= await officeService.getOficinas(limit,offset)
+    const {collection,error}= await officeService.getOficinas(limit,offset)
         
-            return res.status(200).json(data)
-        
+    if (error!=null) {
+        console.log(error);
+        return res.status(400).send(error)
+    }else{
+        return res.status(200).json(collection)
+    }
               
     
 })
@@ -60,8 +64,20 @@ router.get('/:id/fotos',async (req, res)=>{
 })
 
 router.get('/home',async(req, res)=>{
+    const filtros={
+        search:req.body.search,
+        tamaño:req.body.tamaño,
+        ambientes:req.body.ambientes,
+        computadoras:req.body.computadoras,
+        barrio:req.body.barrio,
+        fecha_inicio:req.body.fecha_inicio,
+        fecha_fin:req.body.fecha_fin,
+        max_precio:req.body.max_precio,
+        min_precio:req.body.min_precio
 
-    const resOficinas=await officeService.getOficinasByFilter(filtros)
+    }
+
+    const {collection,data}=await officeService.getOficinasByFilter(filtros)
     //SEGUIR ESTO
 })
 
