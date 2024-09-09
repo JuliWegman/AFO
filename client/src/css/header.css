@@ -64,8 +64,8 @@
 }
 .Rect img{
     margin-top: 2%;
+    width: 70%;
     height: 90%;
-    width: 50%;
     border-radius: 40px 40px 40px 40px;
 }
 .Rect h1{

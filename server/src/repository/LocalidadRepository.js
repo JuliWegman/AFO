@@ -11,12 +11,33 @@ export default class LocalidadRepository{
       }
     
     async getLocalidades(limit,offset){
-        const res=await this.BD.from('localidad').select('*').range(offset || 0,(offset+limit-1) || 0).order('id_localidad',{ascending:true});
-        return res
+        let data=null;
+        var error=null;
+        try {
+            var sql="select * from localidad limit $1 offset $2"
+            const values=[limit,offset]
+            const result=await this.BDclient.query(sql,values)
+            data=result.data
+        } catch (e) {
+            error=e;
+            console.log(error);
+        }
+        return {data,error}
     }
 
     async countLocalidades(){
-        const {error,count}=await this.BD.from('localidad').select('*',{count:'exact', head: true})
-        return count ? count : error;
+        let data=null;
+        var error=null;
+        try {
+            var sql="select COUNT(*) from localidad"
+            const result=await this.BDclient.query(sql)
+            data=result.data
+        } catch (e) {
+            error=e;
+            console.log(error);
+        }
+        return data
+
+        
     }
 }

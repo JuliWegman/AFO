@@ -23,16 +23,16 @@ const Menu = ({ texto,open }) => {
         <p><Link to='/'>Home</Link></p>
         </div>
         <div className='opcion'>
-          <Link to='/oficina'><Logo img = {alquiler}/></Link>
-          <p><Link to='/oficina'>Mis alquileres</Link></p>
+          <Link to='/alquileres'><Logo img = {alquiler}/></Link>
+          <p><Link to='/alquileres'>Mis alquileres</Link></p>
         </div>
         <div className='opcion'>
         <Link to='/mensaje'><Logo img = {mensaje}/></Link>
         <p><Link to ='/mensaje'>Mensajes</Link></p>
         </div>
         <div className='opcion'>
-          <Logo img = {perfil}/>
-          <p>Mi Perfil</p>
+        <Link to='/perfil'><Logo img = {perfil}/></Link>
+        <p><Link to ='/perfil'>Mi Perfil</Link></p>
         </div>
         <div className='opcion'>
           <Logo img = {cerrarSesion}/>

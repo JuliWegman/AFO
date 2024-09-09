@@ -44,7 +44,7 @@ const Header = ({hamburguesa,setHamburguesa,IDuser, setUsuario,usuario,open}) =>
         </div>
         <div className="menu">
           <div className='Rect'>
-            <img src={usuario.foto} alt="Foto"/>
+            <Link to='/perfil' className='link'><img className="link"  src={usuario.foto} alt="Foto"/></Link>
             <b><h1 onClick={()=>{open(); setHamburguesa(true);const cap=document.getElementById("capa2"); cap.style.visibility='visible'; const cap1=document.getElementById("capa1"); if(cap1!=null){ cap1.style.visibility='hidden'};const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}}>☰</h1></b>
           </div>
         </div>

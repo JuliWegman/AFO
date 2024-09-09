@@ -5,7 +5,7 @@ import Mensajes from "./views/Mensajes.js"
 import Header from './componentes/header.js';
 import Footer from './componentes/footer.js';
 import Chat from "./componentes/chat.js";
-import Perfil from "./componentes/perfil.js";
+import Perfil from "./views/Perfil.js";
 import './css/oficinaEnEspecial.css'
 import {
   BrowserRouter as Router, Route, Routes  
@@ -26,6 +26,15 @@ function App() {
   const [splideFoto,setSplideFoto]=useState(false)
   const [hamburguesa,setHamburguesa]=useState(false)
   const [IDoficina,setIDoficina]=useState(1)
+
+
+  function reset(){
+    setHamburguesa(false);
+    const cap=document.getElementById("capa2");
+    cap.style.visibility='hidden';
+    const scroll=document.getElementsByTagName("body");
+    scroll[0].style.overflowY="auto"
+  }
   return (  
       <Router>
         <div className='TODO' id="todo">
@@ -34,28 +43,23 @@ function App() {
             
             <Routes>
               <Route path='/' element={
-                <Home setIDoficina={setIDoficina} setHamburguesa={()=>{
-                  setHamburguesa(false);
-                  const cap=document.getElementById("capa2"); 
-                  cap.style.visibility='hidden';
-                  const scroll=document.getElementsByTagName("body");
-                  scroll[0].style.overflowY="auto"}} 
+                <Home setIDoficina={setIDoficina} setHamburguesa={reset} 
                   BD={base} splideFoto={splideFoto} setSplideFoto={setSplideFoto} popUpMensaje={popUpMensaje} setPopUpMensaje={setPopUpMensaje} usuario={usuario} setUsuario={setUsuario}/>}>
               </Route>
              
               <Route path='/oficina' element={
-              <OficinaEnEspecial IdOficina={IDoficina} setHamburguesa={()=>{
-                  setHamburguesa(false);
-                  const cap=document.getElementById("capa2");
-                  cap.style.visibility='hidden';
-                  const scroll=document.getElementsByTagName("body");
-                  scroll[0].style.overflowY="auto"}} 
-                  BD={base} splideFoto={splideFoto} setSplideFoto={setSplideFoto} popUpMensaje={popUpMensaje} setPopUpMensaje={setPopUpMensaje} usuario={usuario} setUsuario={setUsuario}/>}>
+              <OficinaEnEspecial IdOficina={IDoficina} setHamburguesa={reset} BD={base} splideFoto={splideFoto} setSplideFoto={setSplideFoto} popUpMensaje={popUpMensaje} setPopUpMensaje={setPopUpMensaje} usuario={usuario} setUsuario={setUsuario}/>}>
               </Route>
              
               <Route path='/mensaje' element={
-                <Mensajes/>
+                <Mensajes setHamburguesa={reset}/>
               }></Route>
+
+              <Route path='/perfil' element={
+                <Perfil setHamburguesa={reset}/>
+              }></Route>
+
+
             </Routes>
             
             

@@ -1,7 +1,13 @@
 import React,{useState,useEffect} from 'react';
 import Chat from "../componentes/chat.js";
 
-function mensaje(params) {
+const Mensajes=({setHamburguesa})=> {
+
+
+    useEffect(()=>{
+        setHamburguesa()
+    },[])
+
     return(
         <>
         <Chat/>
@@ -10,4 +16,4 @@ function mensaje(params) {
     )
 }
 
-export default mensaje
+export default Mensajes
