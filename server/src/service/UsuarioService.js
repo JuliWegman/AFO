@@ -1,7 +1,9 @@
 import { query } from "express";
 import UsuarioRepository from "../repository/UsuarioRepository.js";
-const repo=new UsuarioRepository();
+import AlquilerRepository from "../repository/AlquilerRepository.js"
 
+const repo=new UsuarioRepository();
+const repoAlquiler=new AlquilerRepository();
 
 export class UsuarioService{
 
@@ -12,6 +14,10 @@ export class UsuarioService{
 
     async getUsuarioById(id){
         return await repo.getUsuarioById(id)
+    }
+
+    async getAlquileresByUser(id){
+        return await repoAlquiler.getAlquileresByUser(id)
     }
 
 }

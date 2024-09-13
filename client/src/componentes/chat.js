@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 
 
 const Chat = () => {
-    // Define your styles as a JavaScript object
+    
+
+
     const styles = {
         chat: {
             display: 'flex',
@@ -22,13 +24,14 @@ const Chat = () => {
             backgroundColor: 'rgba(0, 0, 0, 0.1)',
         },
         containerd: {
-            flex: '0 0 80%',
+            flex: '80% 0 0',
             backgroundColor: '#fafafa',
             textAlign: 'center',
         },
         separacion1: {
             display: 'flex', 
             flexDirection: 'row',
+            alignItems: 'center',
             height: '50%',
             width: '100%',
             border: '1px solid rgba(0, 0, 0, 0.03)',
@@ -53,40 +56,66 @@ const Chat = () => {
         },
         botonN: {
             cursor: 'Pointer',
-            width: '16%',
-            height: '11%',
+            width: '100%',
+            height: '100%',
             backgroundColor: '#F87C18',
             borderColor: '#F87C18',
             borderWidth: 0,
             borderRadius: '7px 7px 7px 7px',
             fontSize: '80%',
             margin: '0.3%',
+
         },
         heading: {
             fontSize: '70%',
             color: '#333',
         },
+        botonashe: {
+            display: 'flex',
+            cursor: 'Pointer',
+            width: '16%',
+            height: '11%',
+            backgroundColor: '#F87C18',
+            borderColor: '#F87C18',
+            borderWidth: 0,
+            borderRadius: '7px 7px 7px 7px',
+            fontSize: '100%',
+            margin: '0.3%',
+            textAlign: 'center',
+            alignItems: 'center',
+        },
+        contenedor: {
+            display: 'flex', 
+            flexDirection: 'row',
+            alignItems: 'center',
+            height: '100%',
+            width: '90%',
+            marginLeft: '5%',
+        },
     };
 
     return (
         <div style={styles.chat}>
-            <div style={styles.containeri}></div>
+            
             <div style={styles.containerd}>
                 <div style ={styles.separacion1}>
-                    <button style ={styles.botonR}>Enviar Mensaje</button>
-                    <button style ={styles.botonN}>Ver Perfil</button>
-                    <div style ={styles.rect}>
-                        <h1>Acerca de oficina en </h1>
-                    </div>
+                        <div style={styles.contenedor}>
+                        <button style ={styles.botonR}>Enviar Mensaje</button>
+                        <Link style={styles.botonashe} to='/perfil'><button style ={styles.botonN}>Ver Perfil</button></Link>
+                        <div style ={styles.rect}>
+                            <h1>Acerca de oficina en </h1>
+                        </div>
+                    </div> 
                 </div>
                 <div style ={styles.separacion1}>
-                    <button style ={styles.botonR}>Enviar Mensaje</button>
-                    <button style ={styles.botonN}>Ver Perfil</button>
-                    <div style ={styles.rect}>
-                        <h1>Acerca de oficina en </h1>
-                    </div>
+                        <div style={styles.contenedor}>
+                        <button style ={styles.botonR}>Enviar Mensaje</button>
+                        <Link style={styles.botonashe} to='/perfil'><button style ={styles.botonN}>Ver Perfil</button></Link>
+                        <div style ={styles.rect}>
+                            <h1>Acerca de oficina en </h1>
+                        </div>
+                    </div> 
                 </div>
-                
             </div>
             
         </div>

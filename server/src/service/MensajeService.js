@@ -30,15 +30,12 @@ export class MensajeService{
                     collection.push({id_usuario:mensaje.id_enviador,mensajes:[mensaje]})
                 }
             }
-            
         });
 
-        collection.forEach(async chat=>{
-            chat.fotoUser=(await userRepo.getUsuarioById(chat.id_usuario)).data.foto
-            console.log(chat.fotoUser);
-            console.log("aaaaa");
-        })
 
+        for (let i = 0; i < collection.length; i++) {
+            collection[i].fotoUser=(await userRepo.getUsuarioById(collection[i].id_usuario)).data.foto;
+        }
 
         data=collection
         return {data,error}

@@ -18,7 +18,7 @@ import axios from 'axios';
 
 
 
-const IDusuario=3;
+const IDusuario=1;
 
 function App() {
   const [usuario,setUsuario]=useState({})
@@ -26,19 +26,30 @@ function App() {
   const [splideFoto,setSplideFoto]=useState(false)
   const [hamburguesa,setHamburguesa]=useState(false)
   const [IDoficina,setIDoficina]=useState(1)
+  const [abierto,setAbierto]=useState(false)
+
+    function reset(){
+      setHamburguesa(false);
+      const cap=document.getElementById("capa2");
+      cap.style.visibility='hidden';
+      const scroll=document.getElementsByTagName("body");
+      scroll[0].style.overflowY="auto"
+    }
+    useEffect(()=>{
 
 
-  function reset(){
-    setHamburguesa(false);
-    const cap=document.getElementById("capa2");
-    cap.style.visibility='hidden';
-    const scroll=document.getElementsByTagName("body");
-    scroll[0].style.overflowY="auto"
-  }
-  useEffect(()=>{
-      axios.get('/usuario/'+IDusuario)
-     .then(res=>{setUsuario(res.data)})
-  },[])
+      async function getData(){
+        const res=await axios.get('/usuario/'+IDusuario)
+        setUsuario(res.data)
+        setAbierto(true)
+      } 
+      
+      getData()
+        
+
+    },[])
+
+  if (!abierto) return null
 
   return (  
       <Router>
@@ -59,7 +70,7 @@ function App() {
               </Route>
              
               <Route path='/mensaje' element={
-                <Mensajes setHamburguesa={reset}/>
+                <Mensajes setHamburguesa={reset} usuario={usuario}/>
               }></Route>
 
               <Route path='/perfil' element={
@@ -67,7 +78,7 @@ function App() {
               }></Route>
 
               <Route path='/alquileres' element={
-                <Alquileres setHamburguesa={reset}/>
+                <Alquileres setHamburguesa={reset} usuario={usuario}/>
               }></Route>
               
 

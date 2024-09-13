@@ -10,11 +10,6 @@ import { Link } from 'react-router-dom';
 
 
 const Header = ({hamburguesa,setHamburguesa,usuario,open}) => {
-
-
-
-  
-
   return (
     <>
         <div className='capa' id='capa2' onClick={()=>{setHamburguesa(false);const cap=document.getElementById("capa2"); cap.style.visibility='hidden';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="auto"}}></div>

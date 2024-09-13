@@ -1,0 +1,4 @@
+.Mensajes{
+    display: flex;
+    flex-direction: row;
+}

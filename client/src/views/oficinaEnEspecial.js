@@ -35,28 +35,31 @@ function OficinaEnEspecial({IdOficina,setHamburguesa,splideFoto,setSplideFoto,po
   const [vendedor, setVendedor] = useState({});
   const [localidad, setLocalidad] = useState("");
   const [barrio, setBarrio] = useState({});
-  
+  const [abierto,setAbierto]=useState(false)
 
   useEffect(() => {
-     axios.get('/oficina/'+IdOficina)
-     .then(res=>{setOficina(res.data);
-       setLocalidad(res.data.localidad);
-       setBarrio({nombre:res.data.barrio});
-       setDuracion(res.data.duracion);
-       console.log(res.data);
-     })
-    
-     axios.get('/oficina/'+IdOficina+'/fotos')
-     .then(res=>{setFotoOficina(res.data);})
+    async function getData(){
+      const res1=await axios.get('/oficina/'+IdOficina)
+      setOficina(res1.data);
+      setLocalidad(res1.data.localidad);
+      setBarrio({nombre:res1.data.barrio});
+      setDuracion(res1.data.duracion);
 
-     axios.get('/usuario/' + IDvendedor)
-     .then(res=>{setVendedor(res.data);})
+      const res2= await axios.get('/oficina/'+IdOficina+'/fotos')
+      setFotoOficina(res2.data);
 
+      const res3=await axios.get('/usuario/' + IDvendedor)
+      setVendedor(res3.data);
+
+      setAbierto(true)
+    }
+
+    getData()
     setHamburguesa(false)
 
   }, []);
 
-
+  if (!abierto) return <div>Cargando</div>
   return (
     <>
     <div className='capa' id='capa1' onClick={()=>{setPopUpMensaje(false);setSplideFoto(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="auto"}}></div>

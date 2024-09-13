@@ -27,4 +27,21 @@ export default class AlquilerRepository{
         return {data,error}
     }
 
+    async getAlquileresByUser(id){
+        let data=null;
+        var error=null;
+        try {
+            var sql="select * from alquiler where id_usuario=$1"
+            const values=[id]
+            const result=await this.BDclient.query(sql,values)
+            if(result.rows.length>0){
+                data=result.rows;
+            }
+        } catch (e) {
+            error=e;
+            console.log(error);
+        }
+        return {data,error}
+    }
+
 }
