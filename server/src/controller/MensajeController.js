@@ -29,4 +29,16 @@ router.post('/',async(req,res)=>{
 
 });
 
+router.get('/:id',async(req,res)=>{
+    const id=req.params.id;
+
+    const {data,error}=await menService.getMensajesByUser(id)
+
+    if (error!=null) {
+        return res.status(400).send(error)
+        }else{
+        return res.status(200).send(data)
+        }
+});
+
 export default router;

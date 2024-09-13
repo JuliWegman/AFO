@@ -5,28 +5,13 @@ import imgLogo  from '../logo/LogoAfo.png';
 // import axios from 'axios';
 import Menu from './menu.js'
 
-import { createClient } from '@supabase/supabase-js'
 import { Link } from 'react-router-dom';
 
-const BDconfig={
-  key:process.env.KEY_SUPABASE ||"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJieWp0a2N0ZXN0ZGRmenJreHVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc0MTYxNzMsImV4cCI6MjAzMjk5MjE3M30.7tVPa4prqRVWLhuISTg97e1eulZv09UqD-p5Pca4nx8"
-  ,url:process.env.URL_SUPABASE ||"https://bbyjtkctestddfzrkxug.supabase.co"
-}
-const BD=createClient(BDconfig.url,BDconfig.key)
 
-const Header = ({hamburguesa,setHamburguesa,IDuser, setUsuario,usuario,open}) => {
 
-  useEffect(() => {
+const Header = ({hamburguesa,setHamburguesa,usuario,open}) => {
 
-    async function fetchData(){
-      const res3=await BD.from('usuario').select().eq('id_usuario',IDuser).maybeSingle()
-      setUsuario(res3.data)
-    }
-    // axios.get('/usuario/'+IDuser)
-    // .then(res=>{setUsuario(res.data)})
-    fetchData();
 
-  }, [IDuser,setUsuario]);
 
   
 

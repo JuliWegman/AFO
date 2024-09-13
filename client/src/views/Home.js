@@ -1,34 +1,34 @@
 import React ,{useEffect, useState} from "react";
 import "../css/home.css"
-import lupa from "../logo/lupa.jpg"
-import Logo from "../componentes/logo.js";
+
 import Footer from "../componentes/footer.js";
 import { Link } from 'react-router-dom';
+import axios from "axios";
 
 
-const FotosOficinas=[{contenido:"https://i.ibb.co/0sV4Lc7/images.jpg"},{contenido:"https://i.ibb.co/882k2cN/download.jpg"},{contenido:"https://i.ibb.co/0qHxTzD/images.jpg"},{contenido:"https://www.eloficial.ec/wp-content/uploads/2020/08/portada-arq-dis.png"}]
+const FotosOficinas=[{contenido:"https://i.ibb.co/0sV4Lc7/images.jpg"},{contenido:"https://i.ibb.co/882k2cN/download.jpg"},{contenido:"https://img.freepik.com/foto-gratis/habitacion-vacia-sillas-escritorios_23-2149008873.jpg"},{contenido:"https://www.eloficial.ec/wp-content/uploads/2020/08/portada-arq-dis.png"}]
+const Barrios=[{barrio:"Caballito"},{barrio:"Recoleta"},{barrio:"Caballito"},{barrio:"Caballito"}]
+const Duraciones=[{duracion:"Semana"},{duracion:"Mes"},{duracion:"Semana"},{duracion:"Día"}]
 
 
 
-const Home = ({setIDoficina,setHamburguesa,BD,usuario,setUsuario}) => {
+const Home = ({setIDoficina,setHamburguesa,usuario,setUsuario}) => {
     const [oficinas,setOficinas]=useState([""])
     const [fotoOficinas,setFotoOficina]=useState([""])
+    const [next,setNext]=useState()
+    const [abierto,setAbierto]=useState(false)
 
         useEffect(()=>{
-            async function fetchData(){
-                const res1=await BD.from('oficina').select('id_oficina,tamaño,sillas,baños,ambientes,armarios,calle,altura,computadoras,personas,localidad:id_localidad(nombre),barrio:id_barrio(nombre),usuario:id_usuario(nombre,apellido,mail),precio,duracion:id_duracion(tiempo),descripcion').range(0,4).order('id_oficina',{ascending:true})
-                setOficinas(res1.data)
-                // oficinas.forEach(async (oficina)=>{
-                //     const foto=await BD.from('foto').select().eq('id_oficina',oficina.id_oficina)
-
-                //     setFotoOficina([...fotoOficinas, foto.data[0]])
-                // })
+            async function getData(){
+                const res=await axios.get("/oficina?limit=4&offset=0");
+                setOficinas(res.data.data)
+                setAbierto(true)
             }
-
-            fetchData();
-
-            setHamburguesa()
+                getData()
+                setHamburguesa()
         },[])
+            
+        if (!abierto) return null
     return(
         <div>
             <div className="buscador">
@@ -65,25 +65,41 @@ const Home = ({setIDoficina,setHamburguesa,BD,usuario,setUsuario}) => {
 
                         <div className="oficina" onClick={()=>{setIDoficina(oficinas[0].id_oficina)}}>
                         <Link to='/oficina'>
-                            <img src={FotosOficinas[0].contenido} alt="fotoOficina1"/>                        
+                            <img src={FotosOficinas[0].contenido} alt="fotoOficina1"/>
+                            <div className="info">
+                                <h3>${oficinas[0].precio} Por {Duraciones[0].duracion}</h3>
+                                <p>{oficinas[0].calle} {oficinas[0].altura}, {Barrios[0].barrio}</p>
+                            </div>                 
                         </Link>
                         </div>
 
                         <div className="oficina" onClick={()=>{setIDoficina(oficinas[1].id_oficina)}}>
                         <Link to='/oficina'>
                         <img src={FotosOficinas[1].contenido} alt="fotoOficina1"/>
+                        <div className="info">
+                                <h3>${oficinas[1].precio} Por {Duraciones[1].duracion}</h3>
+                                <p>{oficinas[1].calle} {oficinas[1].altura}, {Barrios[1].barrio}</p>
+                            </div>    
                         </Link>
                         </div>
 
                         <div className="oficina" onClick={()=>{setIDoficina(oficinas[2].id_oficina)}}>
                         <Link to='/oficina'>
                         <img src={FotosOficinas[2].contenido} alt="fotoOficina1"/>
+                        <div className="info">
+                                <h3>${oficinas[2].precio} Por {Duraciones[2].duracion}</h3>
+                                <p>{oficinas[2].calle} {oficinas[2].altura}, {Barrios[2].barrio}</p>
+                            </div>    
                         </Link>
                         </div>
 
                         <div className="oficina" onClick={()=>{setIDoficina(oficinas[3].id_oficina)}}>
                         <Link to='/oficina'>
                         <img src={FotosOficinas[3].contenido} alt="fotoOficina1"/>
+                        <div className="info">
+                                <h3>${oficinas[3].precio} Por {Duraciones[3].duracion}</h3>
+                                <p>{oficinas[3].calle} {oficinas[3].altura}, {Barrios[3].barrio}</p>
+                            </div>    
                         </Link>
                         </div>
                     </div>
@@ -119,5 +135,6 @@ const Home = ({setIDoficina,setHamburguesa,BD,usuario,setUsuario}) => {
             </div>
         </div>
     )
+        
 }
 export default Home;

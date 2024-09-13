@@ -7,7 +7,6 @@ const userService=new UsuarioService();
 router.get('/',async (req,res)=>{
 
     const {data,error}= await userService.getUsuarrios()
-        
     if (error!=null) {
         return res.status(400).send(error)
     }else{

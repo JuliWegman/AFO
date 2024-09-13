@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.titulo{
+    font-size: 100%;
+    margin-top: 2.5%;
+    text-align: center;
+}
+.fila{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+}
+.volver{
+    margin-top: 2.5%;
+}
+.volver p{
+    color: rgba(0, 0, 0, 0.5);
+    text-decoration-line: underline; 
+}

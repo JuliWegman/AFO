@@ -8,7 +8,6 @@ router.get('/',async (req,res)=>{
 
     const limit=req.query.limit;
     const offset=req.query.offset;
-
     const {collection,error}= await officeService.getOficinas(limit,offset)
         
     if (error!=null) {

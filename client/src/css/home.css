@@ -114,9 +114,21 @@
     height: 17rem;
     border: #141414 2px solid;
     border-radius: 10%;
+    
 }
 .oficina img{
     border-radius: 10% 10% 0 0;
     height: 75%;
     width: 100%;
+}
+.oficina p{
+    font-size: 80%;
+    color: rgba(0, 0, 0, 0.5);
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-top: 5%;
 }

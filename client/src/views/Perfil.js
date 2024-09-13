@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const MiPerfil = ({ setHamburguesa }) => {
+const MiPerfil = ({ setHamburguesa ,Usuario}) => {
 
     useEffect(() => {
         setHamburguesa();
@@ -12,50 +12,63 @@ const MiPerfil = ({ setHamburguesa }) => {
             justifyContent: 'center', 
             alignItems: 'center', 
             flexDirection: 'column',
-            marginTop: '2.5%',
-            marginLeft: '2.5%',
+            marginTop: '7.5%',
+            marginLeft: '15%',
             backgroundColor: '#fafafa',
-            width: '95%',
-            height: '80vh',
+            width: '70%',
+            height: '60vh',
             borderRadius: '8px',
             border: '3px solid rgba(0, 0, 0, 0.05)',
-            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', 
+            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)', 
         },
         rect: {
-            height: '40%',
-            width: '0.1%',
+            height: '90%',
+            width: '0.2%',
             backgroundColor: 'rgba(0, 0, 0, 0.25)',
             alignItems: 'center',
         },
-        lineaH: {
-            height: '0.3%',
-            width: '7%', 
-            backgroundColor: 'rgba(0, 0, 0, 0.25)',
-            margin: '0 auto', 
+        todo:{
+            display:'flex',
+            justifyContent: 'space-evenly', 
+            alignItems: 'center', 
+            flexDirection: 'row',
+            height: '90%',
+            width:'100%',
+
         },
-        heading: {
-            color: 'rgba(0, 0, 0, 0.5)',
-            fontSize: '100%',
-            textAlign: 'center',
-            margin: '1rem 0',
-            fontWeight: 'normal',
+        foto:{
+            width:'20%',
+            height:'55%',
+            borderRadius:'100%',
         },
-        parteArriba: {
-            marginBottom: '5%',
-            textAlign: 'center',
-            width: '100%',
+        info:{
+            width:'45%',
+            display:'flex',
+            flexDirection:'column',
+            justifyContent: 'space-evenly', 
+            height:'70%'
+
         },
+        nombre:{
+            fontSize:'5em',
+        }
     };
 
     return (
-        
+        <>
         <div style={styles.container}>
-            <div style={styles.parteArriba}>
-                <div style={styles.lineaH}></div>
-                <p style={styles.heading}>Se unió a AFO el 26/06/2011</p>
+            
+            <div style={styles.todo}>
+                <img src={Usuario.foto} style={styles.foto} alt='Foto'/>
+                <div style={styles.rect}></div>
+                <div style={styles.info}>
+                    <h1 style={styles.nombre}>{Usuario.nombre} {Usuario.apellido}</h1>
+                    <h2>mail: {Usuario.mail}</h2>
+                    <h2>telefono: {Usuario.telefono}</h2>
+                </div>
             </div>
-            <div style={styles.rect}></div>
         </div>
+        </>
     );
 }
 

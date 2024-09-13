@@ -17,25 +17,18 @@ const IDusuario=3;
 
 
 
- async function PostMensaje(BD,contenido,mail,telefono){
+ async function PostMensaje(contenido,mail,telefono){
    axios.post('/mensaje',{
      "id_enviador":IDusuario,
      "id_receptor":IDvendedor,
      "contenido":contenido,
      "mail":mail,
-     "telefono":telefono
+     "telefono":telefono,
+     "fecha":new Date(Date.now())
    })
-  const mensaje={
-     "id_enviador":IDusuario,
-     "id_receptor":IDvendedor,
-     "contenido":contenido,
-     "mail":mail,
-     "telefono":telefono
-     }
-  await BD.from('mensaje').insert(mensaje)
 }
 
-function OficinaEnEspecial({IdOficina,setHamburguesa,BD,splideFoto,setSplideFoto,popUpMensaje,setPopUpMensaje,usuario,setUsuario}) {
+function OficinaEnEspecial({IdOficina,setHamburguesa,splideFoto,setSplideFoto,popUpMensaje,setPopUpMensaje,usuario}) {
   const [oficina, setOficina] = useState({});
   const [fotoOficina, setFotoOficina] = useState([""]);
   const [duracion, setDuracion] = useState("");
@@ -81,7 +74,7 @@ function OficinaEnEspecial({IdOficina,setHamburguesa,BD,splideFoto,setSplideFoto
             </div>
             <div className='boton-V'>
             <a href='#header'><button  onClick={()=>{
-                PostMensaje(BD,document.getElementById("inputPopUpMensaje").value,document.getElementById("inputMail").value,document.getElementById("inputTelefono").value);
+                PostMensaje(document.getElementById("inputPopUpMensaje").value,document.getElementById("inputMail").value,document.getElementById("inputTelefono").value);
                 setPopUpMensaje(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'
                 
             }}>Enviar</button></a>
