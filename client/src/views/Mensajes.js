@@ -1,66 +1,67 @@
 import React, { useState, useEffect } from 'react';
-import Chat from "../componentes/chat.js";
 import axios from 'axios';
+import Chat from "../componentes/chat.js";
 import '../css/mensajes.css';
 
 const Mensajes = ({ setHamburguesa, usuario }) => {
     const [abierto, setAbierto] = useState(false);
     const [mensajes, setMensajes] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         async function getData() {
             try {
-                const res2 = await axios.get('/mensaje/' + usuario.id_usuario);
+                const res2 = await axios.get(`/mensaje/${usuario.id_usuario}`);
                 setMensajes(res2.data);
                 setAbierto(true);
+                setLoading(false);
             } catch (error) {
                 console.error('Error al obtener los mensajes:', error);
+                setError('Error al obtener los mensajes.');
+                setLoading(false);
             }
         }
 
-        // Solo llamamos a setHamburguesa si es necesario
         if (typeof setHamburguesa === 'function') {
-            setHamburguesa(true); // Asegúrate de pasar true solo una vez
+            setHamburguesa(true);
         }
 
         getData();
-        
-        // Solo ejecutamos useEffect cuando cambie `usuario.id_usuario`
     }, [usuario.id_usuario]);
 
+    if (loading) return <p>Cargando...</p>;
+    if (error) return <p>{error}</p>;
     if (!abierto) return null;
 
     return (
         <div className='Mensajes'>
             <Chat />
-            
+
             <div className='infoUser'>
-                <div className='containerfotos2'>
-                    {mensajes[0] && (
-                        <>
-                            <img src={mensajes[0].fotoUser} alt='Foto user' />
-                            <h4>{mensajes[0].contenido}</h4>
-                            <h4>Julian Wegman</h4>
-                        </>
-                    )}
-                </div>
+                {mensajes.map((mensaje, index) => (
+                    <div key={index} className='containerfotos2'>
+                        <img src={mensaje.fotoUser} alt='Foto del usuario' />
+                        <h4>{mensaje.contenido}</h4>
+                        <h4>{mensaje.nombre} {mensaje.apellido}</h4>
+                    </div>
+                ))}
             </div>
 
             <div className='texto1'>
-                <h2>Chat Reciente: Julian Wegman</h2>
+                <h2>Chat Reciente: </h2>
             </div>
-            
+
             <div className='containerfotos'>
-                <div className='foto1'>
-                    {mensajes[0] && (
-                        <>
-                            <img src={mensajes[0].fotoUser} alt='Foto user' />
-                            <h4 className='mensajeE'>
-                                Hola Axel, te quería consultar si puedo enviar con mi equipo de trabajo 3 escritorios más. Saludos.
-                            </h4>
-                        </>
-                    )}
-                </div>
+                {mensajes.map((mensaje, index) => (
+                    <div key={index} className='foto1'>
+                        <img src={mensaje.fotoUser} alt='Foto del usuario' />
+                        <h4 className='mensajeE'>
+                            {mensaje.contenido}
+                        </h4>
+                        <h4>{mensaje.nombre} {mensaje.apellido}</h4>
+                    </div>
+                ))}
             </div>
         </div>
     );
