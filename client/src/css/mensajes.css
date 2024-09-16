@@ -2,3 +2,83 @@
     display: flex;
     flex-direction: row;
 }
+.containerfotos img{
+    height: 5rem;
+    width: 5rem;
+}
+.containerfotos2 img{
+    height: 3rem;
+    width: 3rem;
+    border-radius: 100%;
+}
+.foto1{
+    position: absolute;
+    top: 29.4%;
+    left: 61%;
+}
+.foto2{
+    position: absolute;
+    top: 69.2%;
+    left: 61.5%;
+}
+.infoUser{
+    cursor: default;
+    position: absolute;
+    left: 3%;
+    top: 17%;
+    width: 20vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.infoUser h4{
+    font-size: 120%;
+    width: 10rem;
+    position: absolute;
+    top: 30%;
+    margin-left: 4rem;
+}
+.infoUser2{
+    cursor: default;
+    position: absolute;
+    left: 3%;
+    top: 27%;   
+    width: 20vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.infoUser2 h4{
+    font-size: 120%;
+    width: 10rem;
+    position: absolute;
+    top: 30%;
+    margin-left: 4rem;
+}
+.texto1{
+    cursor: default;
+    position: absolute;
+    top: 28%;
+    left: 27%;
+    display: flex;
+    flex-direction: row;
+    width: 50vh;
+}
+.texto2{
+    cursor: default;
+    position: absolute;
+    top: 68%;
+    left: 27%;
+    display: flex;
+    flex-direction: row;
+    width: 50vh;
+}
+.mensajeE{
+    position: absolute;
+    top: 40%;
+    left: 115%;
+    width: 26rem;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 80%;
+    text-align: justify;
+}

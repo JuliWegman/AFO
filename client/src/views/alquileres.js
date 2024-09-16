@@ -36,7 +36,8 @@ const Alquileres =({setIDoficina,setHamburguesa,usuario})=>{
             <div className="fila">
                 <div className="oficina" onClick={()=>{setIDoficina(alquileres[0].id_oficina)}}>
                     <Link to='/oficina'>
-                        <img src={FotosOficinas[0].contenido} alt="fotoOficina1"/>                        
+                        <img src={FotosOficinas[0].contenido} alt="fotoOficina1"/>
+                                       
                     </Link>
                 </div>
             </div>:<></>

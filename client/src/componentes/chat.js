@@ -41,7 +41,8 @@ const Chat = () => {
             height: '25%',
             marginLeft: '20%',
             border: '1px solid rgba(0, 0, 0, 0.1)',
-            fontSize: '50%',
+            fontSize: '60%',
+            textAlign: 'start',
         },
         botonR: {
             cursor: 'Pointer',
@@ -50,9 +51,10 @@ const Chat = () => {
             backgroundColor: '#EC303D',
             borderColor: '#EC303D',
             borderWidth: 0,
+            marginTop: '3%',
             borderRadius: '7px 7px 7px 7px',
             fontSize: '80%',
-            margin: '0.3%',
+            
         },
         botonN: {
             cursor: 'Pointer',
@@ -63,7 +65,7 @@ const Chat = () => {
             borderWidth: 0,
             borderRadius: '7px 7px 7px 7px',
             fontSize: '80%',
-            margin: '0.3%',
+
 
         },
         heading: {
@@ -80,7 +82,8 @@ const Chat = () => {
             borderWidth: 0,
             borderRadius: '7px 7px 7px 7px',
             fontSize: '100%',
-            margin: '0.3%',
+            marginLeft: '0.3%',
+            marginTop: '3%',
             textAlign: 'center',
             alignItems: 'center',
         },
@@ -92,30 +95,35 @@ const Chat = () => {
             width: '90%',
             marginLeft: '5%',
         },
+        texto: {
+            cursor: 'default',
+        },
+        texto2: {
+            cursor: 'default',
+        },
+        info: {
+            marginTop: '1%',
+            marginLeft: '18.4%',
+        }
     };
 
     return (
         <div style={styles.chat}>
-            
+            <div style={styles.containeri}>
+            </div>
             <div style={styles.containerd}>
                 <div style ={styles.separacion1}>
                         <div style={styles.contenedor}>
-                        <button style ={styles.botonR}>Enviar Mensaje</button>
-                        <Link style={styles.botonashe} to='/perfil'><button style ={styles.botonN}>Ver Perfil</button></Link>
+                                <button style ={styles.botonR}>Enviar Mensaje</button>
+                                <Link style={styles.botonashe} to='/perfil'><button style ={styles.botonN}>Ver Perfil</button></Link>
                         <div style ={styles.rect}>
-                            <h1>Acerca de oficina en </h1>
+                            <div style={styles.info}>
+                                    <h1>Acerca de oficina en Olaya 1075</h1>
+                                </div>
                         </div>
                     </div> 
                 </div>
-                <div style ={styles.separacion1}>
-                        <div style={styles.contenedor}>
-                        <button style ={styles.botonR}>Enviar Mensaje</button>
-                        <Link style={styles.botonashe} to='/perfil'><button style ={styles.botonN}>Ver Perfil</button></Link>
-                        <div style ={styles.rect}>
-                            <h1>Acerca de oficina en </h1>
-                        </div>
-                    </div> 
-                </div>
+
             </div>
             
         </div>
