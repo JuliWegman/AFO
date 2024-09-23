@@ -31,6 +31,9 @@ export class OficinaService{
     async getAlquileresByOficina(idOficina){
         return await repoAlquileres.getAlquileresByOficina(idOficina)
 
+        
+        
+
     }
 
     async getFotosByOficina(idOficina){

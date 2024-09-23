@@ -12,21 +12,12 @@ import '../css/oficinaEnEspecial.css'
 import Footer from '../componentes/footer.js';
 
 
-const IDvendedor=1;
+var IDvendedor=1;
 const IDusuario=3;
 
 
 
- async function PostMensaje(contenido,mail,telefono){
-   axios.post('/mensaje',{
-     "id_enviador":IDusuario,
-     "id_receptor":IDvendedor,
-     "contenido":contenido,
-     "mail":mail,
-     "telefono":telefono,
-     "fecha":new Date(Date.now())
-   })
-}
+ 
 
 function OficinaEnEspecial({IdOficina,setHamburguesa,splideFoto,setSplideFoto,popUpMensaje,setPopUpMensaje,usuario}) {
   const [oficina, setOficina] = useState({});
@@ -37,6 +28,17 @@ function OficinaEnEspecial({IdOficina,setHamburguesa,splideFoto,setSplideFoto,po
   const [barrio, setBarrio] = useState({});
   const [abierto,setAbierto]=useState(false)
 
+
+  async function PostMensaje(contenido,mail,telefono){
+    axios.post('/mensaje',{
+      "id_enviador":usuario.id_usuario,
+      "id_receptor":IDvendedor,
+      "contenido":contenido,
+      "mail":mail,
+      "telefono":telefono,
+      "fecha":new Date(Date.now())
+    })
+ }
   useEffect(() => {
     async function getData(){
       const res1=await axios.get('/oficina/'+IdOficina)

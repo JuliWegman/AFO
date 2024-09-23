@@ -16,28 +16,31 @@ export class MensajeService{
         var {data,error}=await repo.getMensajesByUser(id)
         const collection=[];
         var nuevo=true
-        data.forEach(mensaje => {
-            collection.forEach(chat => {
-                if (mensaje.id_enviador==chat.id_usuario || mensaje.id_receptor==chat.id_usuario) {
-                    chat.mensajes.push(mensaje)
-                    nuevo=false
+        if (data!=null) {
+            data.forEach(mensaje => {
+                collection.forEach(chat => {
+                    if (mensaje.id_enviador==chat.id_usuario || mensaje.id_receptor==chat.id_usuario) {
+                        chat.mensajes.push(mensaje)
+                        nuevo=false
+                    }
+                });
+                if(nuevo){
+                    if (mensaje.id_enviador==id) {
+                        collection.push({id_usuario:mensaje.id_receptor,mensajes:[mensaje]})
+                    }else{
+                        collection.push({id_usuario:mensaje.id_enviador,mensajes:[mensaje]})
+                    }
                 }
             });
-            if(nuevo){
-                if (mensaje.id_enviador==id) {
-                    collection.push({id_usuario:mensaje.id_receptor,mensajes:[mensaje]})
-                }else{
-                    collection.push({id_usuario:mensaje.id_enviador,mensajes:[mensaje]})
-                }
+
+            for (let i = 0; i < collection.length; i++) {
+                var user= (await userRepo.getUsuarioById(collection[i].id_usuario)).data
+                collection[i].fotoUser=user.foto;
+                collection[i].nombreUser=user.nombre +" "+ user.apellido
             }
-        });
 
-
-        for (let i = 0; i < collection.length; i++) {
-            collection[i].fotoUser=(await userRepo.getUsuarioById(collection[i].id_usuario)).data.foto;
+            data=collection
         }
-
-        data=collection
         return {data,error}
     }
 }

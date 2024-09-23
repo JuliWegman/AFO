@@ -19,3 +19,19 @@
     color: rgba(0, 0, 0, 0.5);
     text-decoration-line: underline; 
 }
+.alquiler{
+    display: flex;
+    width: 16%;
+    height: 17rem;
+    border: #141414 2px solid;
+    border-radius: 10%;
+    
+}
+.alquiler img{
+    border-radius: 10% 10% 0 0;
+    height: 75%;
+    width: 100%;
+}
+.link{
+    width: 100%;
+}

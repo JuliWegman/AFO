@@ -1,20 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Chat from "../componentes/chat.js";
+import ChatUser from "../componentes/chatUser.js"
 import '../css/mensajes.css';
 
 const Mensajes = ({ setHamburguesa, usuario }) => {
-    const [abierto, setAbierto] = useState(false);
     const [mensajes, setMensajes] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [indexActual,setIndex]=useState(null)
+    const [a,setA]=useState(0)
+
+    async function PostMensaje(contenido,id_receptor){
+        if (contenido!=null && contenido!="") {
+            axios.post('/mensaje',{
+                "id_enviador":usuario.id_usuario,
+                "id_receptor":id_receptor,
+                "contenido":contenido,
+                "mail":usuario.mail,
+                "telefono":usuario.telefono,
+                "fecha":new Date(Date.now())
+              })
+              setA(a+1)
+        }
+        
+     }
+
+
+    
 
     useEffect(() => {
         async function getData() {
             try {
                 const res2 = await axios.get(`/mensaje/${usuario.id_usuario}`);
                 setMensajes(res2.data);
-                setAbierto(true);
                 setLoading(false);
             } catch (error) {
                 console.error('Error al obtener los mensajes:', error);
@@ -22,48 +41,21 @@ const Mensajes = ({ setHamburguesa, usuario }) => {
                 setLoading(false);
             }
         }
-
-        if (typeof setHamburguesa === 'function') {
-            setHamburguesa(true);
-        }
-
+        
+        setHamburguesa(true);
         getData();
-    }, [usuario.id_usuario]);
+        console.log(mensajes);
+    }, [a]);
 
     if (loading) return <p>Cargando...</p>;
     if (error) return <p>{error}</p>;
-    if (!abierto) return null;
 
     return (
         <div className='Mensajes'>
-            <Chat />
+            <Chat mandar={PostMensaje} mensajes={mensajes} index={indexActual} setIndex={setIndex} id_usuario={usuario.id_usuario}/>
 
-            <div className='infoUser'>
-                {mensajes.map((mensaje, index) => (
-                    <div key={index} className='containerfotos2'>
-                        <img src={mensaje.fotoUser} alt='Foto del usuario' />
-                        <h4>{mensaje.contenido}</h4>
-                        <h4>{mensaje.nombre} {mensaje.apellido}</h4>
-                    </div>
-                ))}
-            </div>
-
-            <div className='texto1'>
-                <h2>Chat Reciente: </h2>
-            </div>
-
-            <div className='containerfotos'>
-                {mensajes.map((mensaje, index) => (
-                    <div key={index} className='foto1'>
-                        <img src={mensaje.fotoUser} alt='Foto del usuario' />
-                        <h4 className='mensajeE'>
-                            {mensaje.contenido}
-                        </h4>
-                        <h4>{mensaje.nombre} {mensaje.apellido}</h4>
-                    </div>
-                ))}
-            </div>
         </div>
+            
     );
 };
 

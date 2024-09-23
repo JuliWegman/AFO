@@ -6,6 +6,21 @@
     height: 5rem;
     width: 5rem;
 }
+.conteinerChat2{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 5%;
+    padding: 2%;
+    font-size: .75em;
+    cursor: pointer;
+    align-items: center;
+}
+.conteinerChat2 img{
+    width: 20%;
+    border-radius: 100%;
+    margin-right: 7.5%;
+}
 .containerfotos2 img{
     height: 3rem;
     width: 3rem;
@@ -81,4 +96,54 @@
     color: rgba(0, 0, 0, 0.6);
     font-size: 80%;
     text-align: justify;
+}
+.chatEnviado{
+    background-color: rgb(82, 82, 240);
+    color: white;
+    float: right;
+    padding: 2%;
+    margin: .5%;
+    border-radius: 30px;
+    font-size: 1em;
+
+}
+
+.chatRecibido{
+    background-color: rgb(222, 226, 226);
+    float: left;
+    padding: 2%;
+    margin: .5%;
+    border-radius: 30px;
+    font-size: 1em;
+}
+
+.mensajes{
+    margin-top:1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 95%;
+    
+}
+.enviarMensaje{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    margin-left: 7%;
+}
+.inputMensaje{
+    width: 90%;
+    padding: 1%;
+    
+}
+.botonMensaje{
+    height: 100%;
+    background-color: rgb(82, 82, 240);
+    cursor: pointer;
+}
+.chatsss{
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    overflow-y: scroll;
 }

@@ -1,9 +1,10 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Link } from 'react-router-dom';
+import ChatUser from './chatUser.js';
 
 
-const Chat = () => {
-    
+const Chat = ({mandar,mensajes,index,setIndex,id_usuario}) => {
+    const [contenido,setContenido]=useState("a")
 
 
     const styles = {
@@ -19,6 +20,7 @@ const Chat = () => {
         },
         containeri: {
             flexDirection: 'column',
+            alignItems:'center',
             flex: '0 0 20%',
             width: '2rem',
             backgroundColor: 'rgba(0, 0, 0, 0.1)',
@@ -110,9 +112,16 @@ const Chat = () => {
     return (
         <div style={styles.chat}>
             <div style={styles.containeri}>
+                <div className='conteinerChat2' onClick={()=>setIndex(null)}>
+                    <h1>inicio</h1>
+                </div>
+                {mensajes && mensajes.map((mensaje, index) => (
+                    <ChatUser mensaje={mensaje} index={index} setIndex={setIndex}/>
+                ))}
             </div>
             <div style={styles.containerd}>
-                <div style ={styles.separacion1}>
+                {index==null
+                ?<div style ={styles.separacion1}>
                         <div style={styles.contenedor}>
                                 <button style ={styles.botonR}>Enviar Mensaje</button>
                                 <Link style={styles.botonashe} to='/perfil'><button style ={styles.botonN}>Ver Perfil</button></Link>
@@ -123,7 +132,28 @@ const Chat = () => {
                         </div>
                     </div> 
                 </div>
+                :
+                <div className='mensajes'>
+                    <div className='chatsss'>
+                    {mensajes[index].mensajes.map((chat) => (
+                        <div className='chatx'>
+                        {chat.id_enviador===id_usuario ? 
+                        
+                            <h1 className='chatEnviado'>{chat.contenido}</h1>
+                        
+                        :
+                            <h1 className='chatRecibido'>{chat.contenido}</h1>
 
+                        }
+                        </div>
+                    ))}
+                    </div>
+                    <div className='enviarMensaje'>
+                        <input className='inputMensaje' placeholder='Mensaje...' id="inputsito"/>  
+                        <button className='botonMensaje' onClick={()=>{mandar(document.getElementById("inputsito").value , mensajes[index].id_usuario); document.getElementById("inputsito").value=""}}>Enviar</button>
+                    </div>
+                </div>} 
+                               
             </div>
             
         </div>

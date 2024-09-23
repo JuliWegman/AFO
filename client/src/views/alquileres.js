@@ -3,13 +3,6 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import '../css/alquileres.css';
 
-const FotosOficinas = [
-  { id: 1, contenido: "https://i.ibb.co/0sV4Lc7/images.jpg" },
-  { id: 2, contenido: "https://i.ibb.co/882k2cN/download.jpg" },
-  { id: 3, contenido: "https://i.ibb.co/0qHxTzD/images.jpg" },
-  { id: 4, contenido: "https://www.eloficial.ec/wp-content/uploads/2020/08/portada-arq-dis.png" }
-];
-
 const Alquileres = ({ setIDoficina, setHamburguesa, usuario }) => {
   const [alquileres, setAlquileres] = useState([]);
   const [abierto, setAbierto] = useState(false);
@@ -34,18 +27,10 @@ const Alquileres = ({ setIDoficina, setHamburguesa, usuario }) => {
       }
     }
     getData();
-  }, [usuario.id_usuario, setHamburguesa]);
+    setHamburguesa()
+  }, []);
 
-  const getFotoUrl = (id) => {
-    const foto = FotosOficinas.find(f => f.id === id);
-    if (foto) {
-      console.log(`URL de la foto para el id ${id}: ${foto.contenido}`);
-      return foto.contenido;
-    } else {
-      console.warn(`No se encontró foto para el id ${id}`);
-      return "URL_DE_FOTO_DE_RESERVA"; 
-    }
-  };
+ 
 
   if (!abierto) {
     console.log('Componente no está abierto.');
@@ -60,8 +45,12 @@ const Alquileres = ({ setIDoficina, setHamburguesa, usuario }) => {
       {alquileres.length > 0 ? (
         <div className="fila">
           {alquileres.map((alquiler) => (
-            <div className='oficina' key={alquiler.id}>
-              <img src={getFotoUrl(alquiler.id_oficina)} alt="foto oficina" />
+            <div className='alquiler' onClick={()=>{setIDoficina(alquiler.id_oficina)}}>
+              <Link to='/oficina' className="link">
+              <img src={alquiler.fotoOficina} alt="foto oficina" />
+              <h3>{new Date(alquiler.inicio).toDateString()}</h3>
+              <h4>{alquiler.oficina}</h4>
+              </Link>
             </div>
           ))}
         </div>

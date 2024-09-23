@@ -53,8 +53,6 @@ function App() {
 
   return (  
       <Router>
-
-
         <div className='TODO' id="todo">
           <div className="TODO" id="home">
             <Header hamburguesa={hamburguesa} setHamburguesa={setHamburguesa} usuario={usuario} open={()=>{setPopUpMensaje(false);setSplideFoto(false);}}/>    
@@ -78,7 +76,7 @@ function App() {
               }></Route>
 
               <Route path='/alquileres' element={
-                <Alquileres setHamburguesa={reset} usuario={usuario}/>
+                <Alquileres setIDoficina={setIDoficina} setHamburguesa={reset} usuario={usuario}/>
               }></Route>
               
 
