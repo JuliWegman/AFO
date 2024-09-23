@@ -121,6 +121,9 @@ const Chat = ({setIDperfil,mandar,mensajes,index,setIndex,id_usuario}) => {
             <div style={styles.containerd}>
                 {index==null
                 ?
+                <>
+                    <h2>Mensaje nuevo de Julian Wegman</h2>
+
                     <div style={styles.contenedor}>
                             <button style ={styles.botonR} onClick={()=>{setIndex(0)}}>Enviar Mensaje</button>
                             <Link style={styles.botonashe} to='/perfil'><button style ={styles.botonN} onClick={()=>{setIDperfil(2)}}>Ver Perfil</button></Link>
@@ -130,6 +133,7 @@ const Chat = ({setIDperfil,mandar,mensajes,index,setIndex,id_usuario}) => {
                             </div>
                         </div>
                     </div> 
+                    </>
                 :
                 <div className='mensajes'>
                     <div className='chatsss'>
