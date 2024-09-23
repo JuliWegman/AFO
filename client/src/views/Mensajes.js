@@ -4,7 +4,7 @@ import Chat from "../componentes/chat.js";
 import ChatUser from "../componentes/chatUser.js"
 import '../css/mensajes.css';
 
-const Mensajes = ({ setHamburguesa, usuario }) => {
+const Mensajes = ({ setIDperfil,setHamburguesa, usuario }) => {
     const [mensajes, setMensajes] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -52,7 +52,7 @@ const Mensajes = ({ setHamburguesa, usuario }) => {
 
     return (
         <div className='Mensajes'>
-            <Chat mandar={PostMensaje} mensajes={mensajes} index={indexActual} setIndex={setIndex} id_usuario={usuario.id_usuario}/>
+            <Chat setIDperfil={setIDperfil} mandar={PostMensaje} mensajes={mensajes} index={indexActual} setIndex={setIndex} id_usuario={usuario.id_usuario}/>
 
         </div>
             

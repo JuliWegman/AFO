@@ -1,8 +1,16 @@
-import React, { useEffect } from 'react';
-
-const MiPerfil = ({ setHamburguesa ,Usuario}) => {
+import React, { useEffect,useState } from 'react';
+import axios from 'axios';
+const MiPerfil = ({ setHamburguesa ,idUsuario}) => {
+    const [Usuario,setUsuario]=useState("")
 
     useEffect(() => {
+        async function getData(){
+            const res=await axios.get('/usuario/'+idUsuario)
+            setUsuario(res.data)
+            console.log(idUsuario);
+        }
+
+        getData()
         setHamburguesa();
     }, []);
 

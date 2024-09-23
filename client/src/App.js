@@ -26,6 +26,7 @@ function App() {
   const [splideFoto,setSplideFoto]=useState(false)
   const [hamburguesa,setHamburguesa]=useState(false)
   const [IDoficina,setIDoficina]=useState(1)
+  const [IDperfil,setIDperfil]=useState(1)
   const [abierto,setAbierto]=useState(false)
 
     function reset(){
@@ -55,7 +56,7 @@ function App() {
       <Router>
         <div className='TODO' id="todo">
           <div className="TODO" id="home">
-            <Header hamburguesa={hamburguesa} setHamburguesa={setHamburguesa} usuario={usuario} open={()=>{setPopUpMensaje(false);setSplideFoto(false);}}/>    
+            <Header setIDperfil={setIDperfil} hamburguesa={hamburguesa} setHamburguesa={setHamburguesa} usuario={usuario} open={()=>{setPopUpMensaje(false);setSplideFoto(false);}}/>    
 
             <Routes>
               <Route path='/' element={
@@ -68,11 +69,11 @@ function App() {
               </Route>
              
               <Route path='/mensaje' element={
-                <Mensajes setHamburguesa={reset} usuario={usuario}/>
+                <Mensajes setIDperfil={setIDperfil} setHamburguesa={reset} usuario={usuario}/>
               }></Route>
 
               <Route path='/perfil' element={
-                <Perfil setHamburguesa={reset} Usuario={usuario}/>
+                <Perfil setHamburguesa={reset} idUsuario={IDusuario}/>
               }></Route>
 
               <Route path='/alquileres' element={

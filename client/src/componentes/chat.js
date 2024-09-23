@@ -1,10 +1,9 @@
-import React,{useState} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import ChatUser from './chatUser.js';
 
 
-const Chat = ({mandar,mensajes,index,setIndex,id_usuario}) => {
-    const [contenido,setContenido]=useState("a")
+const Chat = ({setIDperfil,mandar,mensajes,index,setIndex,id_usuario}) => {
 
 
     const styles = {
@@ -121,17 +120,16 @@ const Chat = ({mandar,mensajes,index,setIndex,id_usuario}) => {
             </div>
             <div style={styles.containerd}>
                 {index==null
-                ?<div style ={styles.separacion1}>
-                        <div style={styles.contenedor}>
-                                <button style ={styles.botonR}>Enviar Mensaje</button>
-                                <Link style={styles.botonashe} to='/perfil'><button style ={styles.botonN}>Ver Perfil</button></Link>
+                ?
+                    <div style={styles.contenedor}>
+                            <button style ={styles.botonR} onClick={()=>{setIndex(0)}}>Enviar Mensaje</button>
+                            <Link style={styles.botonashe} to='/perfil'><button style ={styles.botonN} onClick={()=>{setIDperfil(2)}}>Ver Perfil</button></Link>
                         <div style ={styles.rect}>
                             <div style={styles.info}>
-                                    <h1>Acerca de oficina en Olaya 1075</h1>
-                                </div>
+                                <h1>Acerca de oficina en Olaya 1075</h1>
+                            </div>
                         </div>
                     </div> 
-                </div>
                 :
                 <div className='mensajes'>
                     <div className='chatsss'>

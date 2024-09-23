@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const Header = ({hamburguesa,setHamburguesa,usuario,open}) => {
+const Header = ({setIDperfil,hamburguesa,setHamburguesa,usuario,open}) => {
   return (
     <>
         <div className='capa' id='capa2' onClick={()=>{setHamburguesa(false);const cap=document.getElementById("capa2"); cap.style.visibility='hidden';const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="auto"}}></div>
@@ -24,7 +24,7 @@ const Header = ({hamburguesa,setHamburguesa,usuario,open}) => {
         </div>
         <div className="menu">
           <div className='Rect'>
-            <Link to='/perfil' className='link'><img className="link"  src={usuario.foto} alt="Foto"/></Link>
+            <Link to='/perfil' className='link'><img className="link" onClick={()=>{setIDperfil(usuario.id_usuario)}} src={usuario.foto} alt="Foto"/></Link>
             <b><h1 onClick={()=>{open(); setHamburguesa(true);const cap=document.getElementById("capa2"); cap.style.visibility='visible'; const cap1=document.getElementById("capa1"); if(cap1!=null){ cap1.style.visibility='hidden'};const scroll=document.getElementsByTagName("body");scroll[0].style.overflowY="hidden"}}>☰</h1></b>
           </div>
         </div>
