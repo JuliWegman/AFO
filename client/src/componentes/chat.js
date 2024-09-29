@@ -48,7 +48,7 @@ const Chat = ({setIDperfil,mandar,mensajes,index,setIndex,id_usuario}) => {
         botonR: {
             cursor: 'Pointer',
             width: '16%',
-            height: '11%',
+            height: '5%',
             backgroundColor: '#EC303D',
             borderColor: '#EC303D',
             borderWidth: 0,
@@ -77,7 +77,7 @@ const Chat = ({setIDperfil,mandar,mensajes,index,setIndex,id_usuario}) => {
             display: 'flex',
             cursor: 'Pointer',
             width: '16%',
-            height: '11%',
+            height: '5%',
             backgroundColor: '#F87C18',
             borderColor: '#F87C18',
             borderWidth: 0,
