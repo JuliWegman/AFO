@@ -153,6 +153,7 @@ button{
     width: 33%;
 }
 .boton-N{
+    cursor: pointer;
     margin-top: 3%;
     height: 105%;
     width: 40%;

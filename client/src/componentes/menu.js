@@ -18,7 +18,7 @@ const Menu = ({ texto,open }) => {
       
       <div className="menu-opciones">
         <div className='opcion'>
-        <Link to='/'><i class="fa-solid fa-house fa-2xl"></i></Link>
+        <Link to='/'><i class="fa-light fa-house fa-2x1"></i></Link>
         <p><Link to='/'>Home</Link></p>
         </div>
         <div className='opcion'>

@@ -105,7 +105,15 @@ const Chat = ({setIDperfil,mandar,mensajes,index,setIndex,id_usuario}) => {
         info: {
             marginTop: '1%',
             marginLeft: '18.4%',
+        },
+        send:{
+            position: 'absolute',
+            marginLeft: '30%',
+            marginTop: '-78%',
+            
         }
+     
+
     };
 
     return (
@@ -152,7 +160,8 @@ const Chat = ({setIDperfil,mandar,mensajes,index,setIndex,id_usuario}) => {
                     </div>
                     <div className='enviarMensaje'>
                         <input className='inputMensaje' placeholder='Mensaje...' id="inputsito"/>  
-                        <button className='botonMensaje' onClick={()=>{mandar(document.getElementById("inputsito").value , mensajes[index].id_usuario); document.getElementById("inputsito").value=""}}>Enviar</button>
+                        <button className='botonMensaje' onClick={()=>{mandar(document.getElementById("inputsito").value , mensajes[index].id_usuario); document.getElementById("inputsito").value=""}}><div style={styles.send}><i class="fa-regular fa-paper-plane"></i></div></button>
+                      
                     </div>
                 </div>} 
                                

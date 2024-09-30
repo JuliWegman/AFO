@@ -10,6 +10,7 @@ import sillas                     from '../logo/silla.png';
 import ambientes                  from '../logo/ambientes.png';
 import '../css/oficinaEnEspecial.css'
 import Footer from '../componentes/footer.js';
+import Send from '../componentes/enviar.js';
 
 
 var IDvendedor=1;
@@ -82,7 +83,7 @@ function OficinaEnEspecial({IdOficina,setHamburguesa,splideFoto,setSplideFoto,po
                 PostMensaje(document.getElementById("inputPopUpMensaje").value,document.getElementById("inputMail").value,document.getElementById("inputTelefono").value);
                 setPopUpMensaje(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'
                 
-            }}>Enviar</button></a>
+            }}><img src={Send}></img></button></a>
           </div>
           </form>
           
