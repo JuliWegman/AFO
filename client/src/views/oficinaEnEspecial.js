@@ -14,7 +14,6 @@ import Send from '../componentes/enviar.js';
 
 
 var IDvendedor=1;
-const IDusuario=3;
 
 
 

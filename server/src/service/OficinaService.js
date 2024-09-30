@@ -3,12 +3,12 @@ import { Pagination, PaginationDto } from "../utils/Paginacion.js";
 import OficinaRepository from "../repository/OficinaRepository.js";
 import AlquilerRepository from '../repository/AlquilerRepository.js';
 import FotoRepository from '../repository/FotoRepository.js'
-
+import BarrioRepository from "../repository/BarrioRepository.js";
 const repoAlquileres=new AlquilerRepository();
 const repoFotos= new FotoRepository();
 const repo=new OficinaRepository();
 const PaginacionConfig = new Pagination();
-
+const repoBarrio=new BarrioRepository();
 
 export class OficinaService{
 
@@ -19,6 +19,14 @@ export class OficinaService{
         const paginacion = PaginacionConfig.buildPaginationDto(parsedLimit, parsedOffset, cantidad, `/oficina`)
 
         const {data,error}=await repo.getOficinas(parsedLimit,parsedOffset);
+
+        if (data!=null) {
+            for (let i = 0; i < data.length; i++) {
+                data[i].foto=(await repoFotos.getFotosByOficina(data[i].id_oficina)).data[0].contenido
+                data[i].barrio=(await repoBarrio.getBarrioById(data[i].id_barrio)).data[0]
+            }
+            
+        }
         const collection={data,paginacion};
         return {collection,error};
     }
@@ -30,10 +38,6 @@ export class OficinaService{
 
     async getAlquileresByOficina(idOficina){
         return await repoAlquileres.getAlquileresByOficina(idOficina)
-
-        
-        
-
     }
 
     async getFotosByOficina(idOficina){
