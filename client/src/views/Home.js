@@ -4,9 +4,10 @@ import "../css/home.css"
 import Footer from "../componentes/footer.js";
 import { Link } from 'react-router-dom';
 import axios from "axios";
+import Filtros from "../componentes/filtros.js";
 
 
-const FotosOficinas=[{contenido:"https://i.ibb.co/0sV4Lc7/images.jpg"},{contenido:"https://i.ibb.co/882k2cN/download.jpg"},{contenido:"https://img.freepik.com/foto-gratis/habitacion-vacia-sillas-escritorios_23-2149008873.jpg"},{contenido:"https://www.eloficial.ec/wp-content/uploads/2020/08/portada-arq-dis.png"}]
+const FotosOficinas=[{contenido:"https://i.ibb.co/0sV4Lc7/images.jpg"},{contenido:"https://i.ibb.co/882k2cN/download.jpg"},{contenido:"https://img.freepik.com/foto-gratis/habitacion-vacia-sillas-escritorios_23-2149008873.jpg"},{contenido:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCdtLwYmt2umetPGWczuVwnJk1MLR89M05rw&s"}]
 const Barrios=[{barrio:"Caballito"},{barrio:"Recoleta"},{barrio:"Caballito"},{barrio:"Caballito"}]
 const Duraciones=[{duracion:"Semana"},{duracion:"Mes"},{duracion:"Semana"},{duracion:"Día"}]
 
@@ -36,33 +37,12 @@ const Home = ({setIDoficina,setHamburguesa,usuario,setUsuario}) => {
                     <input type="text" name="busqueda" placeholder ="  Busca según sus preferencias"></input>
                     <div className="ciruclo"></div>
                 </div>
-                <div className="opciones">
-                    <div className="custom-select">
-                        <div className="select-selected">Fecha</div>
-                            <div className="select-items select-hide">
-                            </div>
-                        <div className="select-selected">Ubicacion</div>
-                            <div className="select-items select-hide">
-  
-                            </div>
-                        <div className="select-selected">Precio</div>
-                            <div className="select-items select-hide">
-                                
-                            </div>
-                        <div className="select-selected">Ambientes</div>
-                            <div className="select-items select-hide">
-                                
-                            </div>
-                        <div className="select-selected">Mas Filtros</div>
-                            <div className="select-items select-hide">
-                                
-                            </div>
-                    </div>
-                </div>
             </div>
             <div className="container">
+                <div className="filtros">
+                    <Filtros/>
+                </div>
                     <div className="fila">
-
                         <div className="oficina" onClick={()=>{setIDoficina(oficinas[0].id_oficina)}}>
                         <Link to='/oficina'>
                             <img src={FotosOficinas[0].contenido} alt="fotoOficina1"/>
@@ -93,21 +73,17 @@ const Home = ({setIDoficina,setHamburguesa,usuario,setUsuario}) => {
                         </Link>
                         </div>
 
-                        <div className="oficina" onClick={()=>{setIDoficina(oficinas[3].id_oficina)}}>
+                       
+                    </div>
+                    <div className="fila">
+
+                    <div className="oficina" onClick={()=>{setIDoficina(oficinas[3].id_oficina)}}>
                         <Link to='/oficina'>
                         <img src={FotosOficinas[3].contenido} alt="fotoOficina1"/>
                         <div className="info">
                                 <h3>${oficinas[3].precio} Por {Duraciones[3].duracion}</h3>
                                 <p>{oficinas[3].calle} {oficinas[3].altura}, {Barrios[3].barrio}</p>
                             </div>    
-                        </Link>
-                        </div>
-                    </div>
-                    <div className="fila">
-
-                        <div className="oficina" onClick={()=>{setIDoficina(oficinas[0].id_oficina)}}>
-                        <Link to='/oficina'>
-                            <img src={FotosOficinas[0].contenido} alt="fotoOficina1"/>                        
                         </Link>
                         </div>
 
@@ -123,11 +99,6 @@ const Home = ({setIDoficina,setHamburguesa,usuario,setUsuario}) => {
                         </Link>
                         </div>
 
-                        <div className="oficina" onClick={()=>{setIDoficina(oficinas[3].id_oficina)}}>
-                        <Link to='/oficina'>
-                        <img src={FotosOficinas[3].contenido} alt="fotoOficina1"/>
-                        </Link>
-                        </div>
                     </div>
             </div>
             <div className='footer'>
