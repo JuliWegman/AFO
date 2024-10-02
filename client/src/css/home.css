@@ -146,3 +146,43 @@
     align-items: center;
     margin-top: 5%;
 }
+.oficina a{
+    width: 100%;
+}
+.footerMargin{
+    margin-top: 20%;
+}
+.pagination {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    /*background-color: #141414;*/
+    flex-direction: row;
+    width: 150%;
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 40%;
+}
+
+.arrow-button {
+    border: 2px solid transparent;
+    border-radius: 50%; 
+    width: 5vh; 
+    height: 5vh; 
+    background-color: #fafafa;
+    color: #F87C18;
+    border-color: #F87C18;
+    cursor: pointer;
+    font-size: 20px; 
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+.arrow-button:hover {
+    border-color: #F87C18;
+    background-color: #F87C18;
+    color: #fafafa; 
+}
+
+

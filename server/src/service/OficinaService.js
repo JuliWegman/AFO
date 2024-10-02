@@ -15,7 +15,7 @@ export class OficinaService{
     async getOficinas(limit, offset){
         const parsedLimit = PaginacionConfig.parseLimit(limit);
         const parsedOffset = PaginacionConfig.parseOffset(offset);
-        const cantidad=Number.parseInt(await repo.countOficinas()) || 3;
+        const cantidad=Number.parseInt(await repo.countOficinas());
         const paginacion = PaginacionConfig.buildPaginationDto(parsedLimit, parsedOffset, cantidad, `/oficina`)
 
         const {data,error}=await repo.getOficinas(parsedLimit,parsedOffset);

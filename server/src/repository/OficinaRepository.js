@@ -51,7 +51,8 @@ export default class OficinaRepository{
         try {
             var sql="select COUNT(*) from oficina"
             const result=await this.BDclient.query(sql)
-            data=result.data
+            data=result.rows[0].count
+
         } catch (e) {
             error=e;
             console.log(error);

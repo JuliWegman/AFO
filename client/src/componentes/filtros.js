@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react';
 import '../css/filtros.css';
 
-const Filtros = () => {
+const Filtros = ({filtros}) => {
     const [cantidad, setCantidad] = useState(1);
     const increment = () => {
         setCantidad(cantidad + 1); 
