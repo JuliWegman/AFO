@@ -38,7 +38,7 @@ const Alquileres = ({ setIDoficina, setHamburguesa, usuario }) => {
   }
 
   return (
-    <div className="container">
+    <div className="containerA">
       <div className="titulo">
         <h1>Mis Alquileres</h1>
       </div>

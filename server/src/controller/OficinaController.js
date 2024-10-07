@@ -27,6 +27,7 @@ router.get('/:id',async (req,res)=>{
             console.log(error);
             return res.status(400).send(error)
         }else if(data==null){
+            
             return res.status(404).send("NO EXISTE UNA OFICINA CON ESA ID")
         }else{
             return res.status(200).json(data)
@@ -51,11 +52,12 @@ router.get('/:id/alquileres',async(req,res)=>{
 
 router.get('/:id/fotos',async (req, res)=>{
     const id= req.params.id;
-    const {data,error}=await officeService.getFotosByOficina(id)
+    var {data,error}=await officeService.getFotosByOficina(id)
     if (error!=null) {
         return res.status(400).send(error)
     }else if (data==null){
-        return res.status(404).send("Esa id_oficina no existe o no tiene fotos");
+        data=[{"contenido": "https://i.ibb.co/pnrQpnJ/2327055.png"}]
+        return res.status(200).json(data);
     }else{
         return res.status(200).json(data);
     }

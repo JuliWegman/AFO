@@ -85,36 +85,45 @@
     display: block;
 }
 .filtros{
-    margin-top: 2%;
+    margin-top: -2%;
+    margin-left: 2%;
     display: flex;
-    position: absolute;
     flex-direction: column;
     border-right: rgba(0, 0, 0, 0.2) 1px solid;
-    left: 1%;
     height: 74vh;
     width: 20%;
 }
 .container{
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-around   ;
 }
-.filaa{
+.containerDerecha{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    width: 80%;
+    height: 100%;
+    margin-top: 2%;
+}
+.filaa{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
     align-items: center;
     text-align: center;
+    flex-wrap: wrap;
     width: 100%;
     height: 74vh;
+    justify-content: center;
 }
 .oficina{
     display: flex;
     flex-direction: row;
     margin: 2%;
-    width: 30%;
-    height: 10rem;
+    width: 25%;
+    height: 20%;
     border: rgba(0, 0, 0, 0.2) 2px solid;
     border-radius: 10px 10px 10px 10px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -144,7 +153,7 @@
     flex-direction: row;
     width: 100%;
 }
-.footerMargin{
+.footer{
     width: 100%;
 }
 .pagination {
@@ -152,15 +161,17 @@
     align-items: center;
     display: flex;
     flex-direction: row;
-    width: 120%;
+    width: 100%;
     justify-content: center;
 }
-
+.containerBoton{
+    margin-top: 2%;
+}
 .arrow-button {
     border: 2px solid transparent;
     border-radius: 50%; 
-    width: 5vh; 
-    height: 5vh; 
+    width: 5.5vh; 
+    height: 5.5vh; 
     background-color: #fafafa;
     color: #F87C18;
     border-color: #F87C18;
@@ -182,9 +193,9 @@
     pointer-events: none; 
 }
 [id="1"]{
-    margin-right: 10%;
+    margin-right: 2%;
 }
 
 [id="2"]{
-    margin-left: 10%;
+    margin-left: 2%;
 }

@@ -6,8 +6,8 @@ import axios from "axios";
 import Filtros from "../componentes/filtros.js";
 
 const Barrios = [{ barrio: "Caballito" }, { barrio: "Recoleta" }];
-const Duraciones = [{ duracion: "Semana" }, { duracion: "Mes" }, { duracion: "Día" }];
-const limit = 3;
+const Duraciones = [{ duracion: "Semana" }, { duracion: "Mes" }, { duracion: "Día" },{duracion:"año"}];
+const limit = 9;
 
 const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
     const [oficinas, setOficinas] = useState([]);
@@ -52,17 +52,12 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
 
     return (
         <div>
-            <div className="buscador">
-                <div className="busqueda">
-                    <input type="text" name="busqueda" placeholder="  Busca según sus preferencias"></input>
-                    <div className="ciruclo"></div>
-                </div>
-            </div>
+            
             <div className="container">
                 <div className="filtros">
                     <Filtros filtros />
                 </div>
-                
+                <div className="containerDerecha">
                 <div className="filaa">
                     {oficinas.map(ofi =>
                         <div className="oficina" key={ofi.id_oficina} onClick={() => { setIDoficina(ofi.id_oficina) }}>
@@ -83,21 +78,19 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
                         ) : (
                             <button className="arrow-button prev disabled" id="1" aria-label="Anterior" disabled>&lt;</button>
                         )}
-                        {limit * pagina < cantidad && (
+                        {limit * pagina < cantidad ? 
                             <button className="arrow-button next" id="2" aria-label="Siguiente" onClick={Siguiente}>&gt;</button>
-                        )}
+                            :
+                            <button className="arrow-button next disabled" id="2" aria-label="Siguiente" disabled>&gt;</button>
+
+                        }
                     </div>
                 </div>
-                {oficinas.length < 4 ? (
-                    <div className='footerMargin'>
-                        <Footer />
-                    </div>
-                ) : (
-                    <div className='footer'>
-                        <Footer />
-                    </div>
-                )}
+                </div>
             </div>
+            <div className='footer'>
+                        <Footer />
+                    </div>
         </div>
     );
 }

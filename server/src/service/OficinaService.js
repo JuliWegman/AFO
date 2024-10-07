@@ -22,7 +22,12 @@ export class OficinaService{
 
         if (data!=null) {
             for (let i = 0; i < data.length; i++) {
-                data[i].foto=(await repoFotos.getFotosByOficina(data[i].id_oficina)).data[0].contenido
+                const foto=(await repoFotos.getFotosByOficina(data[i].id_oficina)).data;
+                if (foto==null) {
+                    data[i].foto="https://i.ibb.co/pnrQpnJ/2327055.png"
+                }else{
+                    data[i].foto=foto[0].contenido
+                }
                 data[i].barrio=(await repoBarrio.getBarrioById(data[i].id_barrio)).data[0]
             }
             
