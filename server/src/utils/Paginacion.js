@@ -1,4 +1,4 @@
-// import "dotenv/config";
+import "dotenv/config";
 
 const PAGE_URL = process.env.PAGE_URL ||"http://localhost:5000";
 
