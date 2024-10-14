@@ -199,3 +199,25 @@
 [id="2"]{
     margin-left: 2%;
 }
+::-webkit-scrollbar {
+    width: 8px; 
+    height: 8px; 
+    background-color: transparent; 
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1; 
+    border-radius: 10px; 
+
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #141414; 
+    border-radius: 10px; 
+    transition: background-color 0.3s ease; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #333; 
+    animation: colorChange 0.5s infinite alternate; 
+}

@@ -61,6 +61,27 @@ const Filtros = ({filtros}) => {
                         </label>
                 </div>
             </div>
+            <div className="opcion2">
+                <p className="ubi">Duracion</p>
+                <div className="checkbox-container">
+                        <label className="checkbox-label">
+                        <input type="checkbox" className="custom-checkbox" />
+                        Por Día
+                        </label>
+                        <label className="checkbox-label">
+                        <input type="checkbox" className="custom-checkbox" />
+                        Por Semana
+                        </label>
+                        <label className="checkbox-label">
+                        <input type="checkbox" className="custom-checkbox" />
+                        Por Mes
+                        </label>
+                        <label className="checkbox-label">
+                        <input type="checkbox" className="custom-checkbox" />
+                        Por Año
+                        </label>
+                </div>
+            </div>
 
             
             <div className="opcion2">
