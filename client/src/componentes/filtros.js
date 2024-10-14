@@ -11,7 +11,7 @@ const Filtros = ({filtros}) => {
             setCantidad(cantidad - 1); 
         }
     }
-    var previous = cantidad - 1;
+    var previous = cantidad
     console.log(cantidad)
     return(
         <filtros>
@@ -87,7 +87,12 @@ const Filtros = ({filtros}) => {
             <div className="opcion2">
                 <p className="ambiente">Cantidad de Ambientes</p>
                 <div className="contador">
-                    <button className="contador-button" onClick={decrement}><div className='menos'>-</div></button>
+                    
+                    {previous > 1 ? (
+                                <button className="contador-button" onClick={decrement}><div className='menos'>-</div></button>
+                            ) : (
+                                <button className="contador-button" disabled><div className='menos'>-</div></button>
+                            )}
                     <span className="contador-value">{cantidad}</span>
                     <button className="contador-button" onClick={increment}><div className='sumar'>+</div></button>
                 </div>
