@@ -25,6 +25,8 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
             setNext(res.data.paginacion.nextPage);
             setCantidad(res.data.paginacion.total);
             setAbierto(true);
+
+      
         }
 
         getData();

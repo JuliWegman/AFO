@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import React, { useState } from 'react';
 import '../css/filtros.css';
 
 const Filtros = ({filtros}) => {
@@ -11,6 +11,8 @@ const Filtros = ({filtros}) => {
             setCantidad(cantidad - 1); 
         }
     }
+    var previous = cantidad - 1;
+    console.log(cantidad)
     return(
         <filtros>
             <div className="opcion2">
@@ -66,7 +68,7 @@ const Filtros = ({filtros}) => {
                 <div className="contador">
                     <button className="contador-button" onClick={decrement}><div className='menos'>-</div></button>
                     <span className="contador-value">{cantidad}</span>
-                    <button className="contador-button" onClick={increment}><div className='mas'>+</div></button>
+                    <button className="contador-button" onClick={increment}><div className='sumar'>+</div></button>
                 </div>
             </div>
         </filtros>
