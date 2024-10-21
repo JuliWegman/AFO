@@ -17,7 +17,7 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
     const [abierto, setAbierto] = useState(false);
     const [cantidad, setCantidad] = useState(0);
     const [pagina, setPagina] = useState(1);
-
+    const [filtros,setFiltros]=useState({})
     useEffect(() => {
         async function getData() {
             const res = await axios.get(link);

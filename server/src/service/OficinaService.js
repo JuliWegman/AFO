@@ -12,13 +12,13 @@ const repoBarrio=new BarrioRepository();
 
 export class OficinaService{
 
-    async getOficinas(limit, offset){
+    async getOficinas(limit, offset,filtros){
         const parsedLimit = PaginacionConfig.parseLimit(limit);
         const parsedOffset = PaginacionConfig.parseOffset(offset);
         const cantidad=Number.parseInt(await repo.countOficinas());
         const paginacion = PaginacionConfig.buildPaginationDto(parsedLimit, parsedOffset, cantidad, `/oficina`)
 
-        const {data,error}=await repo.getOficinas(parsedLimit,parsedOffset);
+        const {data,error}=await repo.getOficinas(parsedLimit,parsedOffset,filtros);
 
         if (data!=null) {
             for (let i = 0; i < data.length; i++) {

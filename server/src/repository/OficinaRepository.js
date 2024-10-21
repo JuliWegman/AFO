@@ -10,12 +10,50 @@ export default class OficinaRepository{
         this.BDclient = new Client(BDconfig);
         this.BDclient.connect();
       }
-    async getOficinas(limit,offset){
+    async getOficinas(limit,offset,filtros){
         let data=null;
         var error=null;
         try {
-            var sql="select * from oficina order by id_oficina limit $1 offset $2"
+            var sql="select * from oficina o where"
             const values=[limit,offset]
+            var index=3;
+            if (filtros.max_precio != null) {
+                sql += ` o.precio<$${index} and`;
+                values.push(filtros.max_precio );
+                index++;
+            }
+
+            if (filtros.min_precio != null) {
+                sql += ` o.precio>$${index} and`;
+                values.push(filtros.min_precio );
+                index++;
+            }
+            
+            if (filtros.duraciones != null) {
+                sql+=' ('
+                filtros.duraciones.forEach(duracion => {
+                    sql += ` o.id_duracion=$${index} or`;
+                    values.push(duracion);
+                    index++;
+                });
+                sql = sql.slice(0, -2);
+                sql+=') and'
+
+            }
+
+
+            if (sql.endsWith(" and")) {
+                sql = sql.slice(0, -4);
+            }
+            
+            if (sql.endsWith(" where")) {
+                sql = sql.slice(0, -6);
+            }
+
+            sql+=" order by o.id_oficina limit $1 offset $2 "
+
+            console.log(sql +"AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            console.log();
             const result=await this.BDclient.query(sql,values)
             if(result.rows.length>0){
                 data=result.rows;

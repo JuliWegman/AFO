@@ -5,10 +5,20 @@ const router=express.Router();
 const officeService=new OficinaService();
 
 router.get('/',async (req,res)=>{
+    const filtros={
+        ambientes:req.query.ambientes,
+        duracion:req.query.duraciones,
+        barrio:req.query.barrio,
+        fecha_inicio:req.query.fecha_inicio,
+        fecha_fin:req.query.fecha_fin,
+        max_precio:req.query.max_precio,
+        min_precio:req.query.min_precio
+
+    }
 
     const limit=req.query.limit;
     const offset=req.query.offset;
-    const {collection,error}= await officeService.getOficinas(limit,offset)
+    const {collection,error}= await officeService.getOficinas(limit,offset,filtros)
         
     if (error!=null) {
         console.log(error);
@@ -64,22 +74,5 @@ router.get('/:id/fotos',async (req, res)=>{
 
 })
 
-router.get('/home',async(req, res)=>{
-    const filtros={
-        search:req.body.search,
-        tamaño:req.body.tamaño,
-        ambientes:req.body.ambientes,
-        computadoras:req.body.computadoras,
-        barrio:req.body.barrio,
-        fecha_inicio:req.body.fecha_inicio,
-        fecha_fin:req.body.fecha_fin,
-        max_precio:req.body.max_precio,
-        min_precio:req.body.min_precio
-
-    }
-
-    const {collection,data}=await officeService.getOficinasByFilter(filtros)
-    //SEGUIR ESTO
-})
 
 export default router;
