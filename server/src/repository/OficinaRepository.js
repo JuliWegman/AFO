@@ -32,7 +32,7 @@ export default class OficinaRepository{
             if (filtros.duraciones != null) {
                 sql+=' ('
                 filtros.duraciones.forEach(duracion => {
-                    sql += ` o.id_duracion=$${index} or`;
+                    sql += ` o.id_duracion=$${index} and`;
                     values.push(duracion);
                     index++;
                 });
@@ -40,7 +40,21 @@ export default class OficinaRepository{
                 sql+=') and'
 
             }
-
+            if (filtros.ubicacion != null) {
+                sql+=' ('
+                filtros.ubicacion.forEach(ubicacion => {
+                    sql += ` o.id_ubicacion=$${index} and`;
+                    values.push(ubicacion);
+                    index++;
+                });
+                sql = sql.slice(0, -2);
+                sql+=') and'
+            }
+            if (filtros.cantAmbientes != null){
+                sql += ` o.cantAmbientes = ${index} and`;
+                values.push(cantAmbientes)
+                index++;
+            }
 
             if (sql.endsWith(" and")) {
                 sql = sql.slice(0, -4);
