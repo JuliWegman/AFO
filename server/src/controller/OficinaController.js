@@ -15,7 +15,6 @@ router.get('/',async (req,res)=>{
         min_precio:req.query.min_precio
 
     }
-
     const limit=req.query.limit;
     const offset=req.query.offset;
     const {collection,error}= await officeService.getOficinas(limit,offset,filtros)

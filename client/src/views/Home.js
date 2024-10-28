@@ -10,27 +10,54 @@ const Duraciones = [{ duracion: "Semana" }, { duracion: "Mes" }, { duracion: "DÃ
 const limit = 9;
 
 const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
-    const [oficinas, setOficinas] = useState([]);
+    const [oficinas, setOficinas] = useState([]); 
     const [next, setNext] = useState();
     const [previous, setPrevious] = useState([]);
-    const [link, setLink] = useState("/oficina?limit=" + limit + "&offset=0");
+    const [link, setLink] = useState(`/oficina?limit=${limit}&offset=0`);
     const [abierto, setAbierto] = useState(false);
     const [cantidad, setCantidad] = useState(0);
     const [pagina, setPagina] = useState(1);
-    const [filtros,setFiltros]=useState({})
+    const [filtros, setFiltros] = useState({});
+
     useEffect(() => {
         async function getData() {
-            const res = await axios.get(link);
-            setOficinas(res.data.data);
-            setNext(res.data.paginacion.nextPage);
-            setCantidad(res.data.paginacion.total);
-            setAbierto(true);
+            try {
+                const res = await axios.get(link);
+                setOficinas(res.data.data || []);
+                setNext(res.data.paginacion.nextPage);
+                setCantidad(res.data.paginacion.total);
+                setAbierto(true);
+            } catch (error) {
+                console.error("Error al obtener datos:", error.response.data);
+                setOficinas([]); 
+            }
         }
 
         getData();
         setHamburguesa();
     }, [link]);
 
+    const handleApplyFilters = (appliedFilters) => {
+        setFiltros(appliedFilters);
+    
+        const params = new URLSearchParams({
+            limit,
+            offset: 0,
+            ...(appliedFilters.max_precio && { max_precio: appliedFilters.max_precio }),
+            ...(appliedFilters.min_precio && { min_precio: appliedFilters.min_precio }),
+            ...(appliedFilters.ambientes && { ambientes: appliedFilters.ambientes }),
+            ...(appliedFilters.duraciones && { duraciones: appliedFilters.duraciones }), 
+            ...(appliedFilters.barrio && { barrio: appliedFilters.barrio }),
+            ...(appliedFilters.fecha_inicio && { fecha_inicio: appliedFilters.fecha_inicio }),
+            ...(appliedFilters.fecha_fin && { fecha_fin: appliedFilters.fecha_fin }),
+        }).toString();
+    
+        console.log(`URL de solicitud: /oficina?${params}`);
+        setLink(`/oficina?${params}`);
+        setPagina(1);
+        setPrevious([]);
+    };
+    
     function Siguiente() {
         if (limit * pagina < cantidad) {
             setPagina(pagina + 1);
@@ -54,20 +81,24 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
         <div>
             <div className="container">
                 <div className="filtros">
-                    <Filtros filtros />
+                    <Filtros onApplyFilters={handleApplyFilters} />
                 </div>
                 <div className="containerDerecha">
                     <div className="filaa">
-                        {oficinas.map(ofi =>
-                            <div className="oficina" key={ofi.id_oficina} onClick={() => { setIDoficina(ofi.id_oficina) }}>
-                                <Link to='/oficina'>
-                                    <img src={ofi.foto} alt="fotoOficina1" />
-                                    <div className="info">
-                                        <h3>${ofi.precio} Por {Duraciones[ofi.id_duracion - 1].duracion}</h3>
-                                        <p>{ofi.calle} {ofi.altura}, {Barrios[0].barrio}</p>
-                                    </div>
-                                </Link>
-                            </div>
+                        {oficinas.length > 0 ? ( // Verifica si hay oficinas antes de mapear
+                            oficinas.map(ofi => (
+                                <div className="oficina" key={ofi.id_oficina} onClick={() => { setIDoficina(ofi.id_oficina) }}>
+                                    <Link to='/oficina'>
+                                        <img src={ofi.foto} alt="fotoOficina1" />
+                                        <div className="info">
+                                            <h3>${ofi.precio} Por {Duraciones[ofi.id_duracion - 1].duracion}</h3>
+                                            <p>{ofi.calle} {ofi.altura}, {Barrios[0].barrio}</p>
+                                        </div>
+                                    </Link>
+                                </div>
+                            ))
+                        ) : (
+                            <p>No se encontraron oficinas.</p> // Mensaje si no hay oficinas
                         )}
                     </div>
                     <div className="containerBoton">

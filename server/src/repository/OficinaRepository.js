@@ -26,6 +26,7 @@ export default class OficinaRepository{
             if (filtros.min_precio != null) {
                 sql += ` o.precio>$${index} and`;
                 values.push(filtros.min_precio );
+                console.log(filtros.min_precio)
                 index++;
             }
             
@@ -55,6 +56,22 @@ export default class OficinaRepository{
                 values.push(cantAmbientes)
                 index++;
             }
+            if (filtros.fecha_inicio != null){
+                sql += ` o.fecha_inicio >= ${index} or`;
+                values.push(fecha_inicio)
+                index++;
+            }
+            
+            if (filtros.fecha_fin != null){
+                sql += ` o.fecha_fin <= ${index} or`;
+                values.push(fecha_fin)
+                index++;
+            }
+
+            if (sql.endsWith(" or")) {
+                sql = sql.slice(0, -3);
+            }
+            
 
             if (sql.endsWith(" and")) {
                 sql = sql.slice(0, -4);
@@ -110,8 +127,5 @@ export default class OficinaRepository{
             console.log(error);
         }
         return data
-
-        
-        
     }
-}
+}   

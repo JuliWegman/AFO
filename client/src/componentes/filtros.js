@@ -1,103 +1,117 @@
 import React, { useState } from 'react';
 import '../css/filtros.css';
 
-const Filtros = ({filtros}) => {
-    const [cantidad, setCantidad] = useState(1);
-    const increment = () => {
-        setCantidad(cantidad + 1); 
+const Filtros = ({ onApplyFilters }) => {
+    const [appliedFilters, setAppliedFilters] = useState({
+        max_precio: '',
+        min_precio: '',
+        ambientes: '',
+        duraciones: [],
+        barrio: [],
+        fecha_inicio: '',
+        fecha_fin: '',
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setAppliedFilters({
+            ...appliedFilters,
+            [name]: value,
+        });
     };
-    const decrement = () => {
-        if (cantidad > 1) {
-            setCantidad(cantidad - 1); 
-        }
-    }
-    var previous = cantidad
-    console.log(cantidad)
-    return(
-        <filtros>
+
+    const handleCheckboxChange = (e) => {
+        const { name, value, checked } = e.target;
+        setAppliedFilters((prev) => {
+            const newArray = checked
+                ? [...prev[name], value]
+                : prev[name].filter((item) => item !== value);
+            return { ...prev, [name]: newArray };
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onApplyFilters(appliedFilters);
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
             <div className="opcion2">
-                <div className="textoFiltro">
-                    <p className="filtrosP">Filtros</p>
-                    <u><p className="limpiar">Limpiar Filtros</p></u>
-                </div>
-            </div>
-                        <div className="opcion2">
                 <p className="precio">Precio</p>
-                <div class="date-filter">
-                    <div class="filter-range">
-                        <label for="min-price">Precio Mínimo:</label>
-                        <input type="number" id="min-price" placeholder="0" />
-                    </div>
-                    <div class="filter-range">
-                        <label for="max-price">Precio Máximo:</label>
-                        <input type="number" id="max-price" placeholder="1000" />
-                    </div>
-                </div>
+                <input
+                    type="number"
+                    name="min_precio"
+                    placeholder="Precio Mínimo"
+                    value={appliedFilters.min_precio}
+                    onChange={handleChange}
+                />
+                <input
+                    type="number"
+                    name="max_precio"
+                    placeholder="Precio Máximo"
+                    value={appliedFilters.max_precio}
+                    onChange={handleChange}
+                />
+            </div>
+            <div className="opcion2">
+                <p className="ambientes">Cantidad de Ambientes</p>
+                <input
+                    type="number"
+                    name="ambientes"
+                    placeholder="Cantidad de Ambientes"
+                    value={appliedFilters.ambientes}
+                    onChange={handleChange}
+                />
+            </div>
+            <div className="opcion2">
+                <p className="duracion">Duración</p>
+                {["Día", "Semana", "Mes", "Año"].map((duracion) => (
+                    <label key={duracion}>
+                        <input
+                            type="checkbox"
+                            name="duraciones"
+                            value={duracion}
+                            checked={appliedFilters.duraciones.includes(duracion)}
+                            onChange={handleCheckboxChange}
+                        />
+                        {duracion}
+                    </label>
+                ))}    
+            </div>
+            <div className="opcion2">
+                <p className="barrio">Barrio</p>
+                {["Caballito", "Recoleta"].map((barrio) => (
+                    <label key={barrio}>
+                        <input
+                            type="checkbox"
+                            name="barrio"
+                            value={barrio}
+                            checked={appliedFilters.barrio.includes(barrio)}
+                            onChange={handleCheckboxChange}
+                        />
+                        {barrio}
+                    </label>
+                ))}
             </div>
             <div className="opcion2">
                 <p className="fecha">Fecha</p>
-                <div class="date-filter">
-                    <div class="filter-range">
-                        <label for="start-date">Fecha de Inicio:</label>
-                        <input type="date" id="start-date" />
-                    </div>
-                    <div class="filter-range">
-                        <label for="end-date">Fecha de Fin:</label>
-                        <input type="date" id="end-date" />
-                    </div>
-                </div>
+                <input
+                    type="date"
+                    name="fecha_inicio"
+                    value={appliedFilters.fecha_inicio}
+                    onChange={handleChange}
+                />
+                <input
+                    type="date"
+                    name="fecha_fin"
+                    value={appliedFilters.fecha_fin}
+                    onChange={handleChange}
+                />
             </div>
-            
-            <div className="opcion2">
-                <p className="ubi">Ubicación</p>
-                <div className="checkbox-container">
-                        <label className="checkbox-label">
-                        <input type="checkbox" className="custom-checkbox" />
-                        Caballito
-                        </label>
-                        <label className="checkbox-label">
-                        <input type="checkbox" className="custom-checkbox" />
-                        Recoleta
-                        </label>
-                </div>
-            </div>
-            <div className="opcion2">
-                <p className="ubi">Duracion</p>
-                <div className="checkbox-container">
-                        <label className="checkbox-label">
-                        <input type="checkbox" className="custom-checkbox" />
-                        Por Día
-                        </label>
-                        <label className="checkbox-label">
-                        <input type="checkbox" className="custom-checkbox" />
-                        Por Semana
-                        </label>
-                        <label className="checkbox-label">
-                        <input type="checkbox" className="custom-checkbox" />
-                        Por Mes
-                        </label>
-                        <label className="checkbox-label">
-                        <input type="checkbox" className="custom-checkbox" />
-                        Por Año
-                        </label>
-                </div>
-            </div>
-
-            
-            <div className="opcion2">
-                <p className="ambiente">Cantidad de Ambientes</p>
-                <div className="contador">
-                    
-                    {previous > 1 ? (
-                                <button className="contador-button" onClick={decrement}><div className='menos'>-</div></button>
-                            ) : (
-                                <button className="contador-button" disabled><div className='menos'>-</div></button>
-                            )}
-                    <span className="contador-value">{cantidad}</span>
-                    <button className="contador-button" onClick={increment}><div className='sumar'>+</div></button>
-                </div>
-            </div>
-        </filtros>
+            <button type="submit">Aplicar Filtros</button>
+        </form>
     );
 };
+
 export default Filtros;
