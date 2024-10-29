@@ -30,9 +30,9 @@ export default class OficinaRepository{
                 index++;
             }
             
-            if (filtros.duraciones != null) {
+            if (filtros.id_duracion != null) {
                 sql+=' ('
-                filtros.duraciones.forEach(duracion => {
+                filtros.id_duracion.forEach(duracion => {
                     sql += ` o.id_duracion=$${index} and`;
                     values.push(duracion);
                     index++;
@@ -72,7 +72,7 @@ export default class OficinaRepository{
                 sql = sql.slice(0, -3);
             }
             
-
+            
             if (sql.endsWith(" and")) {
                 sql = sql.slice(0, -4);
             }

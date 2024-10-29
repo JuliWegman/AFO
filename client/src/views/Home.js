@@ -40,14 +40,15 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
     const handleApplyFilters = (appliedFilters) => {
         setFiltros(appliedFilters);
     
+        // Construimos la URL solo con parámetros válidos
         const params = new URLSearchParams({
             limit,
             offset: 0,
             ...(appliedFilters.max_precio && { max_precio: appliedFilters.max_precio }),
             ...(appliedFilters.min_precio && { min_precio: appliedFilters.min_precio }),
-            ...(appliedFilters.ambientes && { ambientes: appliedFilters.ambientes }),
-            ...(appliedFilters.duraciones && { duraciones: appliedFilters.duraciones }), 
-            ...(appliedFilters.barrio && { barrio: appliedFilters.barrio }),
+            ...(appliedFilters.ambientes && appliedFilters.ambientes !== "0" && { ambientes: appliedFilters.ambientes }),
+            ...(appliedFilters.id_duracion && appliedFilters.id_duracion.length > 0 && { id_duracion: appliedFilters.id_duracion }), 
+            ...(appliedFilters.barrio && appliedFilters.barrio.length > 0 && { barrio: appliedFilters.barrio }),
             ...(appliedFilters.fecha_inicio && { fecha_inicio: appliedFilters.fecha_inicio }),
             ...(appliedFilters.fecha_fin && { fecha_fin: appliedFilters.fecha_fin }),
         }).toString();
@@ -57,6 +58,8 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
         setPagina(1);
         setPrevious([]);
     };
+    
+    
     
     function Siguiente() {
         if (limit * pagina < cantidad) {
