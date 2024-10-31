@@ -7,13 +7,17 @@ const officeService=new OficinaService();
 router.get('/',async (req,res)=>{
     const filtros={
         ambientes:req.query.ambientes,
-        duracion:req.query.duraciones,
+        duracion:req.query.id_duracion,
         barrio:req.query.barrio,
         fecha_inicio:req.query.fecha_inicio,
         fecha_fin:req.query.fecha_fin,
         max_precio:req.query.max_precio,
         min_precio:req.query.min_precio
 
+    }
+    if (filtros.duracion!=null) {
+        filtros.duracion=filtros.duracion.split()
+        filtros.duracion=filtros.duracion[0].split(',')
     }
     const limit=req.query.limit;
     const offset=req.query.offset;

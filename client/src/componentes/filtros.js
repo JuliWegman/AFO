@@ -7,7 +7,7 @@ const Filtros = ({ onApplyFilters }) => {
         min_precio: '',
         ambientes: '',
         id_duracion: [],
-        barrio: [],
+        barrio: '',
         fecha_inicio: '',
         fecha_fin: '',
     });
@@ -36,8 +36,8 @@ const Filtros = ({ onApplyFilters }) => {
         // Convertir id_duracion de nombres a IDs
         const durationMap = {
             "Día": 1,
-            "Semana": 2,
-            "Mes": 3,
+            "Semana": 3,
+            "Mes": 2,
             "Año": 4,
         };
         const filtrosConId = {
@@ -102,19 +102,16 @@ const Filtros = ({ onApplyFilters }) => {
 
                 <div className="opcion2">
                     <p className="barrio">Barrio</p>
-                    {["Caballito", "Recoleta"].map((barrio) => (
-                        <label key={barrio}>
-                            <input
-                                type="checkbox"
-                                name="barrio"
-                                value={barrio}
-                                checked={appliedFilters.barrio.includes(barrio)}
+                    <select>
+                    {[{nombre:"caballito",id:1}, {nombre:"recoleta",id:2}].map((barrio) => (
+                            <option
+                                value={barrio.id}
                                 onChange={handleCheckboxChange}
                                 className="custom-checkbox"
-                            />
-                            {barrio}
-                        </label>
+                            
+                            >{barrio.nombre}</option>
                     ))}
+                    </select>
                 </div>
                 <div className="opcion2">
                     <p className="fecha">Fecha</p>

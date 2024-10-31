@@ -6,7 +6,7 @@ import axios from "axios";
 import Filtros from "../componentes/filtros.js";
 
 const Barrios = [{ barrio: "Caballito" }, { barrio: "Recoleta" }];
-const Duraciones = [{ duracion: "Semana" }, { duracion: "Mes" }, { duracion: "Día" }, { duracion: "Año" }];
+const Duraciones = [{ duracion: "Día" },{ duracion: "Mes" },{ duracion: "Semana" },   { duracion: "Año" }];
 const limit = 9;
 
 const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
@@ -17,8 +17,8 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
     const [abierto, setAbierto] = useState(false);
     const [cantidad, setCantidad] = useState(0);
     const [pagina, setPagina] = useState(1);
-    const [filtros, setFiltros] = useState({});
-
+    const [params,setParams]=useState({})
+    const [ticker,setTicker]=useState(1)
     useEffect(() => {
         async function getData() {
             try {
@@ -35,13 +35,12 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
 
         getData();
         setHamburguesa();
-    }, [link]);
+    }, [link,ticker]);
 
     const handleApplyFilters = (appliedFilters) => {
-        setFiltros(appliedFilters);
     
         // Construimos la URL solo con parámetros válidos
-        const params = new URLSearchParams({
+            setParams(new URLSearchParams({
             limit,
             offset: 0,
             ...(appliedFilters.max_precio && { max_precio: appliedFilters.max_precio }),
@@ -51,12 +50,12 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
             ...(appliedFilters.barrio && appliedFilters.barrio.length > 0 && { barrio: appliedFilters.barrio }),
             ...(appliedFilters.fecha_inicio && { fecha_inicio: appliedFilters.fecha_inicio }),
             ...(appliedFilters.fecha_fin && { fecha_fin: appliedFilters.fecha_fin }),
-        }).toString();
-    
-        console.log(`URL de solicitud: /oficina?${params}`);
+        }).toString())
+        console.log(`URL ES: /oficina?${params}`);
         setLink(`/oficina?${params}`);
         setPagina(1);
         setPrevious([]);
+        setTicker(ticker+1)
     };
     
     
@@ -65,7 +64,7 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
         if (limit * pagina < cantidad) {
             setPagina(pagina + 1);
             setPrevious([...previous, link]);
-            setLink(next);
+            setLink(next+params);
         }
     }
 

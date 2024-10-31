@@ -7,7 +7,6 @@ const MiPerfil = ({ setHamburguesa ,idUsuario}) => {
         async function getData(){
             const res=await axios.get('/usuario/'+idUsuario)
             setUsuario(res.data)
-            console.log(idUsuario);
         }
 
         getData()

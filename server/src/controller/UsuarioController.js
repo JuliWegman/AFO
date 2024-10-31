@@ -32,9 +32,7 @@ router.get('/:id',async (req,res)=>{
 router.get('/:id/alquileres',async (req,res)=>{
 
     const id=req.params.id;
-    console.log(id);
     const {data,error}=await userService.getAlquileresByUser(id)
-    console.log(data);
     if (error!=null) {
 
         return res.status(400).send(error)

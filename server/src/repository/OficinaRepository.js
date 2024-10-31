@@ -13,6 +13,7 @@ export default class OficinaRepository{
     async getOficinas(limit,offset,filtros){
         let data=null;
         var error=null;
+        console.log(filtros.ambientes);
         try {
             var sql="select * from oficina o where"
             const values=[limit,offset]
@@ -26,15 +27,14 @@ export default class OficinaRepository{
             if (filtros.min_precio != null) {
                 sql += ` o.precio>$${index} and`;
                 values.push(filtros.min_precio );
-                console.log(filtros.min_precio)
                 index++;
             }
-            
-            if (filtros.id_duracion != null) {
+
+            if (filtros.duracion != null) {
                 sql+=' ('
-                filtros.id_duracion.forEach(duracion => {
-                    sql += ` o.id_duracion=$${index} and`;
-                    values.push(duracion);
+                filtros.duracion.forEach(dura => {
+                    sql += ` o.id_duracion=$${index} or`;
+                    values.push(dura);
                     index++;
                 });
                 sql = sql.slice(0, -2);
@@ -51,19 +51,19 @@ export default class OficinaRepository{
                 sql = sql.slice(0, -2);
                 sql+=') and'
             }
-            if (filtros.cantAmbientes != null){
-                sql += ` o.cantAmbientes = ${index} and`;
-                values.push(cantAmbientes)
+            if (filtros.ambientes != null){
+                sql += ` o.ambientes = $${index} and`;
+                values.push(filtros.ambientes)
                 index++;
             }
             if (filtros.fecha_inicio != null){
-                sql += ` o.fecha_inicio >= ${index} or`;
+                sql += ` o.fecha_inicio >= $${index} or`;
                 values.push(fecha_inicio)
                 index++;
             }
             
             if (filtros.fecha_fin != null){
-                sql += ` o.fecha_fin <= ${index} or`;
+                sql += ` o.fecha_fin <= $${index} or`;
                 values.push(fecha_fin)
                 index++;
             }
@@ -82,9 +82,6 @@ export default class OficinaRepository{
             }
 
             sql+=" order by o.id_oficina limit $1 offset $2 "
-
-            console.log(sql +"AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            console.log();
             const result=await this.BDclient.query(sql,values)
             if(result.rows.length>0){
                 data=result.rows;
@@ -114,12 +111,69 @@ export default class OficinaRepository{
         return {data,error}
     }
 
-    async countOficinas(){
+    async countOficinas(filtros){
         let data=null;
         var error=null;
         try {
-            var sql="select COUNT(*) from oficina"
-            const result=await this.BDclient.query(sql)
+            var sql="select COUNT(*) from oficina o where"
+            const values=[]
+            var index=1;
+            if (filtros.max_precio != null) {
+                sql += ` o.precio<$${index} and`;
+                values.push(filtros.max_precio );
+                index++;
+            }
+            if (filtros.min_precio != null) {
+                sql += ` o.precio>$${index} and`;
+                values.push(filtros.min_precio );
+                index++;
+            }
+            if (filtros.duracion != null) {
+                sql+=' ('
+                filtros.duracion.forEach(dura => {
+                    sql += ` o.id_duracion=$${index} or`;
+                    values.push(dura);
+                    index++;
+                });
+                sql = sql.slice(0, -2);
+                sql+=') and'
+
+            }
+            if (filtros.ubicacion != null) {
+                sql+=' ('
+                filtros.ubicacion.forEach(ubicacion => {
+                    sql += ` o.id_ubicacion=$${index} and`;
+                    values.push(ubicacion);
+                    index++;
+                });
+                sql = sql.slice(0, -2);
+                sql+=') and'
+            }
+            if (filtros.ambientes != null){
+                sql += ` o.ambientes = $${index} and`;
+                values.push(filtros.ambientes)
+                index++;
+            }
+            if (filtros.fecha_inicio != null){
+                sql += ` o.fecha_inicio >= $${index} or`;
+                values.push(fecha_inicio)
+                index++;
+            }  
+            if (filtros.fecha_fin != null){
+                sql += ` o.fecha_fin <= $${index} or`;
+                values.push(fecha_fin)
+                index++;
+            }
+            if (sql.endsWith(" or")) {
+                sql = sql.slice(0, -3);
+            }
+            if (sql.endsWith(" and")) {
+                sql = sql.slice(0, -4);
+            }
+            if (sql.endsWith(" where")) {
+                sql = sql.slice(0, -6);
+            }
+            const result=await this.BDclient.query(sql,values)
             data=result.rows[0].count
 
         } catch (e) {

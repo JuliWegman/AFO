@@ -17,7 +17,6 @@ export default class MensajeRepository{
             const sql="Insert into mensaje(id_enviador,id_receptor,contenido,fecha,mail,telefono,leido) values ($1,$2,$3,$4,$5,$6,$7)";
             const values=[mensaje.id_enviador,mensaje.id_receptor,mensaje.contenido,mensaje.fecha,mensaje.mail,mensaje.telefono,mensaje.leido];
             returnEntity=await this.BDclient.query(sql,values).data;
-            console.log(returnEntity);
         }catch(e){
             error=e
             console.log(e)
