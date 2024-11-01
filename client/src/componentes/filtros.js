@@ -31,8 +31,10 @@ const Filtros = ({ onApplyFilters }) => {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-
+        if(e != null){
+            e.preventDefault();
+        }
+        
         // Convertir id_duracion de nombres a IDs
         const durationMap = {
             "Día": 1,
@@ -48,11 +50,23 @@ const Filtros = ({ onApplyFilters }) => {
         onApplyFilters(filtrosConId);
     };
 
+    function LimpiarFiltros() {
+        appliedFilters.max_precio = ''
+        appliedFilters.min_precio = ''
+        appliedFilters.ambientes = ''
+        appliedFilters.id_duracion = []
+        appliedFilters.barrio = ''
+        appliedFilters.fecha_inicio = ''
+        appliedFilters.fecha_fin = ''
+        console.log(appliedFilters.min_precio);
+        handleSubmit()
+    }
+
     return (
         <div>
             <div className="textoFiltro">
                 <p className="filtrosP">Filtros</p>
-                <u><p className="limpiar">Limpiar Filtros</p></u>
+                <u onClick={LimpiarFiltros}><p className="limpiar">Limpiar Filtros</p></u>
             </div>
 
             <form onSubmit={handleSubmit}>
