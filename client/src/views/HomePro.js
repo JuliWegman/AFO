@@ -10,7 +10,7 @@ const HomePro = ({setIDoficina, setHamburguesa, usuario,}) => {
     const [oficinas, setOficinas] = useState([]); 
     return(
     <div>
-        <div className="container">
+        <div className="COntainer">
             <h1 className="titulo">Tus Oficinas</h1>
             <button className="publicar">Publicar Oficina</button>
         </div>

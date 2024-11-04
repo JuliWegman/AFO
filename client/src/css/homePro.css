@@ -1,7 +1,8 @@
-.container{
+.COntainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 .titulo{
     text-align: center;
