@@ -6,6 +6,7 @@ import Mensajes from "./views/Mensajes.js"
 import Header from './componentes/header.js';
 import Perfil from "./views/Perfil.js";
 import Alquileres from "./views/alquileres.js"
+import HomePro from './views/HomePro.js';
 
 import './css/oficinaEnEspecial.css';
 
@@ -78,6 +79,9 @@ function App() {
 
               <Route path='/alquileres' element={
                 <Alquileres setIDoficina={setIDoficina} setHamburguesa={reset} usuario={usuario}/>
+              }></Route>
+              <Route path='/HomePro' element={
+                <HomePro setIDoficina={setIDoficina} setHamburguesa={reset} usuario={usuario}/>
               }></Route>
               
 

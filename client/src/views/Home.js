@@ -76,9 +76,7 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
             setPagina(pagina - 1);
         }
     }
-
     if (!abierto) return null;
-
     return (
         <div>
             <div className="container">

@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.titulo{
+    text-align: center;
+    font-size: 150%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.publicar{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 120%;
+    background-color: #0FA958;
+    border-width: 0;
+    border-color: #3DBF7B;
+    width: 15%;
+    height: 5vh;
+    border-radius: 10px;
+}

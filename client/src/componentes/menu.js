@@ -37,6 +37,10 @@ const Menu = ({ texto,open }) => {
           <Logo img = {cerrarSesion}/>
           <p>Cerrar Sesion</p>
         </div>
+        <div className='opcion'>
+        <Link to='/HomePro'></Link>
+        <p><Link to ='/HomePro'>Home Propietario</Link></p>
+        </div>
       </div>
     </div>
     </div>
