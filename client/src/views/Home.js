@@ -39,7 +39,6 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
 
     const handleApplyFilters = (appliedFilters) => {
     
-        // Construimos la URL solo con parámetros válidos
             setParams(new URLSearchParams({
             limit,
             offset: 0,
@@ -51,6 +50,7 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
             ...(appliedFilters.fecha_inicio && { fecha_inicio: appliedFilters.fecha_inicio }),
             ...(appliedFilters.fecha_fin && { fecha_fin: appliedFilters.fecha_fin }),
         }).toString())
+        console.log(appliedFilters.fecha_fin + 'AAAAAAAAAAAAAAAAAAAAAA');
         console.log(`URL ES: /oficina?${params}`);
         setLink(`/oficina?${params}`);
         setPagina(1);

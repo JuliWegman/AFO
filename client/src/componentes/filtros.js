@@ -44,7 +44,7 @@ const Filtros = ({ onApplyFilters }) => {
         };
         const filtrosConId = {
             ...appliedFilters,
-            id_duracion: appliedFilters.id_duracion.map(dur => durationMap[dur]), // Convertir a ID
+            id_duracion: appliedFilters.id_duracion.map(dur => durationMap[dur]),
         };
 
         onApplyFilters(filtrosConId);
@@ -58,7 +58,6 @@ const Filtros = ({ onApplyFilters }) => {
         appliedFilters.barrio = ''
         appliedFilters.fecha_inicio = ''
         appliedFilters.fecha_fin = ''
-        console.log(appliedFilters.min_precio);
         handleSubmit()
     }
 
@@ -117,13 +116,14 @@ const Filtros = ({ onApplyFilters }) => {
                 <div className="opcion2">
                     <p className="barrio">Barrio</p>
                     <select>
+                    <option className='placeholder' value="" disabled selected hidden>Seleccione su barrio</option>
                     {[{nombre:"caballito",id:1}, {nombre:"recoleta",id:2}].map((barrio) => (
                             <option
                                 value={barrio.id}
                                 onChange={handleCheckboxChange}
                                 className="custom-checkbox"
-                            
                             >{barrio.nombre}</option>
+                            
                     ))}
                     </select>
                 </div>

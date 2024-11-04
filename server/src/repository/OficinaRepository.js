@@ -41,11 +41,11 @@ export default class OficinaRepository{
                 sql+=') and'
 
             }
-            if (filtros.ubicacion != null) {
+            if (filtros.barrio != null) {
                 sql+=' ('
-                filtros.ubicacion.forEach(ubicacion => {
-                    sql += ` o.id_ubicacion=$${index} and`;
-                    values.push(ubicacion);
+                filtros.barrio.forEach(barrio => {
+                    sql += ` o.id_barrio=$${index} or`;
+                    values.push(barrio);
                     index++;
                 });
                 sql = sql.slice(0, -2);
@@ -57,14 +57,14 @@ export default class OficinaRepository{
                 index++;
             }
             if (filtros.fecha_inicio != null){
-                sql += ` o.fecha_inicio >= $${index} or`;
-                values.push(fecha_inicio)
+                sql += ` o.fecha_inicio <= $${index} and`;
+                values.push(filtros.fecha_inicio)
                 index++;
             }
             
             if (filtros.fecha_fin != null){
-                sql += ` o.fecha_fin <= $${index} or`;
-                values.push(fecha_fin)
+                sql += ` o.fecha_fin >= $${index} and`;
+                values.push(filtros.fecha_fin)
                 index++;
             }
 
