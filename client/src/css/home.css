@@ -221,3 +221,41 @@
     background-color: #333; 
     animation: colorChange 0.5s infinite alternate; 
 }
+.publicarOficina {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 5%;
+    width: 100%;
+    font-weight: lighter;
+}
+
+.botonPublicar {
+    border-radius: 15px;
+    width: 25%;
+    height: 6vh;
+    background-color: #0FA958;
+    border-width: 0;
+    border-color: #0FA958;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2%;
+    font-size: 2.5vh;
+    font-family: 'Roboto', sans-serif; /* Usamos una fuente ligera */
+    font-weight: 100; /* Hace el texto más fino */
+}
+
+.iconPlus {
+    display: inline-block;
+    width: 3vh;
+    height: 3vh;
+    background-color: #3DBF7B;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100%;
+    margin-left: 2%;
+    font-size: 3vh;
+}

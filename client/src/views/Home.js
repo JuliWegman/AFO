@@ -4,6 +4,9 @@ import Footer from "../componentes/footer.js";
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import Filtros from "../componentes/filtros.js";
+import publicarOficina from "../componentes/publicarOficina.js";
+
+
 
 const Barrios = [{ barrio: "Caballito" }, { barrio: "Recoleta" }];
 const Duraciones = [{ duracion: "Día" },{ duracion: "Mes" },{ duracion: "Semana" },   { duracion: "Año" }];
@@ -115,6 +118,13 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
                             }
                         </div>
                     </div>
+                    <div className='publicarOficina'>
+                        <button className='botonPublicar' type='button'>
+                            Publicar Oficina
+                            <span className='iconPlus'>+</span>
+                        </button>
+                    </div>
+
                 </div>
             </div>
             <div className='footer'>
