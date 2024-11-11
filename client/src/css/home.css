@@ -230,21 +230,26 @@
     width: 100%;
     font-weight: lighter;
 }
-
 .botonPublicar {
-    border-radius: 15px;
-    width: 25%;
-    height: 6vh;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
     background-color: #0FA958;
     border-width: 0;
     border-color: #0FA958;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2%;
     font-size: 2.5vh;
-    font-family: 'Roboto', sans-serif; /* Usamos una fuente ligera */
-    font-weight: 100; /* Hace el texto más fino */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100; 
+}
+.textoBoton{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
 }
 
 .iconPlus {

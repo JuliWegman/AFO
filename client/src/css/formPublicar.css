@@ -1,0 +1,55 @@
+.ContainerForm {
+    width: 100%;
+    height: 85%;
+    margin-top: 2.5%;
+    margin-left: 2%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.textoForm {
+    font-size: 2vh;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 5%;
+    margin-right: 15%;
+    padding: 5%;
+}
+
+.formularios {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 30%;
+}
+
+.input-field {
+    width: 80%;
+    height: 12%;
+    border-color: rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, 0.4);
+    padding-left: 2%; 
+}
+
+
+input::placeholder, textarea::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+    margin-left: 2%;  
+}
+
+.submit-btn {
+    cursor: pointer;
+    width: 80%;
+    height: 12%;
+    margin-top: 2%;
+    border-radius: 0;
+    border: #F87C18;
+    background-color: #F87C18;
+    font-weight: lighter;
+}

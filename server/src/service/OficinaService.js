@@ -6,6 +6,7 @@ import FotoRepository from '../repository/FotoRepository.js'
 import BarrioRepository from "../repository/BarrioRepository.js";
 const repoAlquileres=new AlquilerRepository();
 const repoFotos= new FotoRepository();
+const repoOficina = new OficinaRepository();
 const repo=new OficinaRepository();
 const PaginacionConfig = new Pagination();
 const repoBarrio=new BarrioRepository();
@@ -48,6 +49,9 @@ export class OficinaService{
     async getFotosByOficina(idOficina){
         
         return await repoFotos.getFotosByOficina(idOficina)
+    }
+    async getOficinaByUser(idUsuario){
+        return await repoOficina.getOficinaByUser(idUsuario)
     }
 
 }

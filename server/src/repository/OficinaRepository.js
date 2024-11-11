@@ -182,4 +182,17 @@ export default class OficinaRepository{
         }
         return data
     }
-}   
+    async getOficinaByUser(idUsuario){
+        let data = null
+        try{
+            var sql="select o.id_oficina , o.tamaño , o.sillas , o.baños , o.ambientes , o.armarios , o.calle , o.altura , o.computadoras , o.personas , l.nombre as localidad , b.nombre as barrio, u.nombre as nombreUsuario , u.apellido as apellidoUsuario , u.mail as mailUsuario , o.precio , d.tiempo as duracion , o.descripcion from oficina o inner join barrio b on b.id_barrio=o.id_barrio inner join localidad l on l.id_localidad=o.id_localidad inner join usuario u on u.id_usuario=o.id_usuario inner join duracion d on d.id_duracion=o.id_duracion where o.id_usuario=$1 "
+            const values=[idUsuario]
+            const result=await this.BDclient.query(sql,values)
+                data=result.rows[0];
+        }catch (e) {
+            error=e;
+            console.log(error);
+        }
+        return {data,error}
+    }
+}

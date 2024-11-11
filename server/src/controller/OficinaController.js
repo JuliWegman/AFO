@@ -75,6 +75,21 @@ router.get('/:id/fotos',async (req, res)=>{
         return res.status(200).json(data);
     }
 
+});
+
+router.get('/user',async (req, res)=>{
+    const idUsuario = req.params.user;
+    var{data,error}=await officeService.getOficinaByUser(idUsuario)
+    if (error!=null) {
+        console.log(error);
+        return res.status(400).send(error)
+    }else if(data==null){
+        
+        return res.status(404).send("NO EXISTE UNA OFICINA CON ESA ID")
+    }else{
+        return res.status(200).json(data)
+    }
+
 })
 
 

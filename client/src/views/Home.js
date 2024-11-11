@@ -4,7 +4,6 @@ import Footer from "../componentes/footer.js";
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import Filtros from "../componentes/filtros.js";
-import publicarOficina from "../componentes/publicarOficina.js";
 
 
 
@@ -119,10 +118,15 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
                         </div>
                     </div>
                     <div className='publicarOficina'>
-                        <button className='botonPublicar' type='button'>
-                            Publicar Oficina
-                            <span className='iconPlus'>+</span>
-                        </button>
+                        <Link to='/publicar'>
+                            <button className='botonPublicar' type='button'>
+                                <div className="textoBoton">
+                                    Publicar Oficina
+                                    <span className='iconPlus'>+</span>
+                                </div>
+                            </button>
+                        </Link>
+                        
                     </div>
 
                 </div>
