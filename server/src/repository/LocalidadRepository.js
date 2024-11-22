@@ -17,7 +17,7 @@ export default class LocalidadRepository{
             var sql="select * from localidad limit $1 offset $2"
             const values=[limit,offset]
             const result=await this.BDclient.query(sql,values)
-            data=result.data
+            data=result.rows
         } catch (e) {
             error=e;
             console.log(error);

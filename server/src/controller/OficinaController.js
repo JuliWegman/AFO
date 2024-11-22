@@ -4,6 +4,8 @@ import {OficinaService} from "../service/OficinaService.js";
 const router=express.Router();
 const officeService=new OficinaService();
 
+
+
 router.get('/',async (req,res)=>{
     const filtros={
         ambientes:req.query.ambientes,

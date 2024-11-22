@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import '../css/subirImagen.css';
 
-const SubirImagen = () => {
-    const [imagen, setImagen] = useState(null);
+const SubirImagen = ({imagen, setImagen}) => {
 
     // Manejar la selección de la imagen
     const manejarCambio = (e) => {

@@ -11,8 +11,8 @@ export class LocalidadService{
         const parsedOffset = PaginacionConfig.parseOffset(offset);
         const cantidad=Number.parseInt(await repo.countLocalidades()) || 3;
         const paginacion = PaginacionConfig.buildPaginationDto(parsedLimit, parsedOffset, cantidad, `/localidad`)
-
         const {data,error}=await repo.getLocalidades(parsedLimit,parsedOffset);
+
         const collection={data,paginacion};
         return {collection,error};
     }

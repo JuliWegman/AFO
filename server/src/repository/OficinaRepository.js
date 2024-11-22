@@ -195,4 +195,13 @@ export default class OficinaRepository{
         }
         return {data,error}
     }
+
+    async postOficina(oficina){
+        
+        try {
+            var sql="INSERT INTO oficina() VALUES()"
+        } catch (e) {
+            console.log(e);
+        }
+    }
 }

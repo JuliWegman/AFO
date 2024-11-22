@@ -9,6 +9,10 @@
     justify-content: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+.inputNumero{
+    display: flex;
+    flex-direction: row;
+}
 
 
 .textoForm {
@@ -46,7 +50,7 @@ input::placeholder, textarea::placeholder {
 .submit-btn {
     cursor: pointer;
     width: 80%;
-    height: 12%;
+    height: 50px;
     margin-top: 2%;
     border-radius: 0;
     border: #F87C18;

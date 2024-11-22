@@ -81,7 +81,7 @@ function App() {
                 <Alquileres setIDoficina={setIDoficina} setHamburguesa={reset} usuario={usuario}/>
               }></Route>
               <Route path='/publicar' element={
-                <Publicar setIDoficina={setIDoficina} setHamburguesa={reset} usuario={usuario}/>
+                <Publicar usuario={usuario}/>
               }></Route>
               
 

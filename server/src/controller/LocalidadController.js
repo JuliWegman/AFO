@@ -10,6 +10,7 @@ router.get('/',async (req,res)=>{
     const offset=req.query.offset;
 
         const {collection,error}= await locService.getLocalidades(limit,offset)
+
         if (error!=null) {
             return res.status(400).send(error)
         }else{
