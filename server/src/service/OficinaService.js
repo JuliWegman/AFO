@@ -51,16 +51,26 @@ export class OficinaService{
         return await repoFotos.getFotosByOficina(idOficina)
     }
     async getOficinaByUser(idUsuario){
-        return await repoOficina.getOficinaByUser(idUsuario)
+        const {data,error}= await repoOficina.getOficinaByUser(idUsuario)
+        if (data!=null) {
+            for (let i = 0; i < data.length; i++) {
+                const foto=(await repoFotos.getFotosByOficina(data[i].id_oficina)).data;
+                if (foto==null) {
+                    data[i].foto="https://i.ibb.co/pnrQpnJ/2327055.png"
+                }else{
+                    data[i].foto=foto[0].contenido
+                }
+            }
+            
+        }
+        return {data,error}
     }
 
     async postOficina(oficina){
         try {
             const res1=await repo.postOficina(oficina);
-            
-
             const idOfi=res1.data.id_oficina;
-            await repoFotos.postFoto(idOfi,oficina.imagen);
+            // await repoFotos.postFoto(idOfi,oficina.imagen);
         } catch (error) {
             console.log(error);
             return false;

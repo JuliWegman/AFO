@@ -7,7 +7,7 @@ import Header from './componentes/header.js';
 import Perfil from "./views/Perfil.js";
 import Alquileres from "./views/alquileres.js"
 import Publicar from './views/publicar.js';
-
+import Propietario from './views/Propietario.js';
 import './css/oficinaEnEspecial.css';
 
 import {
@@ -83,7 +83,9 @@ function App() {
               <Route path='/publicar' element={
                 <Publicar usuario={usuario}/>
               }></Route>
-              
+              <Route path='/HomePro' element={
+                <Propietario usuario={usuario} setIDoficina={setIDoficina}/>
+              }></Route>
 
               <Route path='/corazon' element={
                 <ion-icon name="heart" size='large'></ion-icon>

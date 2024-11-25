@@ -117,17 +117,7 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
                             }
                         </div>
                     </div>
-                    <div className='publicarOficina'>
-                        <Link to='/publicar'>
-                            <button className='botonPublicar' type='button'>
-                                <div className="textoBoton">
-                                    Publicar Oficina
-                                    <span className='iconPlus'>+</span>
-                                </div>
-                            </button>
-                        </Link>
-                        
-                    </div>
+                    
 
                 </div>
             </div>

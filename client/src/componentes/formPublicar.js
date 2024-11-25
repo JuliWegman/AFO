@@ -29,9 +29,9 @@ function FormPublicar({ subirOficina, mensaje }) {
   const handleSubmit = () => {
     const oficina = {
       piso,
-      tamaño,
+      tamanio : tamaño,
       escritorio,
-      baños,
+      banios:baños,
       ambientes,
       armarios,
       calle,
@@ -39,6 +39,8 @@ function FormPublicar({ subirOficina, mensaje }) {
       computadoras,
       descripcion,
       sillas,
+      precio,
+      id_duracion:selectedDuration,
       personas: cantidadPersonas,
       id_localidad: localidad,
       id_barrio: barrio,

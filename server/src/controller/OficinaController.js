@@ -86,8 +86,8 @@ router.get('/:id/fotos',async (req, res)=>{
 
 });
 
-router.get('/user',async (req, res)=>{
-    const idUsuario = req.params.user;
+router.get('/user/:id',async (req, res)=>{
+    const idUsuario = req.params.id;
     var{data,error}=await officeService.getOficinaByUser(idUsuario)
     if (error!=null) {
         console.log(error);

@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from './logo';
 import '../css/header.css';
+import home from '../logo/home.png'
 import alquiler from '../logo/alquiler.png';
 import perfil from '../logo/perfil.png';
 import mensaje from '../logo/mensaje.png';
@@ -18,7 +19,7 @@ const Menu = ({ texto,open }) => {
       
       <div className="menu-opciones">
         <div className='opcion'>
-        <Link to='/'><i class="fa-light fa-house fa-2x1"></i></Link>
+        <Link to='/'><Logo img = {home}/></Link>
         <p><Link to='/'>Home</Link></p>
         </div>
         <div className='opcion'>
@@ -38,7 +39,7 @@ const Menu = ({ texto,open }) => {
           <p>Cerrar Sesion</p>
         </div>
         <div className='opcion'>
-        <Link to='/HomePro'></Link>
+        <Link to='/HomePro'><Logo img = {home}/></Link>
         <p><Link to ='/HomePro'>Home Propietario</Link></p>
         </div>
       </div>

@@ -20,6 +20,8 @@ const Publicar = ({usuario}) => {
         }else{
             console.log(oficina);
             setMensaje("*Falta hacer el post*")
+            const res1=await axios.post("/oficina",oficina)
+            console.log(res1);
         }
 
     }
