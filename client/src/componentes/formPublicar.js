@@ -1,45 +1,69 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import '../css/formPublicar.css';
 
-function FormPublicar ({subirOficina,mensaje}) {
-    const localidad=1
-    const [calle,setCalle]=useState("")
-    const [altura,setAltura]=useState("")
-    const [piso,setPiso]=useState("")
-    const [cantidadPersonas,setCantidadPersonas]=useState(0)
-    const [descripcion,setDescripcion]=useState("")
-    const [tamaño,setTamaño]=useState(0)
-    const [escritorio,setEscritorio]=useState(0)
-    const [baños,setBaños]=useState(0)
-    const [ambientes,setAmbientes]=useState(0)
-    const [armarios,setArmarios]=useState(0)
-    const [computadoras,setComputadoras]=useState(0)
-    const [barrio,setBarrio]=useState(1)
-    const [sillas,setSillas]=useState(1)
+function FormPublicar({ subirOficina, mensaje }) {
+  const localidad = 1;
+  const [calle, setCalle] = useState("");
+  const [altura, setAltura] = useState("");
+  const [piso, setPiso] = useState("");
+  const [cantidadPersonas, setCantidadPersonas] = useState(0);
+  const [descripcion, setDescripcion] = useState("");
+  const [tamaño, setTamaño] = useState(0);
+  const [escritorio, setEscritorio] = useState(0);
+  const [baños, setBaños] = useState(0);
+  const [ambientes, setAmbientes] = useState(0);
+  const [armarios, setArmarios] = useState(0);
+  const [computadoras, setComputadoras] = useState(0);
+  const [barrio, setBarrio] = useState(1);
+  const [sillas, setSillas] = useState(0);
+  const [duracion, setDuracion] = useState(1);
+  const [precio, setPrecio] = useState(0);
+  const [pagina, setPagina] = useState(1);
+
+  // Estado para manejar la selección de duración
+  const [selectedDuration, setSelectedDuration] = useState(null);
+
+  const handleSelectDuration = (duration) => {
+    setSelectedDuration(duration);
+  };
+
+  const handleSubmit = () => {
+    const oficina = {
+      piso,
+      tamaño,
+      escritorio,
+      baños,
+      ambientes,
+      armarios,
+      calle,
+      altura,
+      computadoras,
+      descripcion,
+      personas: cantidadPersonas,
+      id_localidad: localidad,
+      id_barrio: barrio,
+    };
+    subirOficina(oficina);
+  };
 
 
-
-    const [pagina,setPagina]=useState(1)
-    
-
-    const handleSubmit=()=>{
-        const oficina={piso:piso,tamaño:tamaño,escritorio:escritorio,baños:baños,ambientes:ambientes,armarios:armarios,calle:calle,altura:altura,computadoras:computadoras,descripcion:descripcion,personas:cantidadPersonas,id_localidad:localidad,id_barrio:barrio}
-        subirOficina(oficina)
-    }
 
     return (
         <div className="ContainerForm">
-            <div className="textoForm">
+            <div className="flecha">
                 {pagina>1&&<h2 onClick={()=>setPagina(pagina-1)} style={{cursor:"pointer"}}>&lt;</h2>}
                 {pagina===1&& <Link to={"/"}><h2>&lt;</h2></Link>}
 
-                <h2>Pone en alquiler tu oficina</h2>
+                
             </div>
 
             <div className="formularios">
                 {pagina===1?
                     <>
+                    <div className="textoForm">
+                    <h2>Pone en alquiler tu oficina</h2>
+                    </div>
                         
                         <select className="input-field" onChange={(e)=>setBarrio(e.target.value)}>
                             {[{nombre:"Palermo",id:1}, {nombre:"Recoleta",id:2}].map((barrio) => (
@@ -90,6 +114,10 @@ function FormPublicar ({subirOficina,mensaje}) {
                     </>
                     :pagina===2?
                     <>
+                    
+                    <div className="textoForm">
+                    <h2>¿Como esta equipada tu oficina?</h2>
+                    </div>
                     <div className="inputNumero">
                         <label htmlFor="Tamaño">tamaño (en m2):</label>
                         <input
@@ -189,9 +217,36 @@ function FormPublicar ({subirOficina,mensaje}) {
                     </>
                     :pagina===3&&
                     <>
-                        
-                        <button type="submit" className="submit-btn" onClick={handleSubmit}>Subir</button>
-                        <h2>{mensaje}</h2>
+                         <div className="formularios">
+        {pagina === 3 && (
+          <>
+            <div className="textoForm">
+              <h2>Tiempo en alquiler</h2>
+            </div>
+
+            <div className="duration-options">
+              {['Día', 'Mes', 'Semana', 'Año'].map((label, index) => {
+                const value = index + 1; 
+                return (
+                  <div
+                    key={value}
+                    className={`duration-option ${selectedDuration === value ? 'selected' : ''}`}
+                    onClick={() => handleSelectDuration(value)}
+                  >
+                    {label}
+                  </div>
+                );
+              })}
+            </div>
+
+            <button type="submit" className="submit-btn" onClick={handleSubmit}>
+              Finalizar
+            </button>
+
+            <h2>{mensaje}</h2>
+          </>
+        )}
+      </div>
                     </>
                 }
             </div>
