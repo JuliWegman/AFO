@@ -9,9 +9,13 @@ const Publicar = ({usuario}) => {
     const [imagen, setImagen] = useState(null);
     const [mensaje,setMensaje]=useState("")
     async function subirOficina(oficina){
-        oficina.id_usuario=usuario.id_usuario
+        oficina.id_usuario=Number.parseInt(usuario.id_usuario)
+        oficina.imagen=imagen;
         if (oficina.calle==="" || oficina.piso==='' ||oficina.descripcion==="") {
             setMensaje("FALTAN CAMPOS")
+            return 0;
+        }else if(oficina.imagen==null){
+            setMensaje("FALTAN SUBIR UNA IMAGEN")
             return 0;
         }else{
             console.log(oficina);

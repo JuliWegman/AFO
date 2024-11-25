@@ -14,7 +14,16 @@
     flex-direction: row;
     justify-content: space-between;
     width: 80%;
+    border-color: rgba(0, 0, 0, 0.4);
     margin-left: 10%;
+    margin-right: 10%;
+    height: 5vh;
+    margin-top: 2%;
+    
+}
+.inputNumero input{
+    width: 20%;
+    text-align: center;
 }
 
 .flecha{
@@ -41,8 +50,21 @@
     margin-bottom: 30%;
     max-height: 60vh;
 }
-
+.formularios select{
+    width: 80%;
+    height: 12%;
+    border-color: rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, 0.4);
+    padding-left: 2%; 
+}
 .input-field {
+    width: 80%;
+    height: 12%;
+    border-color: rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, 0.4);
+    padding-left: 2%; 
+}
+.inputAltura {
     width: 80%;
     height: 12%;
     border-color: rgba(0, 0, 0, 0.4);
@@ -66,25 +88,25 @@ input::placeholder, textarea::placeholder {
     background-color: #F87C18;
     font-weight: lighter;
 }
-.inputNumero input{
-    width: 20%;
-}
+
 .duration-options {
     display: flex;
     justify-content: space-between;
     margin-left: 10%;
     width: 80%;
+    text-align: center;
+    align-items: center;
   }
   
   .duration-option {
     width: 22%;
+    height: 7vh;
     padding: 10px;
-    text-align: center;
     border: 2px solid rgba(0, 0, 0, 0.4);
-    border-radius: 8px;
     cursor: pointer;
     color: rgba(0, 0, 0, 0.4);
-    font-size: 16px;
+    font-size: 2vh;
+    text-align: center;
     transition: background-color 0.3s, color 0.3s;
   }
   
@@ -99,4 +121,47 @@ input::placeholder, textarea::placeholder {
     border-color: #f87c18;
     color: white;
   }
-  
+
+.inputNumero2 {
+    display: flex;
+    justify-content: center; 
+    width: 80%; 
+    margin-left: 10%; 
+    margin-right: 10%; 
+}
+
+
+.inputNumero2 input {
+    text-align: center; 
+    padding-left: 10%; 
+    padding-right: 10%; 
+    font-size: 16px; 
+    width: 100%; 
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+}
+
+
+.inputNumero2 input::-webkit-outer-spin-button,
+.inputNumero2 input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inputNumero2 input[type='number'] {
+    -moz-appearance: textfield;
+}
+.TextoDuracion{
+    color: rgba(0, 0, 0, 0.4);
+    margin-bottom: 20%;
+}
+.textoPrecio{
+    text-align: center;
+    justify-content: center;
+    margin-top: 20%;
+    font-size: 3vh;
+}
+.contPrecio{
+    margin-bottom: 20%;
+}

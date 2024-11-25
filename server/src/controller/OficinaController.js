@@ -5,7 +5,14 @@ const router=express.Router();
 const officeService=new OficinaService();
 
 
+router.post('/',async(req,res)=>{
+    if (await officeService.postOficina(req.body)) {
+        return  res.status(200).send("SUBIDO")
 
+    }
+    return  res.status(400).send("ERROR")
+
+})
 router.get('/',async (req,res)=>{
     const filtros={
         ambientes:req.query.ambientes,

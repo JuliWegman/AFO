@@ -197,11 +197,24 @@ export default class OficinaRepository{
     }
 
     async postOficina(oficina){
-        
+        let data=null;
+        var error=null;
         try {
-            var sql="INSERT INTO oficina() VALUES()"
+            var sql="INSERT INTO oficina(tamaño,escritorio,baños,ambientes,armarios,calle,altura,computadoras,descripcion,personas,id_localidad,id_usuario,precio,id_duracion,sillas,fecha_inicio,fecha_fin,id_barrio) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18) RETURNING id_oficina"
+            const values=[oficina.tamanio,oficina.escritorio,oficina.banios,oficina.ambientes,oficina.armarios,oficina.calle,oficina.altura,oficina.computadoras,oficina.descripcion,oficina.personas,oficina.id_localidad,oficina.id_usuario,oficina.precio,oficina.id_duracion,oficina.sillas,"2022-03-02","2022-03-03",oficina.id_barrio]
+            const result=await this.BDclient.query(sql,values);
+            if (result.rows!=null) {
+                data=result.rows[0];
+                console.log(data);
+            }
         } catch (e) {
+            error=e
             console.log(e);
+            
         }
+        console.log(error);
+        return {data,error}
     }
+
+
 }

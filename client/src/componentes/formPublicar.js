@@ -17,11 +17,9 @@ function FormPublicar({ subirOficina, mensaje }) {
   const [computadoras, setComputadoras] = useState(0);
   const [barrio, setBarrio] = useState(1);
   const [sillas, setSillas] = useState(0);
-  const [duracion, setDuracion] = useState(1);
   const [precio, setPrecio] = useState(0);
   const [pagina, setPagina] = useState(1);
 
-  // Estado para manejar la selección de duración
   const [selectedDuration, setSelectedDuration] = useState(null);
 
   const handleSelectDuration = (duration) => {
@@ -40,6 +38,7 @@ function FormPublicar({ subirOficina, mensaje }) {
       altura,
       computadoras,
       descripcion,
+      sillas,
       personas: cantidadPersonas,
       id_localidad: localidad,
       id_barrio: barrio,
@@ -65,7 +64,7 @@ function FormPublicar({ subirOficina, mensaje }) {
                     <h2>Pone en alquiler tu oficina</h2>
                     </div>
                         
-                        <select className="input-field" onChange={(e)=>setBarrio(e.target.value)}>
+                        <select className="input-field" onChange={(e)=>setBarrio(Number.parseInt(e.target.value))}>
                             {[{nombre:"Palermo",id:1}, {nombre:"Recoleta",id:2}].map((barrio) => (
                                 <option
                                     value={barrio.id}
@@ -84,12 +83,12 @@ function FormPublicar({ subirOficina, mensaje }) {
                             required
                         />                
                         <input
-                            className="input-field"
                             type="number"
                             id="altura"
                             value={altura}
+                            className="inputAltura"
                             placeholder="Altura"
-                            onChange={(e) => setAltura(e.target.value)}
+                            onChange={(e) => setAltura(Number.parseInt(e.target.value))}
                             required
                             />  
                         <input
@@ -119,96 +118,97 @@ function FormPublicar({ subirOficina, mensaje }) {
                     <h2>¿Como esta equipada tu oficina?</h2>
                     </div>
                     <div className="inputNumero">
-                        <label htmlFor="Tamaño">tamaño (en m2):</label>
+                        <label htmlFor="Tamaño">Tamaño (en m2):</label>
                         <input
+                            min = "0"
                             type="number"
                             id="Tamaño"
                             placeholder="Tamaño"
                             value={tamaño}
-                            onChange={(e) => setTamaño(e.target.value)}
+                            onChange={(e) => setTamaño(Number.parseInt(e.target.value))}
                             required
                         />
                     </div>
                     <div className="inputNumero">
 
-                        <label htmlFor="cantPersonas">personas:</label>
+                        <label htmlFor="cantPersonas">Personas:</label>
                         <input
                             type="number"
                             id="cantPersonas"
                             value={cantidadPersonas}
                             placeholder="Cantidad de Personas Que Entran"
-                            onChange={(e) => setCantidadPersonas(e.target.value)}
+                            onChange={(e) => setCantidadPersonas(Number.parseInt(e.target.value))}
                             required
                         />
                         </div>
 
                     <div className="inputNumero">
-                        <label htmlFor="escritorios">escritorios:</label>
+                        <label htmlFor="escritorios">Escritorios:</label>
                         <input
                             type="number"
                             id="escritorios"
                             value={escritorio}
                             placeholder="Escritorios"
-                            onChange={(e) => setEscritorio(e.target.value)}
+                            onChange={(e) => setEscritorio(Number.parseInt(e.target.value))}
                             required
                         />
                         </div>
 
                         <div className="inputNumero">
-                        <label htmlFor="baños">baños:</label>
+                        <label htmlFor="baños">Baños:</label>
                         <input
                             type="number"
                             id="baños"
                             value={baños}
                             placeholder="Baños"
-                            onChange={(e) => setBaños(e.target.value)}
+                            onChange={(e) => setBaños(Number.parseInt(e.target.value))}
                             required
                         />
                         </div>
 
                         <div className="inputNumero">
-                        <label htmlFor="armarios">armarios:</label>
+                        <label htmlFor="armarios">Armarios:</label>
                         <input
                             type="number"
                             id="armarios"
                             value={armarios}
                             placeholder="Armarios"
-                            onChange={(e) => setArmarios(e.target.value)}
+                            onChange={(e) => setArmarios(Number.parseInt(e.target.value))}
                             required
                         />
                         </div>
                         <div className="inputNumero">
-                        <label htmlFor="ambientes">ambientes:</label>
+                        <label htmlFor="ambientes">Ambientes:</label>
                         <input
                             type="number"
                             id="ambientes"
                             value={ambientes}
                             placeholder="ambientes"
-                            onChange={(e) => setAmbientes(e.target.value)}
+                            onChange={(e) => setAmbientes(Number.parseInt(e.target.value))}
                             required
                         />
                         </div>
 
                         <div className="inputNumero">
-                        <label htmlFor="computadoras">computadoras:</label>
+                        <label htmlFor="computadoras">Computadoras:</label>
                         <input
                             type="number"
                             id="computadoras"
                             value={computadoras}
                             placeholder="computadoras"
-                            onChange={(e) => setComputadoras(e.target.value)}
+                            onChange={(e) => setComputadoras(Number.parseInt(e.target.value))}
                             required
                         />
                         </div>
 
                         <div className="inputNumero">
-                        <label htmlFor="sillas">sillas:</label>
+                        <label htmlFor="sillas">Sillas:</label>
                         <input
                             type="number"
                             id="sillas"
                             value={sillas}
                             placeholder="sillas"
-                            onChange={(e) => setSillas(e.target.value)}
+                            onChange={(e) => {setSillas(Number.parseInt(e.target.value));console.log(sillas);}}
                             required
                         />
                         </div>
@@ -237,7 +237,32 @@ function FormPublicar({ subirOficina, mensaje }) {
                   </div>
                 );
               })}
+            </div> 
+            <label className="textoPrecio" htmlFor="Precio">Precio</label>
+            <div className="contPrecio">  
+              <div className="inputNumero2"> 
+                        <input
+                            type="number"
+                            id="Precio"
+                            placeholder="$"
+                            value={precio}
+                            onChange={(e) => setPrecio(e.target.value)}
+                            required
+                        />
+              </div>
+              {selectedDuration === 1 ? 
+              <div className="TextoDuracion">
+                <h3>Por Día</h3>
+              </div>: selectedDuration === 2 ? <div className="TextoDuracion">
+                <h3>Por Mes</h3>
+              </div> : selectedDuration === 3 ? <div className="TextoDuracion">
+                <h3>Por Semana</h3>
+              </div> :  selectedDuration === 4 ?<div className="TextoDuracion">
+                <h3>Por Año</h3>
+              </div> : <h3> </h3>}
             </div>
+          
+        
 
             <button type="submit" className="submit-btn" onClick={handleSubmit}>
               Finalizar

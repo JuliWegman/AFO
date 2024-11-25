@@ -54,4 +54,19 @@ export class OficinaService{
         return await repoOficina.getOficinaByUser(idUsuario)
     }
 
+    async postOficina(oficina){
+        try {
+            const res1=await repo.postOficina(oficina);
+            
+
+            const idOfi=res1.data.id_oficina;
+            await repoFotos.postFoto(idOfi,oficina.imagen);
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+        return true;
+
+    }
+
 }

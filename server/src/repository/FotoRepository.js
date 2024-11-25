@@ -27,5 +27,23 @@ export default class FotoRepository{
         return {data,error}
 
     }
+    async postFoto(id_oficina,contenido){
+        let data=null;
+        var error=null;
+        try {
+            var sql="INSERT INTO foto(id_oficina,contenido) VALUES($1,$2)"
+            const values=[id_oficina,contenido]
+            const result=await this.BDclient.query(sql,values)
+            if(result.rows.length>0){
+                data=result.rows;
+            }
+        } catch (e) {
+            error=e;
+            console.log(error);
+        }
+        return {data,error}
+
+
+    }
 
 }
