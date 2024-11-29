@@ -3,12 +3,14 @@ import React,{useState} from "react";
 import '../css/publicar.css';
 import FormPublicar from "../componentes/formPublicar";
 import SubirImagen from "../componentes/subirImagen";
+import { Link } from "react-router-dom";
 
 
 const Publicar = ({usuario}) => { 
     const [imagen, setImagen] = useState(null);
     const [mensaje,setMensaje]=useState("")
     async function subirOficina(oficina){
+
         oficina.id_usuario=Number.parseInt(usuario.id_usuario)
         oficina.imagen=imagen;
         if (oficina.calle==="" || oficina.piso==='' ||oficina.descripcion==="") {
@@ -19,7 +21,7 @@ const Publicar = ({usuario}) => {
             return 0;
         }else{
             console.log(oficina);
-            setMensaje("*Falta hacer el post*")
+            <Link to='/'></Link>
             const res1=await axios.post("/oficina",oficina)
             console.log(res1);
         }

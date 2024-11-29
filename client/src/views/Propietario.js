@@ -25,7 +25,10 @@ const Propietario = ({usuario,setIDoficina}) => {
     }
     return (
         <>
-
+        <div className="tituloPro">
+            <h1>Tus Oficinas</h1>
+        </div>
+        
         <div className="contOficinaPro">
             {oficinas.length > 0 ? ( // Verifica si hay oficinas antes de mapear
                 oficinas.map(ofi => (

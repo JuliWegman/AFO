@@ -35,3 +35,13 @@
 .link{
     width: 100%;
 }
+.contOficinaPro{
+    margin-bottom: 5%;
+    flex-wrap: wrap;
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
