@@ -82,7 +82,7 @@ function OficinaEnEspecial({IdOficina,setHamburguesa,splideFoto,setSplideFoto,po
                 PostMensaje(document.getElementById("inputPopUpMensaje").value,document.getElementById("inputMail").value,document.getElementById("inputTelefono").value);
                 setPopUpMensaje(false);const cap=document.getElementById("capa1"); cap.style.visibility='hidden'
                 
-            }}><img src={Send}></img></button></a>
+            }}>Enviar</button></a>
           </div>
           </form>
           
@@ -157,9 +157,7 @@ function OficinaEnEspecial({IdOficina,setHamburguesa,splideFoto,setSplideFoto,po
                   <h4>{oficina.sillas} Sillas</h4>
                 </div>
 
-                <div className='mas'>
-                  <h4>Ver Mas🡣</h4>
-                </div>
+              
               </div>
               <div className='ubicacion'>
                 <Ubicacion img = {ubicacionImg}/>

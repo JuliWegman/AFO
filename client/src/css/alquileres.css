@@ -1,5 +1,6 @@
 .containerA{
     display: flex;
+    width: 100%;
     flex-direction: column;
 }
 .titulo{
@@ -10,18 +11,13 @@
 .fila{
     display: flex;
     flex-direction: row;
-    width: 80%;
-}
-.volver{
-    margin-top: 2.5%;
-}
-.volver p{
-    color: rgba(0, 0, 0, 0.5);
-    text-decoration-line: underline; 
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 5%;
 }
 .alquiler{
     display: flex;
-    width: 16%;
+    width: 20%;
     height: 17rem;
     border: #141414 2px solid;
     border-radius: 10%;

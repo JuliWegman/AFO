@@ -107,10 +107,16 @@ const Chat = ({setIDperfil,mandar,mensajes,index,setIndex,id_usuario}) => {
             marginLeft: '18.4%',
         },
         send:{
-            position: 'absolute',
-            marginLeft: '30%',
-            marginTop: '-78%',
+            width:'100%',
+            height:'100%'
             
+            
+        },
+        icono:{
+            width:'100%',
+            height:'100%',
+            margin:'.1%',
+            marginTop:'15%'
         }
      
 
@@ -119,9 +125,6 @@ const Chat = ({setIDperfil,mandar,mensajes,index,setIndex,id_usuario}) => {
     return (
         <div style={styles.chat}>
             <div style={styles.containeri}>
-                <div className='conteinerChat2' onClick={()=>setIndex(null)}>
-                    <h1>inicio</h1>
-                </div>
                 {mensajes && mensajes.map((mensaje, index) => (
                     <ChatUser mensaje={mensaje} index={index} setIndex={setIndex}/>
                 ))}
@@ -130,15 +133,10 @@ const Chat = ({setIDperfil,mandar,mensajes,index,setIndex,id_usuario}) => {
                 {index==null
                 ?
                 <>
-                    <h2>Mensaje nuevo de Julian Wegman</h2>
 
                     <div style={styles.contenedor}>
-                            <button style ={styles.botonR} onClick={()=>{setIndex(0)}}>Enviar Mensaje</button>
-                            <Link style={styles.botonashe} to='/perfil'><button style ={styles.botonN} onClick={()=>{setIDperfil(2)}}>Ver Perfil</button></Link>
                         <div style ={styles.rect}>
-                            <div style={styles.info}>
-                                <h1>Acerca de oficina en Olaya 1075</h1>
-                            </div>
+                                <h1>No tienes mensajesa nuevos</h1>
                         </div>
                     </div> 
                     </>
@@ -160,7 +158,7 @@ const Chat = ({setIDperfil,mandar,mensajes,index,setIndex,id_usuario}) => {
                     </div>
                     <div className='enviarMensaje'>
                         <input className='inputMensaje' placeholder='Mensaje...' id="inputsito"/>  
-                        <button className='botonMensaje' onClick={()=>{mandar(document.getElementById("inputsito").value , mensajes[index].id_usuario); document.getElementById("inputsito").value=""}}><div style={styles.send}><i class="fa-regular fa-paper-plane"></i></div></button>
+                        <button className='botonMensaje' onClick={()=>{mandar(document.getElementById("inputsito").value , mensajes[index].id_usuario); document.getElementById("inputsito").value=""}}><i class="fa-regular fa-paper-plane"  style={styles.icono}></i></button>
                       
                     </div>
                 </div>} 

@@ -36,7 +36,7 @@ const Propietario = ({usuario,setIDoficina}) => {
                         <Link to='/oficina'>
                         <img src={ofi.foto} alt="fotoOficina1" />
                             <div className="info">
-                                <h3>${ofi.precio} Por {ofi.id_duracion }</h3>
+                                <h3>${ofi.precio} Por {ofi.duracion }</h3>
                                 <p>{ofi.calle} {ofi.altura}, {ofi.barrio}</p>
                             </div>
                         </Link>

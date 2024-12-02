@@ -265,11 +265,9 @@ function FormPublicar({ subirOficina, mensaje }) {
             </div>
           
         
-
-            <button type="submit" className="submit-btn" onClick={handleSubmit}>
-              Finalizar
-            </button>
-
+            
+            <button type="submit" className="submit-btn" onClick={handleSubmit}>Finalizar</button>
+            
             <h2>{mensaje}</h2>
           </>
         )}

@@ -19,8 +19,8 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
     const [abierto, setAbierto] = useState(false);
     const [cantidad, setCantidad] = useState(0);
     const [pagina, setPagina] = useState(1);
-    const [params,setParams]=useState({})
     const [ticker,setTicker]=useState(1)
+    let params;
     useEffect(() => {
         async function getData() {
             try {
@@ -41,7 +41,7 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
 
     const handleApplyFilters = (appliedFilters) => {
     
-            setParams(new URLSearchParams({
+            params=new URLSearchParams({
             limit,
             offset: 0,
             ...(appliedFilters.max_precio && { max_precio: appliedFilters.max_precio }),
@@ -51,8 +51,7 @@ const Home = ({ setIDoficina, setHamburguesa, usuario, setUsuario }) => {
             ...(appliedFilters.barrio && appliedFilters.barrio.length > 0 && { barrio: appliedFilters.barrio }),
             ...(appliedFilters.fecha_inicio && { fecha_inicio: appliedFilters.fecha_inicio }),
             ...(appliedFilters.fecha_fin && { fecha_fin: appliedFilters.fecha_fin }),
-        }).toString())
-        console.log(appliedFilters.fecha_fin + 'AAAAAAAAAAAAAAAAAAAAAA');
+        }).toString()
         console.log(`URL ES: /oficina?${params}`);
         setLink(`/oficina?${params}`);
         setPagina(1);

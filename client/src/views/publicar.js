@@ -3,12 +3,14 @@ import React,{useState} from "react";
 import '../css/publicar.css';
 import FormPublicar from "../componentes/formPublicar";
 import SubirImagen from "../componentes/subirImagen";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 
 
 const Publicar = ({usuario}) => { 
     const [imagen, setImagen] = useState(null);
     const [mensaje,setMensaje]=useState("")
+    const navigate=useNavigate()
+
     async function subirOficina(oficina){
 
         oficina.id_usuario=Number.parseInt(usuario.id_usuario)
@@ -21,9 +23,10 @@ const Publicar = ({usuario}) => {
             return 0;
         }else{
             console.log(oficina);
-            <Link to='/'></Link>
-            const res1=await axios.post("/oficina",oficina)
-            console.log(res1);
+            
+            const res1=await axios.post("/oficina",oficina);
+            alert("Oficina subida")
+            navigate("/HomePro")
         }
 
     }

@@ -57,9 +57,7 @@ const Alquileres = ({ setIDoficina, setHamburguesa, usuario }) => {
       ) : (
         <h3>No tienes alquileres hechos</h3>
       )}
-      <div className="volver">
-        <Link to='/'><p>Volver a Inicio</p></Link>
-      </div>
+
     </div>
   );
 };
